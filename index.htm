@@ -1,427 +1,1042 @@
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AUVP Header</title>
-    
-    <!-- Google Fonts: Anek Latin -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anek+Latin:wght@400&display=swap" rel="stylesheet">
-    
-    <!-- Phosphor Icons -->
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+<!-- Dependências do Projeto -->
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Anek+Latin:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
 
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['"Anek Latin"', 'sans-serif'],
-                    },
-                    colors: {
-                        'auvp-green': '#0B2904',
-                    }
-                }
+<style>
+    /* PREVENÇÃO DE FOUC (Evita a página piscar quebrada no carregamento) */
+    #auvp-lp-wrapper {
+        opacity: 0;
+        animation: auvp-fade-in 0.6s ease-out 0.3s forwards;
+    }
+    
+    @keyframes auvp-fade-in {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+
+    /* Importação da fonte customizada DiscoDiva */
+    @font-face {
+        font-family: 'DiscoDiva';
+        src: url('https://raw.githubusercontent.com/eriadesign/privateday/main/discodiva-base.otf') format('opentype');
+        font-weight: normal;
+        font-style: normal;
+        font-display: block;
+    }
+
+    /* Isolamento de Estilos base para não quebrar o WordPress */
+    #auvp-lp-wrapper {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 300; 
+        background-color: #FFF7EB;
+        color: #1a1a1a;
+        width: 100%;
+        position: relative;
+        --card-half: 70px; /* Metade da largura do card mobile para centralização */
+    }
+
+    @media (min-width: 768px) {
+        #auvp-lp-wrapper {
+            --card-half: 100px; /* Metade da largura do card desktop */
+        }
+    }
+    
+    #auvp-lp-wrapper .vintage-title {
+        font-family: 'DiscoDiva', cursive, serif;
+        letter-spacing: 0.02em;
+    }
+
+    #auvp-lp-wrapper .vintage-accent {
+        color: #DB7944;
+    }
+    
+    #auvp-lp-wrapper .vintage-gradient-text {
+        background: linear-gradient(to right, #DB7944, #e69b55, #c45d1b);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    #auvp-lp-wrapper .vintage-btn {
+        background: linear-gradient(135deg, #DB7944 0%, #a6460f 100%);
+        color: #fff;
+        box-shadow: 0 4px 15px rgba(219, 121, 68, 0.2);
+        transition: all 0.3s ease;
+    }
+    #auvp-lp-wrapper .vintage-btn:hover {
+        box-shadow: 0 6px 20px rgba(219, 121, 68, 0.4);
+        transform: translateY(-2px);
+        color: #FFF7EB;
+    }
+
+    #auvp-lp-wrapper .film-grain {
+        position: absolute; 
+        top: 0; left: 0; width: 100%; height: 100%;
+        pointer-events: none;
+        z-index: 9999;
+        opacity: 0.03;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+    /* Força o tamanho correto das imagens de logo */
+    #auvp-lp-wrapper .logo-header {
+        height: 64px !important;
+        width: auto !important;
+        max-width: 250px !important;
+        object-fit: contain !important;
+    }
+    #auvp-lp-wrapper .logo-footer {
+        height: 48px !important;
+        width: auto !important;
+        max-width: 200px !important;
+        object-fit: contain !important;
+    }
+    
+    #auvp-lp-wrapper .elementor-btn-protect:hover {
+        color: #FFF7EB !important;
+    }
+
+    #auvp-lp-wrapper .absolute.inset-0 > img {
+        width: 100% !important;
+        height: 100% !important;
+        min-width: 100% !important;
+        min-height: 100% !important;
+        object-fit: cover !important;
+        max-width: none !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        display: block !important;
+    }
+
+    @media (max-width: 768px) {
+        #auvp-lp-wrapper .logo-header {
+            height: 48px !important;
+        }
+        #auvp-lp-wrapper .logo-footer {
+            height: 40px !important;
+        }
+        #auvp-lp-wrapper .mobile-bg-70 {
+            object-position: 70% center !important;
+        }
+        #auvp-lp-wrapper .mobile-bg-50 {
+            object-position: 50% center !important;
+        }
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /* WIDGET WHATSAPP CUSTOMIZADO                                                */
+    /* -------------------------------------------------------------------------- */
+    @keyframes waPulseRing {
+        0% { transform: scale(0.98); opacity: 0.32; }
+        100% { transform: scale(1.9); opacity: 0; }
+    }
+    @keyframes waSoftPulse {
+        0%, 100% { transform: scale(1); }
+        50%      { transform: scale(1.012); }
+    }
+
+    #auvp-lp-wrapper .wa-wrapper {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        z-index: 99999;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    /* Balão (Tooltip) */
+    #auvp-lp-wrapper .wa-balloon {
+        position: absolute;
+        bottom: 74px; /* Altura do ícone (64) + espaçamento (10) */
+        right: 0;
+        background: #ffffff;
+        color: #1a1a1a;
+        font-family: 'Anek Latin', sans-serif;
+        font-size: 15px;
+        max-width: 220px;
+        width: max-content;
+        padding: 12px 16px;
+        border-radius: 12px;
+        border-bottom-right-radius: 0; /* Canto inferior direito reto */
+        box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        opacity: 0;
+        transform: translateY(10px) scale(0.9);
+        transform-origin: bottom right;
+        transition: opacity 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                    transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        pointer-events: none;
+        line-height: 1.4;
+    }
+
+    /* Seta (Tail) do Balão */
+    #auvp-lp-wrapper .wa-balloon::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        right: 0;
+        width: 0;
+        height: 0;
+        border-left: 12px solid transparent;
+        border-top: 10px solid #ffffff;
+        border-right: 0px solid transparent;
+    }
+
+    @keyframes showWaBalloon {
+        0% { opacity: 0; transform: translateY(10px) scale(0.9); }
+        100% { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto;}
+    }
+
+    /* Modo Sempre Visível com Delay de 1.5s */
+    #auvp-lp-wrapper .wa-wrapper.show-balloon .wa-balloon {
+        animation: showWaBalloon 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.5s forwards;
+    }
+
+    /* Hover no modo geral override */
+    #auvp-lp-wrapper .wa-wrapper:hover .wa-balloon {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        pointer-events: auto;
+        animation: none; 
+    }
+
+    /* Ícone Principal */
+    #auvp-lp-wrapper .wa-float {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+        box-shadow: 0 4px 15px rgba(0,0,0, 0.2);
+        cursor: pointer;
+        transition: transform .2s ease;
+        animation: waSoftPulse 12s ease-in-out infinite;
+        position: relative;
+        text-decoration: none;
+    }
+
+    #auvp-lp-wrapper .wa-float::before {
+        content: "";
+        position: absolute;
+        inset: 4px;
+        border-radius: 50%;
+        background: #25D366;
+        z-index: 0;
+        animation: waPulseRing 10.5s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+    }
+
+    #auvp-lp-wrapper .wa-float svg {
+        position: relative;
+        z-index: 1;
+        width: 42px; /* ~65% do diâmetro */
+        height: 42px;
+        filter: drop-shadow(0 1px 2px rgba(0,0,0,0.25));
+    }
+
+    #auvp-lp-wrapper .wa-float:hover  { transform: scale(1.10); }
+    #auvp-lp-wrapper .wa-float:active { transform: scale(0.95); }
+
+    /* -------------------------------------------------------------------------- */
+    /* WIDGET CARROSSEL DE PALESTRANTES                                           */
+    /* -------------------------------------------------------------------------- */
+    
+    #auvp-lp-wrapper .carousel-mask {
+        width: 100%;
+        max-width: 1000px; /* Limita a largura visual para esconder cópias nas extremidades */
+        margin: 0 auto;
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding: 30px 0; /* Espaço extra vertical para a máscara não cortar o card ou a sombra no hover */
+        /* Máscara de gradiente para criar o efeito de fade suave nas bordas */
+        -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    }
+
+    @keyframes scroll-carousel {
+        /* Translada relativo ao próprio w-max (que possui 3 blocos). 33.333% empurra exatamente 1 bloco completo. */
+        0% { transform: translateX(-33.333333%); }
+        100% { transform: translateX(-66.666666%); }
+    }
+    
+    #auvp-lp-wrapper .animate-carousel {
+        /* Posiciona o início do carrossel para que o item centralizado bata com o meio da tela visual */
+        margin-left: calc(50% - var(--card-half));
+        animation: scroll-carousel 40s linear infinite;
+    }
+    
+    #auvp-lp-wrapper .animate-carousel:hover {
+        animation-play-state: paused;
+    }
+    
+    #auvp-lp-wrapper .speaker-card {
+        width: 140px;
+        height: 140px; /* Transformado em Quadrado */
+        border-radius: 0.75rem;
+        position: relative;
+        border: 1px solid rgba(255, 247, 235, 0.1);
+        transition: all 0.3s ease;
+        background: #1a1a1a;
+        flex-shrink: 0;
+    }
+    
+    /* Contêiner interno para aplicar border-radius na imagem e overlays sem conflitar com o hover scale */
+    #auvp-lp-wrapper .speaker-card-inner {
+        width: 100%;
+        height: 100%;
+        border-radius: 0.75rem;
+        overflow: hidden;
+        position: relative;
+    }
+
+    @media (min-width: 768px) {
+        #auvp-lp-wrapper .speaker-card {
+            width: 200px;
+            height: 200px; /* Transformado em Quadrado */
+        }
+    }
+    
+    #auvp-lp-wrapper .speaker-card:hover {
+        border-color: #DB7944;
+        transform: scale(1.05); /* Efeito de zoom suave ao invés de transladar para cima */
+        box-shadow: 0 10px 25px -5px rgba(219, 121, 68, 0.3);
+        z-index: 20; /* Traz o card para frente quando focado */
+    }
+    
+    #auvp-lp-wrapper .speaker-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: grayscale(100%) brightness(0.8);
+        transition: all 0.5s ease;
+    }
+    #auvp-lp-wrapper .speaker-card:not(.blurred) {
+        cursor: pointer;
+    }
+    #auvp-lp-wrapper .speaker-card:not(.blurred):hover img {
+        filter: grayscale(0%) brightness(1);
+    }
+
+    /* Estilos Específicos para Cartões Desfocados */
+    #auvp-lp-wrapper .speaker-card.blurred img {
+        filter: blur(8px) grayscale(100%) brightness(0.5);
+        pointer-events: none; /* Impede interações de mouse na imagem */
+        -webkit-user-drag: none; /* Impede o navegador de arrastar a imagem */
+        user-select: none; /* Impede seleção */
+    }
+    #auvp-lp-wrapper .speaker-card.blurred:hover {
+        border-color: rgba(255, 247, 235, 0.1);
+        transform: scale(1); /* Desativa o scale para cartões desfocados */
+        box-shadow: none;
+        cursor: default;
+        z-index: 1;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+</style>
+
+<!-- WRAPPER PRINCIPAL PARA O ELEMENTOR -->
+<div id="auvp-lp-wrapper" class="min-h-screen selection:bg-[#DB7944] selection:text-white overflow-x-hidden">
+
+    <div class="film-grain" style="position: fixed;"></div>
+
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-transparent py-4 md:py-5 border-b border-transparent">
+        <div class="max-w-7xl mx-auto px-5 md:px-8 flex justify-between items-center relative">
+            <div class="flex items-center gap-2">
+                <a href="#" class="block shrink-0">
+                    <img id="nav-logo" src="https://raw.githubusercontent.com/eriadesign/privateday/main/globo.webp" alt="AUVP Private Day" class="logo-header transition-all duration-300">
+                </a>
+            </div>
+            
+            <div class="hidden md:flex items-center">
+                <div class="flex items-center space-x-3 lg:space-x-4">
+                    <a href="#ingressos" class="nav-link font-medium transition-colors text-[#FFF7EB] hover:text-[#DB7944] relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[1px] after:bg-[#DB7944] after:transition-all after:duration-300 hover:after:w-full lowercase">garanta seu ingresso</a>
+                    <span id="nav-separator" class="text-[#FFF7EB]/50 font-light font-sans transition-colors duration-300">|</span>
+                    <a href="#faq" class="nav-link font-medium transition-colors text-[#FFF7EB] hover:text-[#DB7944] relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[1px] after:bg-[#DB7944] after:transition-all after:duration-300 hover:after:w-full lowercase">dúvidas frequentes</a>
+                </div>
+            </div>
+
+            <div class="md:hidden flex items-center">
+                <i id="mobile-menu-btn" class="ph ph-list text-3xl text-[#FFF7EB] cursor-pointer p-2 hover:text-[#DB7944] transition-colors"></i>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-[#FFF7EB] shadow-2xl absolute top-full left-0 w-full flex flex-col border-t border-[#DB7944]/20 z-10 transition-all duration-300 origin-top">
+            <a href="#ingressos" class="px-5 py-4 text-[#1a1a1a] font-medium border-b border-[#1a1a1a]/10 hover:bg-[#1a1a1a]/5 hover:text-[#DB7944] lowercase">garanta seu ingresso</a>
+            <a href="#faq" class="px-5 py-4 text-[#1a1a1a] font-medium hover:bg-[#1a1a1a]/5 hover:text-[#DB7944] lowercase">dúvidas frequentes</a>
+        </div>
+    </nav>
+
+    <!-- Primeira Dobra - Hero Section -->
+    <section class="relative pt-32 pb-12 md:pt-40 md:pb-16 overflow-hidden min-h-[85vh] flex items-center justify-center">
+        <div class="absolute inset-0 z-0 bg-[#1a1a1a]">
+            <img src="https://raw.githubusercontent.com/eriadesign/privateday/main/baguncinha%201.webp" alt="AUVP Private Day Evento" class="w-full h-full object-cover mobile-bg-70 md:object-[50%_25%] opacity-40">
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-5 md:px-8 relative z-10 flex flex-col items-start w-full">
+            <div class="max-w-4xl text-left flex flex-col items-start">
+                
+                <span class="inline-block text-[#FFF7EB] text-xs md:text-sm font-semibold tracking-[0.2em] uppercase mb-6 md:mb-10 drop-shadow-md">
+                    AUVP Private Day 2026
+                </span>
+                
+                <h1 class="vintage-title text-4xl md:text-5xl lg:text-6xl text-[#FFF7EB] leading-tight mb-6 md:mb-8 drop-shadow-md">
+                    Conteúdo para enriquecer.<br />
+                    <span>Festa para celebrar.</span>
+                </h1>
+                
+                <p class="text-base md:text-xl text-[#FFF7EB]/90 mb-6 font-light max-w-2xl leading-relaxed drop-shadow-sm">
+                    Participe do evento mais aguardado da comunidade AUVP. Serão dois dias de conteúdo com grandes nomes do mercado e uma noite de muita festa pra quem quer entender e discutir como o jogo funciona.
+                </p>
+
+                <p class="text-base md:text-xl text-[#FFF7EB] font-bold mb-10 drop-shadow-lg flex items-center gap-3">
+                    Dias 7 e 8 de novembro, em Goiânia.
+                </p>
+
+                <div class="flex flex-col sm:flex-row justify-start gap-4 w-full">
+                    <a href="#ingressos" class="elementor-btn-protect inline-flex items-center justify-center px-6 md:px-10 py-4 font-medium rounded-none transition-all duration-300 ease-in-out cursor-pointer w-full sm:w-auto tracking-wide text-base md:text-lg shadow-xl text-[#FFF7EB] hover:-translate-y-1 hover:shadow-2xl bg-gradient-to-r from-[#0B2A47] to-[#932621] whitespace-nowrap">
+                        Quero garantir meu ingresso
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Segunda Dobra - Explicação do evento -->
+    <section id="experiencia" class="py-12 md:py-20 bg-[#FFF7EB]">
+        <div class="max-w-7xl mx-auto px-5 md:px-8">
+            <div class="text-center mb-10 md:mb-16">
+                <h2 class="vintage-title text-3xl md:text-5xl text-[#1a1a1a] leading-tight mb-6">
+                    Uma experiência completa,<br/>
+                    <span>do começo ao fim.</span>
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12">
+                <!-- Card Palco -->
+                <div class="bg-[#932621] rounded-2xl shadow-lg p-8 md:p-14 flex flex-col justify-center min-h-[300px] md:min-h-[400px]">
+                    <h3 class="vintage-title text-3xl md:text-5xl text-[#FFF7EB] mb-4 md:mb-6">No palco</h3>
+                    <p class="text-sm md:text-lg text-[#FFF7EB] mb-4 md:mb-6 leading-relaxed font-light">
+                        Um ambiente de aprendizado e conversa com grandes nomes do mercado que mudam a forma como você pensa.
+                    </p>
+                    <p class="text-sm md:text-lg text-[#FFF7EB] leading-relaxed font-medium">
+                        Dois dias de conteúdo que você não encontra em outro lugar.
+                    </p>
+                </div>
+
+                <!-- Card Pista -->
+                <div class="bg-[#0B2A47] rounded-2xl shadow-lg p-8 md:p-14 flex flex-col justify-center min-h-[300px] md:min-h-[400px]">
+                    <h3 class="vintage-title text-3xl md:text-5xl text-[#FFF7EB] mb-4 md:mb-6">Na pista</h3>
+                    <p class="text-sm md:text-lg text-[#FFF7EB] mb-4 md:mb-6 leading-relaxed font-light">
+                        Open bar, gastronomia de alto padrão, música boa e o ambiente certo para curtir a noite com toda a comunidade da AUVP.
+                    </p>
+                    <p class="text-base md:text-lg text-[#FFF7EB] leading-relaxed font-medium">
+                        O tipo de noite que ninguém quer que termine.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Terceira Dobra - Programação e palestrantes -->
+    <section id="palestrantes" class="relative overflow-hidden flex flex-col min-h-[60vh] bg-[#1a1a1a]">
+        <div class="absolute inset-0 z-0">
+            <img src="https://raw.githubusercontent.com/eriadesign/privateday/main/palestras%202.webp" alt="Palestrantes AUVP Private Day" class="w-full h-full object-cover mobile-bg-50 md:object-center">
+            <div class="absolute inset-0 bg-black/50 md:hidden z-[1]"></div>
+            <div class="absolute inset-0 bg-[#1a1a1a]/30 md:bg-[#1a1a1a]/20"></div>
+        </div>
+        
+        <!-- Conteúdo da Dobra -->
+        <div class="max-w-7xl mx-auto px-5 md:px-8 relative z-10 w-full flex-grow flex flex-col justify-center py-16 md:py-28">
+            <div class="max-w-[540px] text-left">
+                <h2 class="vintage-title text-4xl md:text-5xl lg:text-6xl text-[#FFF7EB] leading-tight mb-6 drop-shadow-xl">
+                    Quem sobe no palco<br/>em 2026?
+                </h2>
+                <p class="text-base md:text-xl text-[#FFF7EB] font-light leading-relaxed drop-shadow-lg">
+                    A programação de 2026 está sendo montada internamente. Estamos fechando a agenda com nomes do mercado e isso demanda tempo e sigilo. Afinal, eventos públicos genéricos não são o ambiente deles.<br/><br/>
+                    Mas o Private Day é.
+                </p>
+            </div>
+        </div>
+
+        <!-- Tarja dos Palestrantes -->
+        <div class="relative z-10 w-full bg-black/30 backdrop-blur-md border-t border-[#FFF7EB]/20">
+            <div class="carousel-mask">
+                <div class="flex w-max animate-carousel">
+                    <!-- Bloco 1 (Oculto no scroll para manter looping perfeito) -->
+                    <div class="flex gap-4 md:gap-6 pr-4 md:pr-6">
+                        <div class="speaker-card" data-speaker="raul">
+                            <div class="speaker-card-inner">
+                                <img src="https://yt3.googleusercontent.com/q6bgR6BvYXgq3u9GF_MP_YrVW4myeX_ETDwgM68vUA4XkahJUCoxnFy-MnELZPd5n875FDi5Fw=s900-c-k-c0x00ffffff-no-rj" alt="Raul Sena">
+                                <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
+                                    <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block">Raul Sena</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="speaker-card" data-speaker="arthur">
+                            <div class="speaker-card-inner">
+                                <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/arhur%20bender.png" alt="Arthur Bender">
+                                <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
+                                    <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block">Arthur Bender</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="speaker-card blurred">
+                            <div class="speaker-card-inner">
+                                <img src="https://yt3.googleusercontent.com/g2yUbs5Ygw6M070Nj8ofvyaguH2doPDp9P-Ma06PTZlOqfw-aiSj4tdeocLxZlccbTiYD76uRw=s900-c-k-c0x00ffffff-no-rj" alt="Palestrante Misterioso">
+                                <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
+                                    <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block">Em breve</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="speaker-card blurred">
+                            <div class="speaker-card-inner">
+                                <img src="https://yt3.googleusercontent.com/L_-pa9cCb2CV5rPk3Z2Z49HbzoHyBGuWzsun_CwwEO9Gn5Dr0mNt2C70dNPPTJqRcK_rkaJB6w=s900-c-k-c0x00ffffff-no-rj" alt="Palestrante Misterioso">
+                                <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
+                                    <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block">Em breve</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="speaker-card blurred">
+                            <div class="speaker-card-inner">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVuHZsdO8E2HuwzNMxYZO0zCzPGBOdbI6ZSw&s" alt="Palestrante Misterioso">
+                                <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
+                                    <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block">Em breve</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bloco 2 (Centro exato da tela no Load) -->
+                    <div class="flex gap-4 md:gap-6 pr-4 md:pr-6">
+                        <div class="speaker-card" data-speaker="raul">
+                            <div class="speaker-card-inner">
+                                <img src="https://yt3.googleusercontent.com/q6bgR6BvYXgq3u9GF_MP_YrVW4myeX_ETDwgM68vUA4XkahJUCoxnFy-MnELZPd5n875FDi5Fw=s900-c-k-c0x00ffffff-no-rj" alt="Raul Sena">
+                                <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
+                                    <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block">Raul Sena</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="speaker-card" data-speaker="arthur">
+                            <div class="speaker-card-inner">
+                                <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/arhur%20bender.png" alt="Arthur Bender">
+                                <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
+                                    <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block">Arthur Bender</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="speaker-card blurred">
+                            <div class="speaker-card-inner">
+                                <img src="https://yt3.googleusercontent.com/g2yUbs5Ygw6M070Nj8ofvyaguH2doPDp9P-Ma06PTZlOqfw-aiSj4tdeocLxZlccbTiYD76uRw=s900-c-k-c0x00ffffff-no-rj" alt="Palestrante Misterioso">
+                                <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
+                                    <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block">Em breve</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="speaker-card blurred">
+                            <div class="speaker-card-inner">
+                                <img src="https://yt3.googleusercontent.com/L_-pa9cCb2CV5rPk3Z2Z49HbzoHyBGuWzsun_CwwEO9Gn5Dr0mNt2C70dNPPTJqRcK_rkaJB6w=s900-c-k-c0x00ffffff-no-rj" alt="Palestrante Misterioso">
+                                <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
+                                    <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block">Em breve</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="speaker-card blurred">
+                            <div class="speaker-card-inner">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVuHZsdO8E2HuwzNMxYZO0zCzPGBOdbI6ZSw&s" alt="Palestrante Misterioso">
+                                <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
+                                    <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block">Em breve</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bloco 3 (Final do loop infinito) -->
+                    <div class="flex gap-4 md:gap-6 pr-4 md:pr-6">
+                        <div class="speaker-card" data-speaker="raul">
+                            <div class="speaker-card-inner">
+                                <img src="https://yt3.googleusercontent.com/q6bgR6BvYXgq3u9GF_MP_YrVW4myeX_ETDwgM68vUA4XkahJUCoxnFy-MnELZPd5n875FDi5Fw=s900-c-k-c0x00ffffff-no-rj" alt="Raul Sena">
+                                <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
+                                    <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block">Raul Sena</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="speaker-card" data-speaker="arthur">
+                            <div class="speaker-card-inner">
+                                <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/arhur%20bender.png" alt="Arthur Bender">
+                                <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
+                                    <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block">Arthur Bender</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="speaker-card blurred">
+                            <div class="speaker-card-inner">
+                                <img src="https://yt3.googleusercontent.com/g2yUbs5Ygw6M070Nj8ofvyaguH2doPDp9P-Ma06PTZlOqfw-aiSj4tdeocLxZlccbTiYD76uRw=s900-c-k-c0x00ffffff-no-rj" alt="Palestrante Misterioso">
+                                <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
+                                    <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block">Em breve</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="speaker-card blurred">
+                            <div class="speaker-card-inner">
+                                <img src="https://yt3.googleusercontent.com/L_-pa9cCb2CV5rPk3Z2Z49HbzoHyBGuWzsun_CwwEO9Gn5Dr0mNt2C70dNPPTJqRcK_rkaJB6w=s900-c-k-c0x00ffffff-no-rj" alt="Palestrante Misterioso">
+                                <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
+                                    <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block">Em breve</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="speaker-card blurred">
+                            <div class="speaker-card-inner">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVuHZsdO8E2HuwzNMxYZO0zCzPGBOdbI6ZSw&s" alt="Palestrante Misterioso">
+                                <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
+                                    <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block">Em breve</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quarta Dobra - Vídeo -->
+    <section class="py-12 md:py-20 bg-[#FFF7EB]">
+        <div class="max-w-7xl mx-auto px-5 md:px-8">
+            <div class="text-center mb-8 md:mb-12">
+                <h2 class="vintage-title text-3xl md:text-5xl text-[#1a1a1a] leading-tight mb-4">
+                    Um gostinho do que você vai viver
+                </h2>
+                <p class="text-base md:text-lg text-[#1a1a1a]/80 font-light">
+                    Quer uma prévia do que te espera? Confere aí.
+                </p>
+            </div>
+
+            <div class="max-w-5xl mx-auto relative">
+                <div class="aspect-video w-full rounded-2xl overflow-hidden relative border border-[#1a1a1a]/10 shadow-lg bg-black">
+                    <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/vkjfSa8HwGg" title="AUVP Private Day" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quinta Dobra - Ingressos -->
+    <section id="ingressos" class="py-12 md:py-24 bg-[#FFF7EB] relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-5 md:px-8 relative z-10">
+            
+            <div class="text-center mb-10 md:mb-16">
+                <h2 class="vintage-title text-3xl md:text-5xl lg:text-6xl text-[#1a1a1a] leading-tight">
+                    Garanta sua vaga no Private Day 2026
+                </h2>
+            </div>
+
+            <div class="flex flex-col gap-8 md:gap-12">
+                
+                <!-- Ingresso 1 - Evento Todo (Vermelho) -->
+                <div class="bg-[#932621] border border-transparent rounded-2xl flex flex-col md:flex-row relative shadow-[0_15px_40px_-15px_rgba(147,38,33,0.4)] overflow-hidden">
+                    
+                    <div class="p-8 md:p-14 flex-1 flex flex-col justify-center relative">
+                        <h3 class="text-2xl md:text-4xl text-[#FFF7EB] font-medium mb-4 leading-snug">
+                            Vai ficar de fora do evento mais aguardado do ano?
+                        </h3>
+                        <p class="text-sm md:text-lg text-[#FFF7EB]/80 leading-relaxed font-light">
+                            Os ingressos são limitados por conta de restrições de espaço físico, tanto nas palestras quanto na festa.<br class="hidden lg:block"> 
+                            <span class="text-[#FFF7EB] font-medium">Não deixe para comprar depois, pois pode ser tarde demais. Não haverá segunda chamada.</span>
+                        </p>
+                    </div>
+
+                    <!-- Linha Tracejada e Recortes -->
+                    <div class="relative w-full h-px md:w-px md:h-auto flex-none flex items-center justify-center">
+                        <div class="absolute inset-x-6 top-0 md:inset-y-6 md:left-0 border-t-2 md:border-t-0 md:border-l-2 border-dashed border-[#FFF7EB]/30"></div>
+                        <div class="absolute -left-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-[#FFF7EB] md:hidden z-10"></div>
+                        <div class="absolute -right-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-[#FFF7EB] md:hidden z-10"></div>
+                        <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-[#FFF7EB] hidden md:block z-10"></div>
+                        <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-[#FFF7EB] hidden md:block z-10"></div>
+                    </div>
+
+                    <div class="p-8 md:p-14 w-full md:w-[35%] flex flex-col justify-center items-center text-center relative bg-[#932621]">
+                        <h4 class="vintage-title text-3xl md:text-5xl text-[#FFF7EB] mb-2">Evento todo</h4>
+                        <p class="text-2xl md:text-4xl font-bold text-[#FFF7EB] mb-6 md:mb-8 tracking-tight">R$ 1.697,00</p>
+                        
+                        <a href="https://privateday.auvpag.com.br/pay/private-day-2026-evento-completo" target="_blank" class="elementor-btn-protect inline-flex items-center justify-center px-6 py-3.5 font-medium rounded-none transition-all duration-300 ease-in-out cursor-pointer bg-[#FFF7EB] text-[#932621] border border-[#FFF7EB] hover:bg-transparent hover:text-[#FFF7EB] w-full tracking-wide text-base text-center">
+                            Comprar meu ingresso
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Ingresso 2 - Só Festa (Azul) -->
+                <div class="bg-[#0B2A47] border border-transparent rounded-2xl flex flex-col md:flex-row relative shadow-[0_15px_40px_-15px_rgba(11,42,71,0.4)] overflow-hidden">
+                    
+                    <div class="p-8 md:p-14 flex-1 flex flex-col justify-center relative">
+                        <h3 class="text-2xl md:text-4xl text-[#FFF7EB] font-medium mb-4 leading-snug">
+                            Ou vai garantir apenas seu lugar na pista e viver a noite mais épica da sua vida?
+                        </h3>
+                        <p class="text-sm md:text-lg text-[#FFF7EB]/80 leading-relaxed font-light">
+                            Os ingressos da nossa festa são limitados devido a restrições do espaço físico.<br class="hidden lg:block"> 
+                            <span class="text-[#FFF7EB] font-medium">Quando esgotarem, não haverá segunda chamada. Não fique de fora.</span>
+                        </p>
+                    </div>
+
+                    <!-- Linha Tracejada e Recortes -->
+                    <div class="relative w-full h-px md:w-px md:h-auto flex-none flex items-center justify-center">
+                        <div class="absolute inset-x-6 top-0 md:inset-y-6 md:left-0 border-t-2 md:border-t-0 md:border-l-2 border-dashed border-[#FFF7EB]/30"></div>
+                        <div class="absolute -left-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-[#FFF7EB] md:hidden z-10"></div>
+                        <div class="absolute -right-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-[#FFF7EB] md:hidden z-10"></div>
+                        <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-[#FFF7EB] hidden md:block z-10"></div>
+                        <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-[#FFF7EB] hidden md:block z-10"></div>
+                    </div>
+
+                    <div class="p-8 md:p-14 w-full md:w-[35%] flex flex-col justify-center items-center text-center relative bg-[#0B2A47]">
+                        <h4 class="vintage-title text-4xl md:text-5xl text-[#FFF7EB] mb-2">Só festa</h4>
+                        <p class="text-2xl md:text-4xl font-bold text-[#FFF7EB] mb-6 md:mb-8 tracking-tight">R$ 897,00</p>
+                        
+                        <a href="https://privateday.auvpag.com.br/pay/private-day-2026-festa" target="_blank" class="elementor-btn-protect inline-flex items-center justify-center px-6 py-3.5 font-medium rounded-none transition-all duration-300 ease-in-out cursor-pointer bg-[#FFF7EB] text-[#0B2A47] border border-[#FFF7EB] hover:bg-transparent hover:text-[#FFF7EB] w-full tracking-wide text-base text-center">
+                            Comprar meu ingresso
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Faixa de patrocínio -->
+    <section class="py-12 md:py-20 bg-[#FFF7EB]">
+        <div class="max-w-7xl mx-auto px-5 md:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
+                <h3 class="vintage-title text-2xl md:text-4xl text-[#1a1a1a]">
+                    Leve sua marca para o maior evento da comunidade AUVP.
+                </h3>
+                <a href="https://form.auvp.com.br/to/LxmkLllT?typeform-source=privateday.auvp.com.br" target="_blank" class="elementor-btn-protect inline-flex items-center justify-center px-10 py-4 font-medium rounded-none transition-all duration-300 ease-in-out cursor-pointer border border-transparent bg-[#932621] text-[#FFF7EB] hover:bg-[#7a1f1b] hover:-translate-y-1 hover:shadow-lg tracking-wide text-sm shrink-0">
+                    Quero patrocinar
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-12 md:py-20 bg-[#FFF7EB]">
+        <div class="max-w-7xl mx-auto px-5 md:px-8">
+            <div class="w-full bg-[#FAEEE0] p-6 md:p-16 rounded-2xl shadow-sm border border-[#1a1a1a]/5">
+                <h2 class="vintage-title text-3xl md:text-5xl text-[#1a1a1a] mb-8 md:mb-10 text-center md:text-left">
+                    Dúvidas Frequentes
+                </h2>
+                
+                <div class="space-y-6">
+                    
+                    <details class="group border-b border-[#1a1a1a]/10 pb-4" open>
+                        <summary class="font-medium text-[#1a1a1a] text-lg md:text-xl cursor-pointer list-none flex justify-between items-center outline-none">
+                            <span>O que é a AUVP Private Day?</span>
+                            <span class="transition-transform duration-300 group-open:rotate-180 text-[#932621]">
+                                <i class="ph ph-caret-down text-2xl"></i>
+                            </span>
+                        </summary>
+                        <p class="text-[#1a1a1a]/70 font-light mt-4 leading-relaxed text-sm md:text-base">
+                            Para quem não faz a menor ideia do que seja, todos os anos reunimos os membros da AUVP para tomar drinks, dar risadas e viver a experiência da comunidade presencialmente. Este ano, serão dois dias de palestras com grandes nomes do mercado financeiro. E, um dia com nossa tradicional festa.
+                        </p>
+                    </details>
+
+                    <details class="group border-b border-[#1a1a1a]/10 pb-4">
+                        <summary class="font-medium text-[#1a1a1a] text-lg md:text-xl cursor-pointer list-none flex justify-between items-center outline-none">
+                            <span>Quando e que horas será o evento?</span>
+                            <span class="transition-transform duration-300 group-open:rotate-180 text-[#932621]">
+                                <i class="ph ph-caret-down text-2xl"></i>
+                            </span>
+                        </summary>
+                        <p class="text-[#1a1a1a]/70 font-light mt-4 leading-relaxed text-sm md:text-base">
+                            AUVP Private Day será nos dias 07 e 08 de novembro, em Goiânia. O horário de início dependerá do tipo de ingresso escolhido. Para o <strong class="font-medium text-[#1a1a1a]">Evento todo (Passaporte)</strong>, começaremos às 8h em ambos os dias (07 e 08). E, para o <strong class="font-medium text-[#1a1a1a]">Só festa</strong>, apenas às 19h do dia 08.
+                        </p>
+                    </details>
+
+                    <details class="group border-b border-[#1a1a1a]/10 pb-4">
+                        <summary class="font-medium text-[#1a1a1a] text-lg md:text-xl cursor-pointer list-none flex justify-between items-center outline-none">
+                            <span>Qual o local do evento?</span>
+                            <span class="transition-transform duration-300 group-open:rotate-180 text-[#932621]">
+                                <i class="ph ph-caret-down text-2xl"></i>
+                            </span>
+                        </summary>
+                        <p class="text-[#1a1a1a]/70 font-light mt-4 leading-relaxed text-sm md:text-base">
+                            AUVP Private Day será em Goiânia. Ao comprar os ingressos você receberá o endereço completo com as informações específicas.
+                        </p>
+                    </details>
+
+                    <details class="group border-b border-[#1a1a1a]/10 pb-4">
+                        <summary class="font-medium text-[#1a1a1a] text-lg md:text-xl cursor-pointer list-none flex justify-between items-center outline-none">
+                            <span>Que roupa devo usar?</span>
+                            <span class="transition-transform duration-300 group-open:rotate-180 text-[#932621]">
+                                <i class="ph ph-caret-down text-2xl"></i>
+                            </span>
+                        </summary>
+                        <p class="text-[#1a1a1a]/70 font-light mt-4 leading-relaxed text-sm md:text-base">
+                            Assim como nos anos anteriores, teremos um dress code. Este ano, para a festa, o tema oficial é Disco Fever, enviaremos documentos com inspirações e referências para que todos consigam se adaptar de acordo com sua realidade.
+                        </p>
+                    </details>
+
+                    <details class="group border-b border-[#1a1a1a]/10 pb-4">
+                        <summary class="font-medium text-[#1a1a1a] text-lg md:text-xl cursor-pointer list-none flex justify-between items-center outline-none">
+                            <span>O evento será open bar?</span>
+                            <span class="transition-transform duration-300 group-open:rotate-180 text-[#932621]">
+                                <i class="ph ph-caret-down text-2xl"></i>
+                            </span>
+                        </summary>
+                        <p class="text-[#1a1a1a]/70 font-light mt-4 leading-relaxed text-sm md:text-base">
+                            Durante os dois dias de palestras será servido coffee break para os participantes. Já a festa do Private Day contará com open bar e open food, proporcionando uma experiênica completa para todos.
+                        </p>
+                    </details>
+
+                    <details class="group border-b border-[#1a1a1a]/10 pb-4">
+                        <summary class="font-medium text-[#1a1a1a] text-lg md:text-xl cursor-pointer list-none flex justify-between items-center outline-none">
+                            <span>Posso levar acompanhantes?</span>
+                            <span class="transition-transform duration-300 group-open:rotate-180 text-[#932621]">
+                                <i class="ph ph-caret-down text-2xl"></i>
+                            </span>
+                        </summary>
+                        <p class="text-[#1a1a1a]/70 font-light mt-4 leading-relaxed text-sm md:text-base">
+                            Sim! Você pode comprar ingressos para seu acompanhante/cônjuge. Apenas certifique-se de preencher os <strong class="font-medium text-[#1a1a1a]">dados do convidado</strong> no momento da compra, pois os ingressos são nominais e individuais.
+                        </p>
+                    </details>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#1a1a1a] pt-16 pb-8 md:pt-20 md:pb-10 border-t border-[#FFF7EB]/10">
+        <div class="max-w-7xl mx-auto px-5 md:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12 mb-12">
+                
+                <div class="col-span-1 lg:col-span-2">
+                    <div class="mb-4">
+                        <img src="https://raw.githubusercontent.com/eriadesign/privateday/main/auvp%20capital%20claro.webp" alt="AUVP Private Day" class="logo-footer">
+                    </div>
+                    <p class="text-sm text-gray-400 mb-6 leading-relaxed">
+                        Orgulhosamente feito sob o sol escaldante de Goiás &nbsp; ☀️
+                    </p>
+                    <p class="text-xs md:text-sm text-gray-400 leading-relaxed">
+                        AUVP CONSULTORIA FINANCEIRA DE INVESTIMENTOS LTDA<br/>
+                        CNPJ: 49.479.036/0001-99
+                    </p>
+                </div>
+
+                <div class="col-span-1">
+                    <h4 class="text-white font-bold mb-6 text-base tracking-wide">Nossos Canais</h4>
+                    <ul class="space-y-4 text-sm text-gray-400">
+                        <li><a href="https://comunidade.auvp.com.br/?_gl=1*pp6jpg*_ga*OTE2NDIwNzgwLjE3NTY4MjE5Mzg.*_ga_082XC6060T*czE3Nzg3MDAyMTUkbzUzJGcwJHQxNzc4NzAwMjE4JGo1NyRsMCRoMA..*_fplc*cDJVVWdPJTJCaGFXT3pxV1FxJTJCa1hMNDlNdllYNFAxOHgxa2dLMk5jbSUyRk1SaEZQdEwlMkIlMkZMaiUyQnB0cDJ1dmtyRXBjZWtLc3kwa3dJOGM4ZkklMkJGazQySDFGSGQ5QUhaZkltbFZTVzFkWXolMkJjWW9oc3F5OG9Dc3VjJTJCMGY4cVNZZ2Z3JTNEJTNE" target="_blank" class="hover:text-white transition-colors">Comunidade</a></li>
+                        <li><a href="https://www.youtube.com/@investidorsardinha" target="_blank" class="hover:text-white transition-colors">YouTube</a></li>
+                        <li><a href="https://www.instagram.com/oraulsena/?hl=pt" target="_blank" class="hover:text-white transition-colors">Instagram</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-span-1">
+                    <h4 class="text-white font-bold mb-6 text-base tracking-wide">Outros Produtos</h4>
+                    <div class="flex gap-[44px] text-sm text-gray-400">
+                        <!-- Coluna Esquerda -->
+                        <ul class="space-y-4">
+                            <li><a href="https://auvpcapital.com.br/" target="_blank" class="hover:text-white transition-colors whitespace-nowrap">AUVP Capital</a></li>
+                            <li><a href="https://www.auvp.com.br/" target="_blank" class="hover:text-white transition-colors whitespace-nowrap">AUVP Escola</a></li>
+                            <li><a href="https://analitica.auvp.com.br/" target="_blank" class="hover:text-white transition-colors whitespace-nowrap">AUVP Analítica</a></li>
+                        </ul>
+                        <!-- Coluna Direita -->
+                        <ul class="space-y-4">
+                            <li><a href="http://auvpcapital.com.br/wealth" target="_blank" class="hover:text-white transition-colors whitespace-nowrap">AUVP Wealth</a></li>
+                            <li><a href="http://auvpnews.com.br/" target="_blank" class="hover:text-white transition-colors whitespace-nowrap">AUVP News</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="pt-8 border-t border-gray-800 flex justify-center items-center">
+                <div class="text-xs md:text-sm text-gray-500 text-center">
+                    © 2026 Todos os direitos reservados.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal do Palestrante -->
+    <div id="speaker-modal" class="fixed inset-0 z-[100000] flex items-center justify-center bg-black/80 opacity-0 pointer-events-none transition-opacity duration-300 backdrop-blur-sm px-5">
+        <div id="speaker-modal-inner" class="bg-[#1a1a1a] border border-[#DB7944]/30 rounded-2xl w-full max-w-lg overflow-hidden shadow-2xl transform scale-95 transition-transform duration-300 relative">
+            <button id="close-speaker-modal" class="absolute top-4 right-4 text-[#FFF7EB]/70 hover:text-[#DB7944] transition-colors bg-black/30 rounded-full p-1 z-10 cursor-pointer">
+                <i class="ph ph-x text-2xl"></i>
+            </button>
+            <div class="h-64 md:h-80 overflow-hidden relative">
+                <!-- Alterado: Altura maior (h-80), object-[50%_10%] para descer levemente a foto e focar no rosto -->
+                <img id="modal-img" src="" alt="Palestrante" class="w-full h-full object-cover object-[50%_10%]">
+                <!-- Alterado: Gradiente limitado estritamente à metade inferior da foto -->
+                <div class="absolute bottom-0 w-full h-1/2 bg-gradient-to-t from-[#1a1a1a] to-transparent"></div>
+            </div>
+            <div class="p-6 md:p-8 -mt-10 relative z-10">
+                <h3 id="modal-name" class="vintage-title text-3xl md:text-4xl text-[#FFF7EB] mb-2">Nome</h3>
+                <p id="modal-role" class="text-[#DB7944] font-medium mb-4 uppercase tracking-wider text-sm">Cargo</p>
+                <p id="modal-desc" class="text-[#FFF7EB]/80 font-light leading-relaxed">
+                    Descrição
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- WIDGET WHATSAPP -->
+    <div class="wa-wrapper show-balloon">
+        <div id="wa-tooltip" class="wa-balloon" role="tooltip">
+            <strong>Fale conosco</strong> pelo WhatsApp e tire suas dúvidas
+        </div>
+        <a class="wa-float" href="https://api.whatsapp.com/send/?phone=%2B55556234139882&text=Ol%C3%A1%21+Vim+atrav%C3%A9s+do+site+do+Private+Day+e+tenho+interesse+em+receber+mais+informa%C3%A7%C3%B5es+sobre+o+evento.&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" aria-label="Fale conosco no WhatsApp" aria-describedby="wa-tooltip">
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path fill="#ffffff" d="M16.003 5.333c-5.89 0-10.667 4.777-10.667 10.667 0 1.88.493 3.715 1.427 5.333L5.333 26.667l5.493-1.413a10.62 10.62 0 0 0 5.177 1.32h.004c5.89 0 10.667-4.777 10.667-10.667S21.893 5.333 16.003 5.333zm0 19.467h-.004a8.79 8.79 0 0 1-4.48-1.227l-.32-.187-3.253.84.867-3.173-.213-.333a8.8 8.8 0 0 1-1.347-4.72c0-4.867 3.96-8.827 8.827-8.827 2.36 0 4.573.92 6.24 2.587a8.78 8.78 0 0 1 2.587 6.24c0 4.867-3.96 8.8-8.904 8.8zm4.843-6.587c-.267-.133-1.573-.773-1.813-.867-.24-.093-.413-.133-.587.133-.173.267-.667.867-.813 1.04-.147.173-.293.187-.56.067-.267-.133-1.12-.413-2.133-1.32-.787-.707-1.32-1.573-1.467-1.84-.147-.267-.013-.413.117-.547.12-.12.267-.307.4-.467.133-.16.173-.267.267-.44.093-.187.04-.347-.027-.48-.067-.133-.587-1.413-.8-1.933-.213-.507-.427-.44-.587-.453-.147-.013-.32-.013-.493-.013-.173 0-.453.067-.693.32-.24.267-.907.893-.907 2.173 0 1.28.933 2.52 1.067 2.693.133.173 1.84 2.813 4.467 3.947.627.267 1.107.427 1.493.547.627.2 1.2.173 1.653.107.507-.08 1.573-.64 1.787-1.267.213-.627.213-1.16.147-1.267-.067-.107-.24-.173-.507-.307z"/>
+            </svg>
+        </a>
+    </div>
+
+</div>
+
+<!-- Scripts -->
+<script>
+    function initAUVP() {
+        const nav = document.getElementById('navbar');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navSeparator = document.getElementById('nav-separator');
+
+        if(!nav || !mobileMenuBtn) return;
+
+        let isMobileMenuOpen = false;
+
+        mobileMenuBtn.addEventListener('click', () => {
+            isMobileMenuOpen = !isMobileMenuOpen;
+            if (isMobileMenuOpen) {
+                mobileMenu.classList.remove('hidden');
+                mobileMenuBtn.classList.replace('ph-list', 'ph-x');
+                nav.className = "fixed w-full z-50 transition-all duration-300 bg-[#FFF7EB] shadow-lg py-3 md:py-4 border-b border-[#DB7944]/20";
+                mobileMenuBtn.className = "ph ph-x text-3xl text-[#DB7944] cursor-pointer p-2";
+            } else {
+                mobileMenu.classList.add('hidden');
+                mobileMenuBtn.classList.replace('ph-x', 'ph-list');
+                updateNavbar();
+            }
+        });
+
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                isMobileMenuOpen = false;
+                mobileMenu.classList.add('hidden');
+                mobileMenuBtn.classList.replace('ph-x', 'ph-list');
+                updateNavbar();
+            });
+        });
+
+        function updateNavbar() {
+            if (isMobileMenuOpen) return;
+
+            if (window.scrollY > 50) {
+                nav.className = "fixed w-full z-50 transition-all duration-300 bg-[#FFF7EB]/95 backdrop-blur-md shadow-sm py-2 md:py-4 border-b border-[#1a1a1a]/5";
+                if(navSeparator) navSeparator.className = "text-[#1a1a1a]/30 font-light font-sans transition-colors duration-300";
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('text-[#FFF7EB]');
+                    link.classList.add('text-[#1a1a1a]/80', 'hover:text-[#DB7944]');
+                });
+                
+                mobileMenuBtn.className = "ph ph-list text-3xl text-[#1a1a1a] cursor-pointer p-2 hover:text-[#DB7944]";
+            } else {
+                nav.className = "fixed w-full z-50 transition-all duration-300 bg-transparent py-4 md:py-5 border-b border-transparent";
+                if(navSeparator) navSeparator.className = "text-[#FFF7EB]/50 font-light font-sans transition-colors duration-300";
+
+                navLinks.forEach(link => {
+                    link.classList.remove('text-[#1a1a1a]/80');
+                    link.classList.add('text-[#FFF7EB]', 'hover:text-[#DB7944]');
+                });
+                
+                mobileMenuBtn.className = "ph ph-list text-3xl text-[#FFF7EB] cursor-pointer p-2 hover:text-[#DB7944]";
             }
         }
-    </script>
-    <style>
-        nav::-webkit-scrollbar {
-            height: 4px;
-        }
-        nav::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        nav::-webkit-scrollbar-thumb {
-            background-color: #e5e7eb;
-            border-radius: 20px;
-        }
-    </style>
-</head>
-<body class="bg-gray-50 font-sans font-normal text-gray-900 min-h-screen flex flex-col">
-
-    <!-- Sidebar Overlay -->
-    <div id="sidebar-overlay" class="fixed inset-0 bg-black/20 backdrop-blur-sm z-30 opacity-0 pointer-events-none transition-opacity duration-300"></div>
-
-    <!-- Sidebar (Desliza por trás do header: z-40 vs z-50 do header, largura reduzida para w-64) -->
-    <aside id="sidebar" class="fixed top-0 left-0 h-screen w-64 bg-white shadow-2xl z-40 transform -translate-x-full transition-transform duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col">
         
-        <!-- Wrapper rolável -->
-        <div class="flex-1 overflow-y-auto">
-            
-            <!-- CONTEÚDO DESKTOP (Oculto no Mobile) -->
-            <div class="hidden lg:flex flex-col gap-1 p-4">
-                <a href="#" class="flex items-center gap-4 px-4 py-3 text-gray-900 hover:bg-gray-50 hover:text-black rounded-xl transition-colors">
-                    <i class="ph ph-house text-xl"></i>
-                    <span class="text-base font-medium">Dashboard</span>
-                </a>
-                <a href="#" class="flex items-center gap-4 px-4 py-3 text-gray-900 hover:bg-gray-50 hover:text-black rounded-xl transition-colors">
-                    <i class="ph ph-wallet text-xl"></i>
-                    <span class="text-base font-medium">Ativos</span>
-                </a>
-                <a href="#" class="flex items-center gap-4 px-4 py-3 text-gray-900 hover:bg-gray-50 hover:text-black rounded-xl transition-colors">
-                    <i class="ph ph-arrows-left-right text-xl"></i>
-                    <span class="text-base font-medium">Transações</span>
-                </a>
-                <a href="#" class="flex items-center gap-4 px-4 py-3 text-gray-900 hover:bg-gray-50 hover:text-black rounded-xl transition-colors">
-                    <i class="ph ph-money text-xl"></i>
-                    <span class="text-base font-medium">Proventos</span>
-                </a>
-                <a href="#" class="flex items-center gap-4 px-4 py-3 text-gray-900 hover:bg-gray-50 hover:text-black rounded-xl transition-colors">
-                    <i class="ph ph-plus-square text-xl"></i>
-                    <span class="text-base font-medium">Adicionar transação</span>
-                </a>
-                <a href="#" class="flex items-center gap-4 px-4 py-3 text-gray-900 hover:bg-gray-50 hover:text-black rounded-xl transition-colors mt-2">
-                    <i class="ph ph-question text-xl"></i>
-                    <span class="text-base font-medium">FAQ</span>
-                </a>
-                <a href="#" class="flex items-center gap-4 px-4 py-3 text-gray-900 hover:bg-gray-50 hover:text-black rounded-xl transition-colors">
-                    <i class="ph ph-user text-xl"></i>
-                    <span class="text-base font-medium">Perfil</span>
-                </a>
-            </div>
+        window.addEventListener('scroll', updateNavbar);
+        updateNavbar();
 
-            <!-- CONTEÚDO MOBILE (Substitui o Desktop em telas pequenas) -->
-            <div class="flex lg:hidden flex-col gap-1 p-4">
-                <a href="#" class="flex items-center px-4 py-3 text-gray-900 hover:bg-gray-50 hover:text-auvp-green rounded-xl transition-colors">
-                    <span class="text-base font-medium">Minha AUVP</span>
-                </a>
-                
-                <a href="#" class="flex items-center gap-2 px-4 py-3 text-gray-900 hover:bg-gray-50 hover:text-auvp-green rounded-xl transition-colors">
-                    <span class="w-2 h-2 rounded-full bg-red-500"></span>
-                    <span class="text-base font-medium">Live</span>
-                </a>
+        // Lógica do Modal de Palestrantes
+        const speakerModal = document.getElementById('speaker-modal');
+        const speakerModalInner = document.getElementById('speaker-modal-inner');
+        const closeSpeakerModal = document.getElementById('close-speaker-modal');
+        const activeSpeakers = document.querySelectorAll('.speaker-card:not(.blurred)');
+        const carousels = document.querySelectorAll('.animate-carousel');
 
-                <!-- Dropdown Mobile: Estude com AUVP -->
-                <div class="flex flex-col">
-                    <button onclick="toggleAccordion('mobile-estude')" class="w-full flex items-center justify-between px-4 py-3 text-gray-900 hover:bg-gray-50 hover:text-auvp-green rounded-xl transition-colors outline-none">
-                        <span class="text-base font-medium">Estude com AUVP</span>
-                        <i id="mobile-estude-icon" class="ph ph-caret-down transition-transform duration-300"></i>
-                    </button>
-                    <div id="mobile-estude" class="hidden flex-col pl-8 py-2 gap-4">
-                        <a href="#" class="font-medium text-gray-600 hover:text-auvp-green text-sm">Escola</a>
-                        <a href="#" class="font-medium text-gray-600 hover:text-auvp-green text-sm">Comunidade</a>
-                        <a href="#" class="font-medium text-gray-600 hover:text-auvp-green text-sm">AUVP Pro</a>
-                        <a href="#" class="font-medium text-gray-600 hover:text-auvp-green text-sm">AUVP Agro</a>
-                    </div>
-                </div>
-
-                <!-- Dropdown Mobile: Ferramentas -->
-                <div class="flex flex-col">
-                    <button onclick="toggleAccordion('mobile-ferramentas')" class="w-full flex items-center justify-between px-4 py-3 text-gray-900 hover:bg-gray-50 hover:text-auvp-green rounded-xl transition-colors outline-none">
-                        <span class="text-base font-medium">Ferramentas</span>
-                        <i id="mobile-ferramentas-icon" class="ph ph-caret-down transition-transform duration-300"></i>
-                    </button>
-                    <div id="mobile-ferramentas" class="hidden flex-col pl-8 py-2 gap-4">
-                        <a href="#" class="font-medium text-gray-600 hover:text-auvp-green text-sm">Analítica</a>
-                        <a href="#" class="font-medium text-gray-600 hover:text-auvp-green text-sm">Finanças</a>
-                        <a href="#" class="font-medium text-gray-600 hover:text-auvp-green text-sm">Diagrama</a>
-                        <a href="#" class="font-medium text-gray-600 hover:text-auvp-green text-sm">PIAR</a>
-                        <a href="#" class="font-medium text-gray-600 hover:text-auvp-green text-sm">Dicionário de mercado</a>
-                    </div>
-                </div>
-
-                <!-- Dropdown Mobile: Soluções financeiras -->
-                <div class="flex flex-col">
-                    <button onclick="toggleAccordion('mobile-solucoes')" class="w-full flex items-center justify-between px-4 py-3 text-gray-900 hover:bg-gray-50 hover:text-auvp-green rounded-xl transition-colors outline-none">
-                        <span class="text-base font-medium">Soluções financeiras</span>
-                        <i id="mobile-solucoes-icon" class="ph ph-caret-down transition-transform duration-300"></i>
-                    </button>
-                    <div id="mobile-solucoes" class="hidden flex-col pl-8 py-2 gap-4">
-                        <a href="#" class="font-medium text-gray-600 hover:text-auvp-green text-sm">Consultoria</a>
-                        <a href="#" class="font-medium text-gray-600 hover:text-auvp-green text-sm">Crédito</a>
-                        <a href="#" class="font-medium text-gray-600 hover:text-auvp-green text-sm">Câmbio</a>
-                        <a href="#" class="font-medium text-gray-600 hover:text-auvp-green text-sm">Wealth</a>
-                        <a href="#" class="font-medium text-gray-600 hover:text-auvp-green text-sm">Seguros</a>
-                    </div>
-                </div>
-
-                <a href="#" class="flex items-center px-4 py-3 text-gray-900 hover:bg-gray-50 hover:text-auvp-green rounded-xl transition-colors">
-                    <span class="text-base font-medium">Suporte</span>
-                </a>
-            </div>
-
-        </div>
-
-        <!-- Footer Sidebar: Tema e Sair (Visível em ambas as versões) -->
-        <div class="p-4 mb-4 border-t border-gray-100 flex flex-col gap-2 pt-4">
-            <!-- Modo Escuro -->
-            <a href="#" class="flex items-center gap-4 px-4 py-3 text-gray-900 hover:bg-gray-50 hover:text-black rounded-xl transition-colors">
-                <i class="ph ph-moon text-xl"></i>
-                <span class="text-base font-medium">Modo escuro</span>
-            </a>
-            
-            <!-- Sair -->
-            <a href="#" class="flex items-center gap-4 px-4 py-3 text-gray-900 hover:bg-red-50 hover:text-red-600 rounded-xl transition-colors group">
-                <i class="ph ph-sign-out text-xl group-hover:text-red-600 transition-colors"></i>
-                <span class="text-base font-medium">Sair</span>
-            </a>
-        </div>
-    </aside>
-
-    <!-- Header Component (bg-white garante que o Dropdown deslize de trás dele) -->
-    <header id="main-header" class="w-full bg-white border-b border-gray-200 sticky top-0 z-50">
-        
-        <!-- Top Bar -->
-        <div class="flex items-center justify-between px-4 md:px-8 py-4 border-b border-gray-100">
-            <!-- Menu -->
-            <div id="menu-btn" class="flex items-center gap-3 cursor-pointer w-1/3">
-                <i class="ph ph-list text-2xl text-gray-900"></i>
-                <span class="text-base hidden sm:inline-block text-gray-900">Menu</span>
-            </div>
-
-            <!-- Logo -->
-            <div class="flex items-center justify-center cursor-pointer select-none w-1/3">
-                <img src="https://raw.githubusercontent.com/eriadesign/geral/main/AUVP%20-%20HORIZONTAL%20PRETA.png" alt="AUVP" class="h-8 md:h-12 object-contain">
-            </div>
-
-            <!-- User Actions -->
-            <div class="flex items-center justify-end gap-2 w-1/3">
-                <button class="hidden sm:flex items-center justify-center" aria-label="Notificações">
-                    <i class="ph ph-bell text-xl text-gray-900"></i>
-                </button>
-                <button class="hidden sm:flex items-center justify-center" aria-label="Recompensas">
-                    <i class="ph ph-gift text-xl text-gray-900"></i>
-                </button>
-                <button class="flex items-center gap-2 bg-gray-100 px-3 py-1.5 md:px-0 md:py-0 md:bg-transparent rounded-full md:rounded-none">
-                    <i class="ph ph-user text-xl text-gray-900"></i>
-                    <span class="hidden sm:inline-block text-base text-gray-900">Entrar</span>
-                </button>
-            </div>
-        </div>
-
-        <!-- Navigation Bar (Oculta no mobile com "hidden lg:block") -->
-        <nav class="hidden lg:block w-full bg-white relative z-40">
-            <!-- Container com altura fixa (h-14) para garantir que não existam vãos que causem salto no hover -->
-            <div class="w-full max-w-[800px] mx-auto px-4 md:px-0 flex items-center justify-between h-14 overflow-x-auto md:overflow-visible whitespace-nowrap md:whitespace-normal">
-                
-                <a href="#" class="text-gray-900 hover:text-auvp-green transition-colors text-base h-full flex items-center">Minha AUVP</a>
-                
-                <a href="#" class="flex items-center gap-1.5 text-gray-900 hover:text-auvp-green transition-colors text-base h-full">
-                    <span class="w-2 h-2 rounded-full bg-red-500"></span>
-                    Live
-                </a>
-                
-                <!-- Estude com AUVP com Dropdown Full Screen -->
-                <div class="group static h-full flex items-center">
-                    <button class="flex items-center gap-1 outline-none text-gray-900 group-hover:text-auvp-green transition-colors h-full relative z-50 text-base">
-                        Estude com AUVP
-                        <i class="ph ph-caret-down transition-transform duration-300 group-hover:-rotate-180"></i>
-                    </button>
-                    
-                    <!-- Dropdown Menu: Clip-path garante a ilusão de sair da linha do header, sem fade e sem salto na saída -->
-                    <div class="absolute left-0 top-full w-full pointer-events-none z-30" style="clip-path: inset(0px 0px -500px 0px);">
-                        <div class="w-full bg-white border-t border-gray-100 transition-transform duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] -translate-y-[101%] group-hover:translate-y-0 pointer-events-auto">
-                            
-                            <!-- Container interno alinhado perfeitamente com o menu -->
-                            <div class="w-full max-w-[800px] mx-auto py-10 flex gap-12 justify-start">
-                                
-                                <!-- Lado Esquerdo: Imagem e Texto -->
-                                <div class="w-[340px] flex flex-col">
-                                    <h3 class="font-bold text-gray-900 mb-4 text-left text-base">Estude com AUVP</h3>
-                                    <img src="https://raw.githubusercontent.com/eriadesign/geral/main/DSC09947.jpg" alt="Raul Sena AUVP Estúdio" class="w-full h-[110px] object-cover rounded-lg mb-4 border border-gray-100">
-                                    <p class="text-gray-900 text-base whitespace-normal leading-relaxed text-left font-normal">
-                                        Educação financeira para mudar a forma como você lida com dinheiro, com método e visão de longo prazo.
-                                    </p>
-                                </div>
-
-                                <!-- Lado Direito: Links text-base em cor sólida -->
-                                <div class="w-48 flex flex-col justify-start gap-5 pt-10 text-left">
-                                    <a href="#" class="font-medium text-gray-900 text-base">Escola</a>
-                                    <a href="#" class="font-medium text-gray-900 text-base">Comunidade</a>
-                                    <a href="#" class="font-medium text-gray-900 text-base">AUVP Pro</a>
-                                    <a href="#" class="font-medium text-gray-900 text-base">AUVP Agro</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Ferramentas com Dropdown Full Screen -->
-                <div class="group static h-full flex items-center">
-                    <button class="flex items-center gap-1 outline-none text-gray-900 group-hover:text-auvp-green transition-colors text-base h-full relative z-50">
-                        Ferramentas
-                        <i class="ph ph-caret-down transition-transform duration-300 group-hover:-rotate-180"></i>
-                    </button>
-                    
-                    <!-- Dropdown Menu Ferramentas -->
-                    <div class="absolute left-0 top-full w-full pointer-events-none z-30" style="clip-path: inset(0px 0px -500px 0px);">
-                        <div class="w-full bg-white border-t border-gray-100 transition-transform duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] -translate-y-[101%] group-hover:translate-y-0 pointer-events-auto">
-                            
-                            <!-- Container interno padronizado -->
-                            <div class="w-full max-w-[800px] mx-auto py-10 flex gap-12 justify-start">
-                                
-                                <!-- Lado Esquerdo: Imagem e Texto -->
-                                <div class="w-[340px] flex flex-col">
-                                    <h3 class="font-bold text-gray-900 mb-4 text-left text-base">Ferramentas</h3>
-                                    <div class="w-full h-[110px] rounded-lg mb-4 border border-gray-100 overflow-hidden">
-                                        <img src="https://raw.githubusercontent.com/eriadesign/geral/main/Mockup%20pc.jpg" alt="Dashboard AUVP" class="w-full h-full object-cover object-[center_40%] scale-150 translate-y-[30%]">
-                                    </div>
-                                    <p class="text-gray-900 text-base whitespace-normal leading-relaxed text-left font-normal">
-                                        Acompanhe, organize e evolua sua vida financeira com recursos simples e ferramentas exclusivas.
-                                    </p>
-                                </div>
-
-                                <!-- Lado Direito: Links -->
-                                <div class="w-48 flex flex-col justify-start gap-5 pt-10 text-left">
-                                    <a href="#" class="font-medium text-gray-900 text-base">Analítica</a>
-                                    <a href="#" class="font-medium text-gray-900 text-base">Finanças</a>
-                                    <a href="#" class="font-medium text-gray-900 text-base">Diagrama</a>
-                                    <a href="#" class="font-medium text-gray-900 text-base">PIAR</a>
-                                    <a href="#" class="font-medium text-gray-900 text-base">Dicionário de mercado</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Soluções financeiras com Dropdown Full Screen -->
-                <div class="group static h-full flex items-center">
-                    <button class="flex items-center gap-1 outline-none text-gray-900 group-hover:text-auvp-green transition-colors text-base h-full relative z-50">
-                        Soluções financeiras
-                        <i class="ph ph-caret-down transition-transform duration-300 group-hover:-rotate-180"></i>
-                    </button>
-                    
-                    <!-- Dropdown Menu Soluções financeiras -->
-                    <div class="absolute left-0 top-full w-full pointer-events-none z-30" style="clip-path: inset(0px 0px -500px 0px);">
-                        <div class="w-full bg-white border-t border-gray-100 transition-transform duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] -translate-y-[101%] group-hover:translate-y-0 pointer-events-auto">
-                            
-                            <!-- Container interno padronizado -->
-                            <div class="w-full max-w-[800px] mx-auto py-10 flex gap-12 justify-start">
-                                
-                                <!-- Lado Esquerdo: Imagem e Texto -->
-                                <div class="w-[340px] flex flex-col">
-                                    <h3 class="font-bold text-gray-900 mb-4 text-left text-base">Soluções financeiras</h3>
-                                    <div class="w-full h-[110px] rounded-lg mb-4 border border-gray-100 overflow-hidden">
-                                        <img src="https://raw.githubusercontent.com/eriadesign/geral/main/Gemini_Generated_Image_vcjqsevcjqsevcjq.png" alt="Cartão AUVP" class="w-full h-full object-cover object-right scale-[1.7] origin-right translate-y-[20%]">
-                                    </div>
-                                    <p class="text-gray-900 text-base whitespace-normal leading-relaxed text-left font-normal">
-                                        Produtos e estratégias pensados para organizar, proteger e multiplicar seu patrimônio.
-                                    </p>
-                                </div>
-
-                                <!-- Lado Direito: Links -->
-                                <div class="w-48 flex flex-col justify-start gap-5 pt-10 text-left">
-                                    <a href="#" class="font-medium text-gray-900 text-base">Consultoria</a>
-                                    <a href="#" class="font-medium text-gray-900 text-base">Crédito</a>
-                                    <a href="#" class="font-medium text-gray-900 text-base">Câmbio</a>
-                                    <a href="#" class="font-medium text-gray-900 text-base">Wealth</a>
-                                    <a href="#" class="font-medium text-gray-900 text-base">Seguros</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <a href="#" class="text-gray-900 hover:text-auvp-green transition-colors text-base h-full flex items-center">Suporte</a>
-            </div>
-        </nav>
-    </header>
-
-    <!-- Main Content Area -->
-    <main class="flex-1 w-full relative z-0">
-        <div class="max-w-[800px] mx-auto px-4 md:px-0 py-12 flex flex-col gap-12">
-            
-            <!-- Secção 1 (Existente) -->
-            <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
-                <h1 class="text-3xl font-bold text-gray-800 mb-4">Área principal do site</h1>
-                <p class="text-base text-gray-600 leading-relaxed">
-                    Problema de salto (jitter) resolvido! Removemos a opacidade (sem efeito de fade) e aplicamos um <code>clip-path</code> inteligente acompanhado da altura completa dos elementos da <code>nav</code>. O menu agora desliza suavemente tanto na abertura quanto no fechamento como um bloco fixo escondido pela máscara do próprio cabeçalho.
-                </p>
-            </div>
-
-            <!-- Secção 2 (Novo - Fundo Escuro para testar o desfoque) -->
-            <div class="bg-gray-900 p-12 rounded-3xl shadow-lg flex flex-col items-center text-center">
-                <h2 class="text-3xl font-bold text-white mb-6">A revolução da sua vida financeira</h2>
-                <p class="text-lg text-gray-300 max-w-2xl leading-relaxed mb-8">
-                    Role a página para cima e para baixo e abra o menu para ver o efeito de vidro fosco (glassmorphism) a funcionar perfeitamente sobre os elementos escuros e coloridos do site.
-                </p>
-                <div class="w-full h-64 bg-gray-800 rounded-xl border border-gray-700 flex items-center justify-center">
-                    <span class="text-gray-500 font-medium">Simulação de Gráfico ou Vídeo</span>
-                </div>
-            </div>
-
-            <!-- Secção 3 (Novo - Cards Claros) -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-white p-10 rounded-3xl shadow-sm border border-gray-100 h-80 flex flex-col justify-center hover:shadow-md transition-shadow">
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Módulo 1: Fundamentos</h3>
-                    <p class="text-gray-600 leading-relaxed">Aprenda a base sólida para construir o seu património a longo prazo com total segurança e previsibilidade.</p>
-                </div>
-                <div class="bg-white p-10 rounded-3xl shadow-sm border border-gray-100 h-80 flex flex-col justify-center hover:shadow-md transition-shadow">
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Módulo 2: Renda Variável</h3>
-                    <p class="text-gray-600 leading-relaxed">Desmistifique a bolsa de valores e descubra como escolher e investir nas melhores empresas do mercado.</p>
-                </div>
-            </div>
-
-            <!-- Secção 4 (Novo - Bloco final para estender o scroll) -->
-            <div class="h-96 rounded-3xl border-2 border-dashed border-gray-200 flex flex-col items-center justify-center bg-gray-50/50">
-                <i class="ph ph-arrow-down text-4xl text-gray-300 mb-4 animate-bounce"></i>
-                <p class="text-gray-400 font-medium text-lg">Continue a rolar para testar o cabeçalho fixo no topo...</p>
-            </div>
-            
-            <div class="h-64 rounded-3xl bg-white border border-gray-100 flex items-center justify-center shadow-sm">
-                <p class="text-gray-400 font-medium">Fim da página de testes.</p>
-            </div>
-
-        </div>
-    </main>
-
-    <!-- Script de Funcionalidade da Sidebar e Sanfona -->
-    <script>
-        // Função para Sanfona Mobile
-        window.toggleAccordion = (id) => {
-            const content = document.getElementById(id);
-            const icon = document.getElementById(`${id}-icon`);
-            
-            if (content.classList.contains('hidden')) {
-                content.classList.remove('hidden');
-                content.classList.add('flex');
-                icon.classList.add('-rotate-180');
-            } else {
-                content.classList.add('hidden');
-                content.classList.remove('flex');
-                icon.classList.remove('-rotate-180');
+        const speakersData = {
+            'arthur': {
+                name: 'Arthur Bender',
+                role: 'Personal Branding',
+                desc: 'Referência nacional em estratégia de marcas e autor do best-seller "Personal Branding - Construindo sua Marca Pessoal". Arthur trará insights exclusivos sobre como se posicionar de forma única no mercado e gerar valor real para sua audiência.',
+                img: 'https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/arhur%20bender.png'
+            },
+            'raul': {
+                name: 'Raul Sena',
+                role: 'Investidor & Fundador',
+                desc: 'Criador do canal Investidor Sardinha e fundador da AUVP. Raul vai compartilhar sua visão única sobre o mercado financeiro, investimentos e os bastidores de como construir um patrimônio sólido.',
+                img: 'https://yt3.googleusercontent.com/q6bgR6BvYXgq3u9GF_MP_YrVW4myeX_ETDwgM68vUA4XkahJUCoxnFy-MnELZPd5n875FDi5Fw=s900-c-k-c0x00ffffff-no-rj'
             }
         };
 
-        // Scripts do Sidebar e Overlay
-        document.addEventListener('DOMContentLoaded', () => {
-            const menuBtn = document.getElementById('menu-btn');
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('sidebar-overlay');
-            const header = document.getElementById('main-header');
-            let isOpen = false;
-
-            // Função para garantir que a sidebar comece exatamente abaixo do header visualmente
-            // adicionando um padding top igual à altura total do header (evitando que suma atrás dele)
-            const syncSidebarPadding = () => {
-                sidebar.style.paddingTop = `${header.offsetHeight}px`;
-            };
+        function openModal(speakerKey) {
+            if(!speakerModal || !speakersData[speakerKey]) return;
             
-            // Sincroniza no carregamento da página e ao redimensionar a tela
-            syncSidebarPadding();
-            window.addEventListener('resize', syncSidebarPadding);
+            const data = speakersData[speakerKey];
+            document.getElementById('modal-img').src = data.img;
+            document.getElementById('modal-img').alt = data.name;
+            document.getElementById('modal-name').innerText = data.name;
+            document.getElementById('modal-role').innerText = data.role;
+            document.getElementById('modal-desc').innerText = data.desc;
 
-            const toggleSidebar = () => {
-                isOpen = !isOpen;
-                if (isOpen) {
-                    sidebar.classList.remove('-translate-x-full');
-                    overlay.classList.remove('opacity-0', 'pointer-events-none');
-                    overlay.classList.add('opacity-100', 'pointer-events-auto');
-                } else {
-                    sidebar.classList.add('-translate-x-full');
-                    overlay.classList.remove('opacity-100', 'pointer-events-auto');
-                    overlay.classList.add('opacity-0', 'pointer-events-none');
-                }
-            };
+            speakerModal.classList.remove('opacity-0', 'pointer-events-none');
+            speakerModal.classList.add('opacity-100', 'pointer-events-auto');
+            speakerModalInner.classList.remove('scale-95');
+            speakerModalInner.classList.add('scale-100');
+            
+            // Pausar o carrossel
+            carousels.forEach(c => c.style.animationPlayState = 'paused');
+        }
 
-            // Eventos de clique para abrir/fechar
-            menuBtn.addEventListener('click', toggleSidebar);
-            overlay.addEventListener('click', toggleSidebar); // Fecha ao clicar na área escura
+        function closeModal() {
+            if(!speakerModal) return;
+            speakerModal.classList.remove('opacity-100', 'pointer-events-auto');
+            speakerModal.classList.add('opacity-0', 'pointer-events-none');
+            speakerModalInner.classList.remove('scale-100');
+            speakerModalInner.classList.add('scale-95');
+            
+            // Retomar o carrossel
+            carousels.forEach(c => c.style.animationPlayState = '');
+        }
+
+        activeSpeakers.forEach(card => {
+            card.addEventListener('click', () => {
+                openModal(card.dataset.speaker);
+            });
         });
-    </script>
-</body>
-</html>
+
+        if(closeSpeakerModal) {
+            closeSpeakerModal.addEventListener('click', closeModal);
+        }
+
+        // Fechar ao clicar fora do conteúdo do modal
+        if(speakerModal) {
+            speakerModal.addEventListener('click', (e) => {
+                if (e.target === speakerModal) closeModal();
+            });
+        }
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initAUVP);
+    } else {
+        initAUVP();
+    }
+</script>
