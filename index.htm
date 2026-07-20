@@ -1063,4 +1063,42 @@
     } else {
         initAUVP();
     }
+
+    // Repasse dinâmico de parâmetros UTM para os links de pagamento (Guru)
+    function applyUtmToPaymentLinks() {
+        const paymentLinks = document.querySelectorAll('a[href*="auvpag.com.br/pay/"]');
+        if (!paymentLinks.length) return;
+
+        const incomingParams = new URLSearchParams(window.location.search);
+        const incomingUtm = new URLSearchParams();
+        incomingParams.forEach((value, key) => {
+            if (/^utm_/i.test(key)) incomingUtm.append(key, value);
+        });
+        const hasIncomingUtm = [...incomingUtm.keys()].length > 0;
+
+        paymentLinks.forEach(link => {
+            const url = new URL(link.getAttribute('href'), window.location.href);
+            const defaultParams = new URLSearchParams(url.search);
+
+            // Mantém eventuais parâmetros não-UTM já existentes no link
+            const finalParams = new URLSearchParams();
+            defaultParams.forEach((value, key) => {
+                if (!/^utm_/i.test(key)) finalParams.set(key, value);
+            });
+
+            const utmParams = hasIncomingUtm ? incomingUtm : defaultParams;
+            utmParams.forEach((value, key) => {
+                if (/^utm_/i.test(key)) finalParams.set(key, value);
+            });
+
+            url.search = finalParams.toString();
+            link.setAttribute('href', url.toString());
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', applyUtmToPaymentLinks);
+    } else {
+        applyUtmToPaymentLinks();
+    }
 </script>
