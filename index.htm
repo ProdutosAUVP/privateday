@@ -258,20 +258,59 @@
         mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
     }
 
-    @keyframes scroll-carousel {
-        /* Translada relativo ao próprio w-max (que possui 3 blocos). 33.333% empurra exatamente 1 bloco completo. */
-        0% { transform: translateX(-33.333333%); }
-        100% { transform: translateX(-66.666666%); }
-    }
-    
     #auvp-lp-wrapper .animate-carousel {
         /* Posiciona o início do carrossel para que o item centralizado bata com o meio da tela visual */
         margin-left: calc(50% - var(--card-half));
-        animation: scroll-carousel 40s linear infinite;
+        /* Posição controlada via JS (autoplay + setas), ver script no fim da página */
+        will-change: transform;
     }
-    
-    #auvp-lp-wrapper .animate-carousel:hover {
-        animation-play-state: paused;
+
+    /* Setas de navegação do carrossel de palestrantes */
+    #auvp-lp-wrapper .carousel-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 30;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 9999px;
+        background: rgba(26, 26, 26, 0.7);
+        border: 1px solid rgba(255, 247, 235, 0.2);
+        color: #FFF7EB;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    #auvp-lp-wrapper .carousel-arrow:hover {
+        background: #DB7944;
+        border-color: #DB7944;
+        color: #FFF7EB;
+    }
+
+    #auvp-lp-wrapper .carousel-arrow-prev {
+        left: 8px;
+    }
+
+    #auvp-lp-wrapper .carousel-arrow-next {
+        right: 8px;
+    }
+
+    @media (min-width: 768px) {
+        #auvp-lp-wrapper .carousel-arrow {
+            width: 48px;
+            height: 48px;
+            font-size: 1.35rem;
+        }
+        #auvp-lp-wrapper .carousel-arrow-prev {
+            left: 16px;
+        }
+        #auvp-lp-wrapper .carousel-arrow-next {
+            right: 16px;
+        }
     }
     
     #auvp-lp-wrapper .speaker-card {
@@ -748,6 +787,12 @@
                     </div>
                 </div>
             </div>
+            <button id="carousel-prev" type="button" aria-label="Palestrante anterior" class="carousel-arrow carousel-arrow-prev">
+                <i class="ph ph-caret-left"></i>
+            </button>
+            <button id="carousel-next" type="button" aria-label="Próximo palestrante" class="carousel-arrow carousel-arrow-next">
+                <i class="ph ph-caret-right"></i>
+            </button>
         </div>
     </section>
 
@@ -1108,12 +1153,94 @@
         window.addEventListener('scroll', updateNavbar);
         updateNavbar();
 
+        // Lógica do Carrossel de Palestrantes (autoplay + setas de navegação)
+        let isCarouselModalOpen = false;
+
+        document.querySelectorAll('.carousel-mask').forEach(mask => {
+            const track = mask.querySelector('.animate-carousel');
+            const blocks = track ? track.children : null;
+            if (!track || !blocks || blocks.length < 3) return;
+
+            const prevBtn = mask.parentElement.querySelector('.carousel-arrow-prev');
+            const nextBtn = mask.parentElement.querySelector('.carousel-arrow-next');
+
+            let blockWidth = 0;
+            let cardStep = 0;
+            let position = 0;
+            let isHovering = false;
+            let isManualPaused = false;
+            let manualResumeTimeout = null;
+            let lastTimestamp = null;
+
+            function measure() {
+                blockWidth = blocks[0].getBoundingClientRect().width;
+                const cards = blocks[0].querySelectorAll('.speaker-card');
+                cardStep = cards.length > 1
+                    ? cards[1].getBoundingClientRect().left - cards[0].getBoundingClientRect().left
+                    : blockWidth;
+                // Mantém a posição sempre dentro do bloco do meio (idêntico aos demais, loop invisível)
+                if (position === 0) position = -blockWidth;
+            }
+
+            function applyTransform() {
+                track.style.transform = `translateX(${position}px)`;
+            }
+
+            function wrap() {
+                while (position <= -2 * blockWidth) position += blockWidth;
+                while (position > -blockWidth) position -= blockWidth;
+            }
+
+            function step(timestamp) {
+                if (lastTimestamp === null) lastTimestamp = timestamp;
+                const delta = timestamp - lastTimestamp;
+                lastTimestamp = timestamp;
+
+                if (!isHovering && !isManualPaused && !isCarouselModalOpen && blockWidth > 0) {
+                    const pxPerMs = blockWidth / 40000; // 40s para percorrer 1 bloco completo
+                    position -= pxPerMs * delta;
+                    wrap();
+                    applyTransform();
+                }
+
+                requestAnimationFrame(step);
+            }
+
+            function goTo(direction) {
+                isManualPaused = true;
+                if (manualResumeTimeout) clearTimeout(manualResumeTimeout);
+
+                position += direction === 'next' ? -cardStep : cardStep;
+                wrap();
+                track.style.transition = 'transform 0.4s ease';
+                applyTransform();
+                setTimeout(() => { track.style.transition = ''; }, 400);
+
+                manualResumeTimeout = setTimeout(() => { isManualPaused = false; }, 4000);
+            }
+
+            measure();
+            applyTransform();
+            requestAnimationFrame(step);
+
+            mask.addEventListener('mouseenter', () => { isHovering = true; });
+            mask.addEventListener('mouseleave', () => { isHovering = false; });
+
+            if (prevBtn) prevBtn.addEventListener('click', () => goTo('prev'));
+            if (nextBtn) nextBtn.addEventListener('click', () => goTo('next'));
+
+            let resizeTimeout;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(measure, 200);
+            });
+        });
+
         // Lógica do Modal de Palestrantes
         const speakerModal = document.getElementById('speaker-modal');
         const speakerModalInner = document.getElementById('speaker-modal-inner');
         const closeSpeakerModal = document.getElementById('close-speaker-modal');
         const activeSpeakers = document.querySelectorAll('.speaker-card:not(.blurred)');
-        const carousels = document.querySelectorAll('.animate-carousel');
 
         const speakersData = {
             'arthur': {
@@ -1182,7 +1309,7 @@
             speakerModalInner.classList.add('scale-100');
             
             // Pausar o carrossel
-            carousels.forEach(c => c.style.animationPlayState = 'paused');
+            isCarouselModalOpen = true;
         }
 
         function closeModal() {
@@ -1193,7 +1320,7 @@
             speakerModalInner.classList.add('scale-95');
             
             // Retomar o carrossel
-            carousels.forEach(c => c.style.animationPlayState = '');
+            isCarouselModalOpen = false;
         }
 
         activeSpeakers.forEach(card => {
