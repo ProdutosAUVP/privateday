@@ -1,3 +1,12 @@
+<!-- Microsoft Clarity (mapas de calor, gravações de sessão e eventos) -->
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "y5xo0z0rc3");
+</script>
+
 <!-- Dependências do Projeto -->
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Anek+Latin:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -1433,4 +1442,139 @@
     } else {
         applyUtmToPaymentLinks();
     }
+</script>
+
+<script>
+    /* -------------------------------------------------------------------------- */
+    /* CLARITY - TAGS DE CONTEXTO E EVENTOS PERSONALIZADOS                        */
+    /* -------------------------------------------------------------------------- */
+    (function () {
+        // O snippet do Clarity cria a fila window.clarity de forma síncrona, então as
+        // chamadas abaixo são enfileiradas mesmo antes de o script terminar de carregar.
+        function ready() {
+            return typeof window.clarity === 'function';
+        }
+
+        function tag(key, value) {
+            if (ready() && value) window.clarity('set', key, String(value).slice(0, 255));
+        }
+
+        function event(name) {
+            if (ready()) window.clarity('event', name);
+        }
+
+        function upgrade(reason) {
+            if (ready()) window.clarity('upgrade', reason);
+        }
+
+        function initClarityTracking() {
+            if (!ready()) return;
+
+            /* Tags de contexto: servem para segmentar gravações, heatmaps e funis */
+            tag('pagina', 'private-day-2026');
+            tag('lote_vigente', '2');
+            tag('dispositivo', window.matchMedia('(max-width: 767px)').matches ? 'mobile' : 'desktop');
+
+            var params = new URLSearchParams(window.location.search);
+            ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach(function (key) {
+                tag(key, params.get(key));
+            });
+
+            try {
+                tag('origem', document.referrer ? new URL(document.referrer).hostname : 'direto');
+            } catch (e) {
+                tag('origem', 'direto');
+            }
+
+            /* Cliques nos botões de compra (checkout Guru) */
+            document.querySelectorAll('a[href*="auvpag.com.br/pay/"]').forEach(function (link) {
+                link.addEventListener('click', function () {
+                    var ingresso = link.href.indexOf('evento-completo') > -1 ? 'evento_completo' : 'so_festa';
+                    tag('ingresso_escolhido', ingresso);
+                    event('checkout_' + ingresso);
+                    /* Prioriza a gravação: sessão com intenção de compra é a mais relevante */
+                    upgrade('intencao_de_compra');
+                });
+            });
+
+            /* Demais CTAs */
+            document.querySelectorAll('a[href="#ingressos"]').forEach(function (link) {
+                link.addEventListener('click', function () { event('cta_ver_ingressos'); });
+            });
+
+            document.querySelectorAll('a[href*="form.auvp.com.br"]').forEach(function (link) {
+                link.addEventListener('click', function () { event('cta_patrocinio'); });
+            });
+
+            document.querySelectorAll('a[href*="api.whatsapp.com"]').forEach(function (link) {
+                link.addEventListener('click', function () {
+                    event('cta_whatsapp');
+                    upgrade('contato_whatsapp');
+                });
+            });
+
+            /* Abertura do modal de palestrante */
+            document.querySelectorAll('.speaker-card:not(.blurred)').forEach(function (card) {
+                card.addEventListener('click', function () {
+                    tag('palestrante_visto', card.getAttribute('data-speaker'));
+                    event('palestrante_aberto');
+                });
+            });
+
+            /* Dropdown da programação */
+            var programacao = document.querySelector('#palestrantes details');
+            if (programacao) {
+                programacao.addEventListener('toggle', function () {
+                    if (programacao.open) event('programacao_aberta');
+                });
+            }
+
+            /* Perguntas do FAQ */
+            document.querySelectorAll('#faq details').forEach(function (item) {
+                item.addEventListener('toggle', function () {
+                    if (!item.open) return;
+                    var pergunta = item.querySelector('summary span');
+                    tag('faq_pergunta', pergunta ? pergunta.textContent.trim() : '');
+                    event('faq_aberto');
+                });
+            });
+
+            /* Profundidade de rolagem (cada marco dispara uma única vez) */
+            var marcos = [25, 50, 75, 90];
+            var atingidos = {};
+            window.addEventListener('scroll', function () {
+                var altura = document.documentElement.scrollHeight - window.innerHeight;
+                if (altura <= 0) return;
+                var percentual = (window.scrollY / altura) * 100;
+                marcos.forEach(function (marco) {
+                    if (percentual >= marco && !atingidos[marco]) {
+                        atingidos[marco] = true;
+                        event('scroll_' + marco);
+                    }
+                });
+            }, { passive: true });
+
+            /* Seções-chave realmente vistas pelo visitante */
+            if ('IntersectionObserver' in window) {
+                [['ingressos', 'secao_ingressos_vista'], ['palestrantes', 'secao_palestrantes_vista']].forEach(function (par) {
+                    var secao = document.getElementById(par[0]);
+                    if (!secao) return;
+                    var observador = new IntersectionObserver(function (entradas) {
+                        entradas.forEach(function (entrada) {
+                            if (!entrada.isIntersecting) return;
+                            event(par[1]);
+                            observador.disconnect();
+                        });
+                    }, { threshold: 0.4 });
+                    observador.observe(secao);
+                });
+            }
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initClarityTracking);
+        } else {
+            initClarityTracking();
+        }
+    })();
 </script>
