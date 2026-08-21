@@ -491,316 +491,319 @@
     </section>
 
     <!-- Terceira Dobra - Programação e palestrantes -->
-    <section id="palestrantes" class="relative overflow-hidden flex flex-col min-h-[60vh] bg-[#1a1a1a]">
-        <div class="absolute inset-0 z-0">
-            <img src="https://raw.githubusercontent.com/eriadesign/privateday/main/palestras%202.webp" alt="Palestrantes AUVP Private Day" class="w-full h-full object-cover mobile-bg-50 md:object-center">
-            <div class="absolute inset-0 bg-black/50 md:hidden z-[1]"></div>
-            <div class="absolute inset-0 bg-[#1a1a1a]/30 md:bg-[#1a1a1a]/20"></div>
-        </div>
-        
-        <!-- Conteúdo da Dobra -->
-        <div class="max-w-7xl mx-auto px-5 md:px-8 relative z-10 w-full flex-grow flex flex-col justify-center py-16 md:py-28">
-            <div class="max-w-[540px] text-left">
-                <h2 class="vintage-title text-4xl md:text-5xl lg:text-6xl text-[#FFF7EB] leading-tight mb-6 drop-shadow-xl">
-                    Quem sobe no palco<br/>em 2026?
-                </h2>
-                <p class="text-base md:text-xl text-[#FFF7EB] font-light leading-relaxed drop-shadow-lg">
-                    Serão dois dias de conteúdo com Raul Sena e grandes nomes do mercado, discutindo o cenário macroeconômico e tudo o que está acontecendo de mais relevante no mundo.
-                </p>
+    <section id="palestrantes" class="relative overflow-hidden flex flex-col bg-[#1a1a1a]">
+        <!-- Bloco da foto: mantem altura propria para que abrir a programação nao redimensione a imagem de fundo -->
+        <div class="relative flex flex-col flex-grow min-h-[60vh] overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <img src="https://raw.githubusercontent.com/eriadesign/privateday/main/palestras%202.webp" alt="Palestrantes AUVP Private Day" class="w-full h-full object-cover mobile-bg-50 md:object-center">
+                <div class="absolute inset-0 bg-black/50 md:hidden z-[1]"></div>
+                <div class="absolute inset-0 bg-[#1a1a1a]/30 md:bg-[#1a1a1a]/20"></div>
             </div>
-        </div>
+        
+            <!-- Conteúdo da Dobra -->
+            <div class="max-w-7xl mx-auto px-5 md:px-8 relative z-10 w-full flex-grow flex flex-col justify-center py-16 md:py-28">
+                <div class="max-w-[540px] text-left">
+                    <h2 class="vintage-title text-4xl md:text-5xl lg:text-6xl text-[#FFF7EB] leading-tight mb-6 drop-shadow-xl">
+                        Quem sobe no palco<br/>em 2026?
+                    </h2>
+                    <p class="text-base md:text-xl text-[#FFF7EB] font-light leading-relaxed drop-shadow-lg">
+                        Serão dois dias de conteúdo com Raul Sena e grandes nomes do mercado, discutindo o cenário macroeconômico e tudo o que está acontecendo de mais relevante no mundo.
+                    </p>
+                </div>
+            </div>
 
-        <!-- Tarja dos Palestrantes -->
-        <div class="relative z-10 w-full bg-black/30 backdrop-blur-md border-t border-[#FFF7EB]/20">
-            <div class="carousel-mask">
-                <div class="flex w-max animate-carousel">
-                    <!-- Bloco 1 (Oculto no scroll para manter looping perfeito) -->
-                    <div class="flex gap-4 md:gap-6 pr-4 md:pr-6">
-                        <div class="speaker-card" data-speaker="raul">
-                            <div class="speaker-card-inner">
-                                <img src="https://yt3.googleusercontent.com/q6bgR6BvYXgq3u9GF_MP_YrVW4myeX_ETDwgM68vUA4XkahJUCoxnFy-MnELZPd5n875FDi5Fw=s900-c-k-c0x00ffffff-no-rj" alt="Raul Sena">
-                                <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
-                                    <div class="flex flex-col items-start w-full min-w-0">
-                                        <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block w-full truncate">Raul Sena</span>
-                                        <span class="text-[#DB7944] text-[10px] md:text-xs font-light leading-tight block w-full truncate">Fundador da AUVP</span>
+            <!-- Tarja dos Palestrantes -->
+            <div class="relative z-10 w-full bg-black/30 backdrop-blur-md border-t border-[#FFF7EB]/20">
+                <div class="carousel-mask">
+                    <div class="flex w-max animate-carousel">
+                        <!-- Bloco 1 (Oculto no scroll para manter looping perfeito) -->
+                        <div class="flex gap-4 md:gap-6 pr-4 md:pr-6">
+                            <div class="speaker-card" data-speaker="raul">
+                                <div class="speaker-card-inner">
+                                    <img src="https://yt3.googleusercontent.com/q6bgR6BvYXgq3u9GF_MP_YrVW4myeX_ETDwgM68vUA4XkahJUCoxnFy-MnELZPd5n875FDi5Fw=s900-c-k-c0x00ffffff-no-rj" alt="Raul Sena">
+                                    <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
+                                        <div class="flex flex-col items-start w-full min-w-0">
+                                            <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block w-full truncate">Raul Sena</span>
+                                            <span class="text-[#DB7944] text-[10px] md:text-xs font-light leading-tight block w-full truncate">Fundador da AUVP</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="speaker-card" data-speaker="arthur">
+                                <div class="speaker-card-inner">
+                                    <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/arthur%20bender%20zoom.jpg" alt="Arthur Bender">
+                                    <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
+                                        <div class="flex flex-col items-start w-full min-w-0">
+                                            <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block w-full truncate">Arthur Bender</span>
+                                            <span class="text-[#DB7944] text-[10px] md:text-xs font-light leading-tight block w-full truncate">Personal Branding</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="speaker-card" data-speaker="carlos">
+                                <div class="speaker-card-inner">
+                                    <img src="https://static.wixstatic.com/media/52e287_aacb889c62624a468960d25332bd0853~mv2.jpg/v1/fill/w_2000,h_2000,al_c,q_90/palestrante-cdpv-carlos-busch_edited.jpg" alt="Carlos Busch">
+                                    <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
+                                        <div class="flex flex-col items-start w-full min-w-0">
+                                            <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block w-full truncate">Carlos Busch</span>
+                                            <span class="text-[#DB7944] text-[10px] md:text-xs font-light leading-tight block w-full truncate">Especialista em Vendas</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="speaker-card" data-speaker="edson">
+                                <div class="speaker-card-inner">
+                                    <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/edson%20castro%20zoom.jpg" alt="Edson Castro">
+                                    <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
+                                        <div class="flex flex-col items-start w-full min-w-0">
+                                            <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block w-full truncate">Edson Castro</span>
+                                            <span class="text-[#DB7944] text-[10px] md:text-xs font-light leading-tight block w-full truncate">Jornalista</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="speaker-card" data-speaker="lara">
+                                <div class="speaker-card-inner">
+                                    <img src="https://yt3.googleusercontent.com/vOuXjS4rhs6jyvGw8ly7kZ_s1SnH-w4L6B8VbTmiKICnLVZs-P1gbF2Ct4pMXCY4zni0Ctrpiw=s900-c-k-c0x00ffffff-no-rj" alt="Lara Brenner">
+                                    <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
+                                        <div class="flex flex-col items-start w-full min-w-0">
+                                            <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block w-full truncate">Lara Brenner</span>
+                                            <span class="text-[#DB7944] text-[10px] md:text-xs font-light leading-tight block w-full truncate">Mentora de Comunicação</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="speaker-card" data-speaker="anderson">
+                                <div class="speaker-card-inner">
+                                    <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/anderson%20soares%20zoom.jpg" alt="Anderson Soares">
+                                    <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
+                                        <div class="flex flex-col items-start w-full min-w-0">
+                                            <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block w-full truncate">Anderson Soares</span>
+                                            <span class="text-[#DB7944] text-[10px] md:text-xs font-light leading-tight block w-full truncate">Especialista em IA</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="speaker-card" data-speaker="alexandre">
+                                <div class="speaker-card-inner">
+                                    <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/alexandre%20assis%20zoom.jpg" alt="Alexandre Assis">
+                                    <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
+                                        <div class="flex flex-col items-start w-full min-w-0">
+                                            <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block w-full truncate">Alexandre Assis</span>
+                                            <span class="text-[#DB7944] text-[10px] md:text-xs font-light leading-tight block w-full truncate">CEO da Assis Gestão</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="speaker-card" data-speaker="arlindo">
+                                <div class="speaker-card-inner">
+                                    <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/WhatsApp%20Image%202026-07-16%20at%2016.08.25.jpeg" alt="Arlindo Galvão">
+                                    <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
+                                        <div class="flex flex-col items-start w-full min-w-0">
+                                            <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block w-full truncate">Arlindo Galvão</span>
+                                            <span class="text-[#DB7944] text-[10px] md:text-xs font-light leading-tight block w-full truncate">Pesquisador em IA</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="speaker-card" data-speaker="arthur">
-                            <div class="speaker-card-inner">
-                                <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/arthur%20bender%20zoom.jpg" alt="Arthur Bender">
-                                <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
-                                    <div class="flex flex-col items-start w-full min-w-0">
-                                        <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block w-full truncate">Arthur Bender</span>
-                                        <span class="text-[#DB7944] text-[10px] md:text-xs font-light leading-tight block w-full truncate">Personal Branding</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="speaker-card" data-speaker="carlos">
-                            <div class="speaker-card-inner">
-                                <img src="https://static.wixstatic.com/media/52e287_aacb889c62624a468960d25332bd0853~mv2.jpg/v1/fill/w_2000,h_2000,al_c,q_90/palestrante-cdpv-carlos-busch_edited.jpg" alt="Carlos Busch">
-                                <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
-                                    <div class="flex flex-col items-start w-full min-w-0">
-                                        <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block w-full truncate">Carlos Busch</span>
-                                        <span class="text-[#DB7944] text-[10px] md:text-xs font-light leading-tight block w-full truncate">Especialista em Vendas</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="speaker-card" data-speaker="edson">
-                            <div class="speaker-card-inner">
-                                <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/edson%20castro%20zoom.jpg" alt="Edson Castro">
-                                <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
-                                    <div class="flex flex-col items-start w-full min-w-0">
-                                        <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block w-full truncate">Edson Castro</span>
-                                        <span class="text-[#DB7944] text-[10px] md:text-xs font-light leading-tight block w-full truncate">Jornalista</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="speaker-card" data-speaker="lara">
-                            <div class="speaker-card-inner">
-                                <img src="https://yt3.googleusercontent.com/vOuXjS4rhs6jyvGw8ly7kZ_s1SnH-w4L6B8VbTmiKICnLVZs-P1gbF2Ct4pMXCY4zni0Ctrpiw=s900-c-k-c0x00ffffff-no-rj" alt="Lara Brenner">
-                                <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
-                                    <div class="flex flex-col items-start w-full min-w-0">
-                                        <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block w-full truncate">Lara Brenner</span>
-                                        <span class="text-[#DB7944] text-[10px] md:text-xs font-light leading-tight block w-full truncate">Mentora de Comunicação</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="speaker-card" data-speaker="anderson">
-                            <div class="speaker-card-inner">
-                                <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/anderson%20soares%20zoom.jpg" alt="Anderson Soares">
-                                <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
-                                    <div class="flex flex-col items-start w-full min-w-0">
-                                        <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block w-full truncate">Anderson Soares</span>
-                                        <span class="text-[#DB7944] text-[10px] md:text-xs font-light leading-tight block w-full truncate">Especialista em IA</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="speaker-card" data-speaker="alexandre">
-                            <div class="speaker-card-inner">
-                                <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/alexandre%20assis%20zoom.jpg" alt="Alexandre Assis">
-                                <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
-                                    <div class="flex flex-col items-start w-full min-w-0">
-                                        <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block w-full truncate">Alexandre Assis</span>
-                                        <span class="text-[#DB7944] text-[10px] md:text-xs font-light leading-tight block w-full truncate">CEO da Assis Gestão</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="speaker-card" data-speaker="arlindo">
-                            <div class="speaker-card-inner">
-                                <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/WhatsApp%20Image%202026-07-16%20at%2016.08.25.jpeg" alt="Arlindo Galvão">
-                                <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
-                                    <div class="flex flex-col items-start w-full min-w-0">
-                                        <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block w-full truncate">Arlindo Galvão</span>
-                                        <span class="text-[#DB7944] text-[10px] md:text-xs font-light leading-tight block w-full truncate">Pesquisador em IA</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- Bloco 2 (Centro exato da tela no Load) -->
-                    <div class="flex gap-4 md:gap-6 pr-4 md:pr-6">
-                        <div class="speaker-card" data-speaker="raul">
-                            <div class="speaker-card-inner">
-                                <img src="https://yt3.googleusercontent.com/q6bgR6BvYXgq3u9GF_MP_YrVW4myeX_ETDwgM68vUA4XkahJUCoxnFy-MnELZPd5n875FDi5Fw=s900-c-k-c0x00ffffff-no-rj" alt="Raul Sena">
-                                <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
-                                    <div class="flex flex-col items-start w-full min-w-0">
-                                        <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block w-full truncate">Raul Sena</span>
-                                        <span class="text-[#DB7944] text-[10px] md:text-xs font-light leading-tight block w-full truncate">Fundador da AUVP</span>
+                        <!-- Bloco 2 (Centro exato da tela no Load) -->
+                        <div class="flex gap-4 md:gap-6 pr-4 md:pr-6">
+                            <div class="speaker-card" data-speaker="raul">
+                                <div class="speaker-card-inner">
+                                    <img src="https://yt3.googleusercontent.com/q6bgR6BvYXgq3u9GF_MP_YrVW4myeX_ETDwgM68vUA4XkahJUCoxnFy-MnELZPd5n875FDi5Fw=s900-c-k-c0x00ffffff-no-rj" alt="Raul Sena">
+                                    <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
+                                        <div class="flex flex-col items-start w-full min-w-0">
+                                            <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block w-full truncate">Raul Sena</span>
+                                            <span class="text-[#DB7944] text-[10px] md:text-xs font-light leading-tight block w-full truncate">Fundador da AUVP</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="speaker-card" data-speaker="arthur">
+                                <div class="speaker-card-inner">
+                                    <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/arthur%20bender%20zoom.jpg" alt="Arthur Bender">
+                                    <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
+                                        <div class="flex flex-col items-start w-full min-w-0">
+                                            <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block w-full truncate">Arthur Bender</span>
+                                            <span class="text-[#DB7944] text-[10px] md:text-xs font-light leading-tight block w-full truncate">Personal Branding</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="speaker-card" data-speaker="carlos">
+                                <div class="speaker-card-inner">
+                                    <img src="https://static.wixstatic.com/media/52e287_aacb889c62624a468960d25332bd0853~mv2.jpg/v1/fill/w_2000,h_2000,al_c,q_90/palestrante-cdpv-carlos-busch_edited.jpg" alt="Carlos Busch">
+                                    <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
+                                        <div class="flex flex-col items-start w-full min-w-0">
+                                            <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block w-full truncate">Carlos Busch</span>
+                                            <span class="text-[#DB7944] text-[10px] md:text-xs font-light leading-tight block w-full truncate">Especialista em Vendas</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="speaker-card" data-speaker="edson">
+                                <div class="speaker-card-inner">
+                                    <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/edson%20castro%20zoom.jpg" alt="Edson Castro">
+                                    <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
+                                        <div class="flex flex-col items-start w-full min-w-0">
+                                            <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block w-full truncate">Edson Castro</span>
+                                            <span class="text-[#DB7944] text-[10px] md:text-xs font-light leading-tight block w-full truncate">Jornalista</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="speaker-card" data-speaker="lara">
+                                <div class="speaker-card-inner">
+                                    <img src="https://yt3.googleusercontent.com/vOuXjS4rhs6jyvGw8ly7kZ_s1SnH-w4L6B8VbTmiKICnLVZs-P1gbF2Ct4pMXCY4zni0Ctrpiw=s900-c-k-c0x00ffffff-no-rj" alt="Lara Brenner">
+                                    <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
+                                        <div class="flex flex-col items-start w-full min-w-0">
+                                            <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block w-full truncate">Lara Brenner</span>
+                                            <span class="text-[#DB7944] text-[10px] md:text-xs font-light leading-tight block w-full truncate">Mentora de Comunicação</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="speaker-card" data-speaker="anderson">
+                                <div class="speaker-card-inner">
+                                    <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/anderson%20soares%20zoom.jpg" alt="Anderson Soares">
+                                    <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
+                                        <div class="flex flex-col items-start w-full min-w-0">
+                                            <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block w-full truncate">Anderson Soares</span>
+                                            <span class="text-[#DB7944] text-[10px] md:text-xs font-light leading-tight block w-full truncate">Especialista em IA</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="speaker-card" data-speaker="alexandre">
+                                <div class="speaker-card-inner">
+                                    <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/alexandre%20assis%20zoom.jpg" alt="Alexandre Assis">
+                                    <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
+                                        <div class="flex flex-col items-start w-full min-w-0">
+                                            <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block w-full truncate">Alexandre Assis</span>
+                                            <span class="text-[#DB7944] text-[10px] md:text-xs font-light leading-tight block w-full truncate">CEO da Assis Gestão</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="speaker-card" data-speaker="arlindo">
+                                <div class="speaker-card-inner">
+                                    <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/WhatsApp%20Image%202026-07-16%20at%2016.08.25.jpeg" alt="Arlindo Galvão">
+                                    <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
+                                        <div class="flex flex-col items-start w-full min-w-0">
+                                            <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block w-full truncate">Arlindo Galvão</span>
+                                            <span class="text-[#DB7944] text-[10px] md:text-xs font-light leading-tight block w-full truncate">Pesquisador em IA</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="speaker-card" data-speaker="arthur">
-                            <div class="speaker-card-inner">
-                                <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/arthur%20bender%20zoom.jpg" alt="Arthur Bender">
-                                <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
-                                    <div class="flex flex-col items-start w-full min-w-0">
-                                        <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block w-full truncate">Arthur Bender</span>
-                                        <span class="text-[#DB7944] text-[10px] md:text-xs font-light leading-tight block w-full truncate">Personal Branding</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="speaker-card" data-speaker="carlos">
-                            <div class="speaker-card-inner">
-                                <img src="https://static.wixstatic.com/media/52e287_aacb889c62624a468960d25332bd0853~mv2.jpg/v1/fill/w_2000,h_2000,al_c,q_90/palestrante-cdpv-carlos-busch_edited.jpg" alt="Carlos Busch">
-                                <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
-                                    <div class="flex flex-col items-start w-full min-w-0">
-                                        <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block w-full truncate">Carlos Busch</span>
-                                        <span class="text-[#DB7944] text-[10px] md:text-xs font-light leading-tight block w-full truncate">Especialista em Vendas</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="speaker-card" data-speaker="edson">
-                            <div class="speaker-card-inner">
-                                <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/edson%20castro%20zoom.jpg" alt="Edson Castro">
-                                <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
-                                    <div class="flex flex-col items-start w-full min-w-0">
-                                        <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block w-full truncate">Edson Castro</span>
-                                        <span class="text-[#DB7944] text-[10px] md:text-xs font-light leading-tight block w-full truncate">Jornalista</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="speaker-card" data-speaker="lara">
-                            <div class="speaker-card-inner">
-                                <img src="https://yt3.googleusercontent.com/vOuXjS4rhs6jyvGw8ly7kZ_s1SnH-w4L6B8VbTmiKICnLVZs-P1gbF2Ct4pMXCY4zni0Ctrpiw=s900-c-k-c0x00ffffff-no-rj" alt="Lara Brenner">
-                                <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
-                                    <div class="flex flex-col items-start w-full min-w-0">
-                                        <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block w-full truncate">Lara Brenner</span>
-                                        <span class="text-[#DB7944] text-[10px] md:text-xs font-light leading-tight block w-full truncate">Mentora de Comunicação</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="speaker-card" data-speaker="anderson">
-                            <div class="speaker-card-inner">
-                                <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/anderson%20soares%20zoom.jpg" alt="Anderson Soares">
-                                <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
-                                    <div class="flex flex-col items-start w-full min-w-0">
-                                        <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block w-full truncate">Anderson Soares</span>
-                                        <span class="text-[#DB7944] text-[10px] md:text-xs font-light leading-tight block w-full truncate">Especialista em IA</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="speaker-card" data-speaker="alexandre">
-                            <div class="speaker-card-inner">
-                                <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/alexandre%20assis%20zoom.jpg" alt="Alexandre Assis">
-                                <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
-                                    <div class="flex flex-col items-start w-full min-w-0">
-                                        <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block w-full truncate">Alexandre Assis</span>
-                                        <span class="text-[#DB7944] text-[10px] md:text-xs font-light leading-tight block w-full truncate">CEO da Assis Gestão</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="speaker-card" data-speaker="arlindo">
-                            <div class="speaker-card-inner">
-                                <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/WhatsApp%20Image%202026-07-16%20at%2016.08.25.jpeg" alt="Arlindo Galvão">
-                                <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
-                                    <div class="flex flex-col items-start w-full min-w-0">
-                                        <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block w-full truncate">Arlindo Galvão</span>
-                                        <span class="text-[#DB7944] text-[10px] md:text-xs font-light leading-tight block w-full truncate">Pesquisador em IA</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- Bloco 3 (Final do loop infinito) -->
-                    <div class="flex gap-4 md:gap-6 pr-4 md:pr-6">
-                        <div class="speaker-card" data-speaker="raul">
-                            <div class="speaker-card-inner">
-                                <img src="https://yt3.googleusercontent.com/q6bgR6BvYXgq3u9GF_MP_YrVW4myeX_ETDwgM68vUA4XkahJUCoxnFy-MnELZPd5n875FDi5Fw=s900-c-k-c0x00ffffff-no-rj" alt="Raul Sena">
-                                <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
-                                    <div class="flex flex-col items-start w-full min-w-0">
-                                        <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block w-full truncate">Raul Sena</span>
-                                        <span class="text-[#DB7944] text-[10px] md:text-xs font-light leading-tight block w-full truncate">Fundador da AUVP</span>
+                        <!-- Bloco 3 (Final do loop infinito) -->
+                        <div class="flex gap-4 md:gap-6 pr-4 md:pr-6">
+                            <div class="speaker-card" data-speaker="raul">
+                                <div class="speaker-card-inner">
+                                    <img src="https://yt3.googleusercontent.com/q6bgR6BvYXgq3u9GF_MP_YrVW4myeX_ETDwgM68vUA4XkahJUCoxnFy-MnELZPd5n875FDi5Fw=s900-c-k-c0x00ffffff-no-rj" alt="Raul Sena">
+                                    <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
+                                        <div class="flex flex-col items-start w-full min-w-0">
+                                            <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block w-full truncate">Raul Sena</span>
+                                            <span class="text-[#DB7944] text-[10px] md:text-xs font-light leading-tight block w-full truncate">Fundador da AUVP</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="speaker-card" data-speaker="arthur">
-                            <div class="speaker-card-inner">
-                                <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/arthur%20bender%20zoom.jpg" alt="Arthur Bender">
-                                <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
-                                    <div class="flex flex-col items-start w-full min-w-0">
-                                        <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block w-full truncate">Arthur Bender</span>
-                                        <span class="text-[#DB7944] text-[10px] md:text-xs font-light leading-tight block w-full truncate">Personal Branding</span>
+                            <div class="speaker-card" data-speaker="arthur">
+                                <div class="speaker-card-inner">
+                                    <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/arthur%20bender%20zoom.jpg" alt="Arthur Bender">
+                                    <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
+                                        <div class="flex flex-col items-start w-full min-w-0">
+                                            <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block w-full truncate">Arthur Bender</span>
+                                            <span class="text-[#DB7944] text-[10px] md:text-xs font-light leading-tight block w-full truncate">Personal Branding</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="speaker-card" data-speaker="carlos">
-                            <div class="speaker-card-inner">
-                                <img src="https://static.wixstatic.com/media/52e287_aacb889c62624a468960d25332bd0853~mv2.jpg/v1/fill/w_2000,h_2000,al_c,q_90/palestrante-cdpv-carlos-busch_edited.jpg" alt="Carlos Busch">
-                                <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
-                                    <div class="flex flex-col items-start w-full min-w-0">
-                                        <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block w-full truncate">Carlos Busch</span>
-                                        <span class="text-[#DB7944] text-[10px] md:text-xs font-light leading-tight block w-full truncate">Especialista em Vendas</span>
+                            <div class="speaker-card" data-speaker="carlos">
+                                <div class="speaker-card-inner">
+                                    <img src="https://static.wixstatic.com/media/52e287_aacb889c62624a468960d25332bd0853~mv2.jpg/v1/fill/w_2000,h_2000,al_c,q_90/palestrante-cdpv-carlos-busch_edited.jpg" alt="Carlos Busch">
+                                    <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
+                                        <div class="flex flex-col items-start w-full min-w-0">
+                                            <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block w-full truncate">Carlos Busch</span>
+                                            <span class="text-[#DB7944] text-[10px] md:text-xs font-light leading-tight block w-full truncate">Especialista em Vendas</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="speaker-card" data-speaker="edson">
-                            <div class="speaker-card-inner">
-                                <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/edson%20castro%20zoom.jpg" alt="Edson Castro">
-                                <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
-                                    <div class="flex flex-col items-start w-full min-w-0">
-                                        <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block w-full truncate">Edson Castro</span>
-                                        <span class="text-[#DB7944] text-[10px] md:text-xs font-light leading-tight block w-full truncate">Jornalista</span>
+                            <div class="speaker-card" data-speaker="edson">
+                                <div class="speaker-card-inner">
+                                    <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/edson%20castro%20zoom.jpg" alt="Edson Castro">
+                                    <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
+                                        <div class="flex flex-col items-start w-full min-w-0">
+                                            <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block w-full truncate">Edson Castro</span>
+                                            <span class="text-[#DB7944] text-[10px] md:text-xs font-light leading-tight block w-full truncate">Jornalista</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="speaker-card" data-speaker="lara">
-                            <div class="speaker-card-inner">
-                                <img src="https://yt3.googleusercontent.com/vOuXjS4rhs6jyvGw8ly7kZ_s1SnH-w4L6B8VbTmiKICnLVZs-P1gbF2Ct4pMXCY4zni0Ctrpiw=s900-c-k-c0x00ffffff-no-rj" alt="Lara Brenner">
-                                <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
-                                    <div class="flex flex-col items-start w-full min-w-0">
-                                        <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block w-full truncate">Lara Brenner</span>
-                                        <span class="text-[#DB7944] text-[10px] md:text-xs font-light leading-tight block w-full truncate">Mentora de Comunicação</span>
+                            <div class="speaker-card" data-speaker="lara">
+                                <div class="speaker-card-inner">
+                                    <img src="https://yt3.googleusercontent.com/vOuXjS4rhs6jyvGw8ly7kZ_s1SnH-w4L6B8VbTmiKICnLVZs-P1gbF2Ct4pMXCY4zni0Ctrpiw=s900-c-k-c0x00ffffff-no-rj" alt="Lara Brenner">
+                                    <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
+                                        <div class="flex flex-col items-start w-full min-w-0">
+                                            <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block w-full truncate">Lara Brenner</span>
+                                            <span class="text-[#DB7944] text-[10px] md:text-xs font-light leading-tight block w-full truncate">Mentora de Comunicação</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="speaker-card" data-speaker="anderson">
-                            <div class="speaker-card-inner">
-                                <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/anderson%20soares%20zoom.jpg" alt="Anderson Soares">
-                                <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
-                                    <div class="flex flex-col items-start w-full min-w-0">
-                                        <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block w-full truncate">Anderson Soares</span>
-                                        <span class="text-[#DB7944] text-[10px] md:text-xs font-light leading-tight block w-full truncate">Especialista em IA</span>
+                            <div class="speaker-card" data-speaker="anderson">
+                                <div class="speaker-card-inner">
+                                    <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/anderson%20soares%20zoom.jpg" alt="Anderson Soares">
+                                    <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
+                                        <div class="flex flex-col items-start w-full min-w-0">
+                                            <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block w-full truncate">Anderson Soares</span>
+                                            <span class="text-[#DB7944] text-[10px] md:text-xs font-light leading-tight block w-full truncate">Especialista em IA</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="speaker-card" data-speaker="alexandre">
-                            <div class="speaker-card-inner">
-                                <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/alexandre%20assis%20zoom.jpg" alt="Alexandre Assis">
-                                <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
-                                    <div class="flex flex-col items-start w-full min-w-0">
-                                        <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block w-full truncate">Alexandre Assis</span>
-                                        <span class="text-[#DB7944] text-[10px] md:text-xs font-light leading-tight block w-full truncate">CEO da Assis Gestão</span>
+                            <div class="speaker-card" data-speaker="alexandre">
+                                <div class="speaker-card-inner">
+                                    <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/alexandre%20assis%20zoom.jpg" alt="Alexandre Assis">
+                                    <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
+                                        <div class="flex flex-col items-start w-full min-w-0">
+                                            <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block w-full truncate">Alexandre Assis</span>
+                                            <span class="text-[#DB7944] text-[10px] md:text-xs font-light leading-tight block w-full truncate">CEO da Assis Gestão</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="speaker-card" data-speaker="arlindo">
-                            <div class="speaker-card-inner">
-                                <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/WhatsApp%20Image%202026-07-16%20at%2016.08.25.jpeg" alt="Arlindo Galvão">
-                                <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
-                                    <div class="flex flex-col items-start w-full min-w-0">
-                                        <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block w-full truncate">Arlindo Galvão</span>
-                                        <span class="text-[#DB7944] text-[10px] md:text-xs font-light leading-tight block w-full truncate">Pesquisador em IA</span>
+                            <div class="speaker-card" data-speaker="arlindo">
+                                <div class="speaker-card-inner">
+                                    <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/WhatsApp%20Image%202026-07-16%20at%2016.08.25.jpeg" alt="Arlindo Galvão">
+                                    <div class="absolute inset-x-0 bottom-0 p-3 pt-12 bg-gradient-to-t from-black/90 to-transparent z-10 flex items-end">
+                                        <div class="flex flex-col items-start w-full min-w-0">
+                                            <span class="text-[#FFF7EB] font-medium text-sm md:text-base leading-tight block w-full truncate">Arlindo Galvão</span>
+                                            <span class="text-[#DB7944] text-[10px] md:text-xs font-light leading-tight block w-full truncate">Pesquisador em IA</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <button id="carousel-prev" type="button" aria-label="Palestrante anterior" class="carousel-arrow carousel-arrow-prev">
+                    <i class="ph ph-caret-left"></i>
+                </button>
+                <button id="carousel-next" type="button" aria-label="Próximo palestrante" class="carousel-arrow carousel-arrow-next">
+                    <i class="ph ph-caret-right"></i>
+                </button>
             </div>
-            <button id="carousel-prev" type="button" aria-label="Palestrante anterior" class="carousel-arrow carousel-arrow-prev">
-                <i class="ph ph-caret-left"></i>
-            </button>
-            <button id="carousel-next" type="button" aria-label="Próximo palestrante" class="carousel-arrow carousel-arrow-next">
-                <i class="ph ph-caret-right"></i>
-            </button>
         </div>
 
         <!-- Programação (dropdown) -->
-        <div class="relative z-10 w-full bg-black/40 backdrop-blur-md border-t border-[#FFF7EB]/20">
+        <div class="relative z-10 w-full bg-black/40 border-t border-[#FFF7EB]/20">
             <div class="max-w-7xl mx-auto px-5 md:px-8 py-6 md:py-10">
                 <details class="group">
                     <summary class="cursor-pointer list-none flex justify-between items-center gap-4 outline-none">
