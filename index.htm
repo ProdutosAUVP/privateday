@@ -393,9 +393,19 @@
             radial-gradient(circle at 50% 110%, rgba(11, 42, 71, 0.65), transparent 60%);
     }
 
-    #auvp-lp-wrapper .disco-foto {
-        filter: blur(22px) saturate(1.3);
-        transform: scale(1.1); /* evita as bordas claras que o blur deixaria à mostra */
+    /* Fade entre as três imagens: cada uma aparece por ~5s do ciclo de 15s */
+    #auvp-lp-wrapper .disco-slide {
+        opacity: 0;
+        animation: discoTroca 15s linear infinite;
+    }
+
+    #auvp-lp-wrapper .disco-slide:nth-of-type(2) { animation-delay: -10s; }
+    #auvp-lp-wrapper .disco-slide:nth-of-type(3) { animation-delay: -5s; }
+
+    @keyframes discoTroca {
+        0%, 28% { opacity: 1; }
+        38%, 95% { opacity: 0; }
+        100% { opacity: 1; }
     }
 
     #auvp-lp-wrapper .disco-globo {
@@ -415,6 +425,9 @@
 
     @media (prefers-reduced-motion: reduce) {
         #auvp-lp-wrapper .disco-globo { animation: none; }
+        /* Sem animação, fica só a primeira imagem no lugar do fade */
+        #auvp-lp-wrapper .disco-slide { animation: none; opacity: 0; }
+        #auvp-lp-wrapper .disco-slide:first-of-type { opacity: 1; }
     }
 
     /* Compensa a navbar fixa quando o menu leva a uma seção */
@@ -879,22 +892,17 @@
     </section>
 
     <!-- Dobra da Festa - Disco Fever -->
-    <section id="festa" class="relative overflow-hidden bg-[#140B16] py-16 md:py-28">
-        <!-- Fundo: público da pista, desfocado, sob as luzes da discoteca -->
+    <section id="festa" class="relative overflow-hidden bg-[#1a1a1a] py-16 md:pt-40 md:pb-28 lg:pt-44">
+        <!-- Fundo: luzes da discoteca sobre o mesmo tom do restante da página -->
         <div class="absolute inset-0 z-0">
-            <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/festa%20pista.webp" alt="" aria-hidden="true" class="disco-foto w-full h-full object-cover opacity-30">
             <div class="absolute inset-0 disco-luzes"></div>
-            <div class="absolute inset-0 bg-gradient-to-b from-[#140B16] via-transparent to-[#140B16]"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-[#1a1a1a] via-transparent to-[#1a1a1a]"></div>
         </div>
 
-        <!-- Globos espelhados pendurados -->
+        <!-- Globo espelhado pendurado -->
         <div class="absolute top-0 left-[6%] z-[1] hidden md:flex flex-col items-center pointer-events-none select-none">
-            <div class="w-px h-16 lg:h-24 bg-gradient-to-b from-transparent to-[#FFF7EB]/40"></div>
-            <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/globo.png" alt="" aria-hidden="true" class="disco-globo w-20 lg:w-28">
-        </div>
-        <div class="absolute top-0 right-[10%] z-[1] hidden lg:flex flex-col items-center pointer-events-none select-none">
-            <div class="w-px h-10 bg-gradient-to-b from-transparent to-[#FFF7EB]/40"></div>
-            <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/globo.png" alt="" aria-hidden="true" class="disco-globo disco-globo-2 w-16">
+            <div class="w-px h-10 lg:h-14 bg-gradient-to-b from-transparent to-[#FFF7EB]/40"></div>
+            <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/globo.webp" alt="" aria-hidden="true" class="disco-globo w-20 lg:w-28">
         </div>
 
         <div class="max-w-7xl mx-auto px-5 md:px-8 relative z-10">
@@ -936,9 +944,11 @@
                 <!-- Foto da pista, emoldurada e levemente inclinada -->
                 <div class="relative mx-auto lg:mx-0 lg:justify-self-end w-full max-w-sm">
                     <div class="absolute -inset-3 bg-gradient-to-br from-[#DB7944]/30 to-[#932621]/30 rounded-3xl blur-xl"></div>
-                    <div class="relative rounded-2xl overflow-hidden border border-[#FFF7EB]/20 shadow-2xl rotate-1 hover:rotate-0 transition-transform duration-500">
-                        <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/festa%20pista.webp" alt="Público na pista da festa do AUVP Private Day" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#140B16]/70 via-transparent to-transparent"></div>
+                    <div class="relative aspect-[3/4] rounded-2xl overflow-hidden border border-[#FFF7EB]/20 shadow-2xl rotate-1 hover:rotate-0 transition-transform duration-500">
+                        <img src="https://i.pinimg.com/1200x/4f/47/f5/4f47f5aec215ec23b1dde4042b070873.jpg" alt="" aria-hidden="true" class="disco-slide absolute inset-0 w-full h-full object-cover">
+                        <img src="https://i.pinimg.com/1200x/c3/04/cb/c304cb69236936462b9ff860ebf37b84.jpg" alt="" aria-hidden="true" class="disco-slide absolute inset-0 w-full h-full object-cover">
+                        <img src="https://i.pinimg.com/736x/dc/0c/d0/dc0cd02c2d17f3cc35b2f795e8bcdea7.jpg" alt="" aria-hidden="true" class="disco-slide absolute inset-0 w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#1a1a1a]/70 via-transparent to-transparent"></div>
                     </div>
                     <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/cassete.png" alt="" aria-hidden="true" class="hidden md:block absolute -bottom-8 -left-10 w-40 lg:w-48 drop-shadow-2xl -rotate-6">
                 </div>
@@ -967,6 +977,61 @@
                     </div>
                 </div>
 
+            </div>
+        </div>
+    </section>
+
+    <!-- Dobra de Depoimentos -->
+    <section class="py-12 md:py-20 bg-[#FAEEE0]">
+        <div class="max-w-7xl mx-auto px-5 md:px-8">
+            <div class="max-w-3xl mb-10 md:mb-14">
+                <h2 class="vintage-title text-3xl md:text-5xl text-[#1a1a1a] leading-tight">
+                    Quem foi nas últimas edições, não guardou segredo. Aqui está a prova.
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                    <figure class="bg-[#FFF7EB] rounded-2xl border border-[#1a1a1a]/5 shadow-sm p-6 md:p-8 flex flex-col">
+                        <i class="ph ph-quotes text-3xl text-[#DB7944] mb-4"></i>
+                        <blockquote class="text-base md:text-lg text-[#1a1a1a]/80 font-light leading-relaxed flex-grow">
+                            “De repente, passou a valer tudo, tanto que já comprei na mesma semana o ingresso do ano seguinte, na confiança.”
+                        </blockquote>
+                        <figcaption class="mt-6 pt-5 border-t border-[#1a1a1a]/10 flex items-center gap-3">
+                            <span class="w-9 h-9 rounded-full flex items-center justify-center text-[#FFF7EB] font-medium text-sm shrink-0" style="background-color: #932621;">P</span>
+                            <span class="font-medium text-[#1a1a1a]">Pietro</span>
+                        </figcaption>
+                    </figure>
+                    <figure class="bg-[#FFF7EB] rounded-2xl border border-[#1a1a1a]/5 shadow-sm p-6 md:p-8 flex flex-col">
+                        <i class="ph ph-quotes text-3xl text-[#DB7944] mb-4"></i>
+                        <blockquote class="text-base md:text-lg text-[#1a1a1a]/80 font-light leading-relaxed flex-grow">
+                            “Na primeira vez, estava apreensivo também, mas o pessoal é todo muito receptivo. No segundo ano, já era sucesso demais.”
+                        </blockquote>
+                        <figcaption class="mt-6 pt-5 border-t border-[#1a1a1a]/10 flex items-center gap-3">
+                            <span class="w-9 h-9 rounded-full flex items-center justify-center text-[#FFF7EB] font-medium text-sm shrink-0" style="background-color: #0B2A47;">H</span>
+                            <span class="font-medium text-[#1a1a1a]">Henrique</span>
+                        </figcaption>
+                    </figure>
+                    <figure class="bg-[#FFF7EB] rounded-2xl border border-[#1a1a1a]/5 shadow-sm p-6 md:p-8 flex flex-col">
+                        <i class="ph ph-quotes text-3xl text-[#DB7944] mb-4"></i>
+                        <blockquote class="text-base md:text-lg text-[#1a1a1a]/80 font-light leading-relaxed flex-grow">
+                            “Quem ainda está na dúvida: só vai. É memória, amizade e história pra vida.”
+                        </blockquote>
+                        <figcaption class="mt-6 pt-5 border-t border-[#1a1a1a]/10 flex items-center gap-3">
+                            <span class="w-9 h-9 rounded-full flex items-center justify-center text-[#FFF7EB] font-medium text-sm shrink-0" style="background-color: #0B2A47;">T</span>
+                            <span class="font-medium text-[#1a1a1a]">Thiago</span>
+                        </figcaption>
+                    </figure>
+                    <figure class="bg-[#FFF7EB] rounded-2xl border border-[#1a1a1a]/5 shadow-sm p-6 md:p-8 flex flex-col">
+                        <i class="ph ph-quotes text-3xl text-[#DB7944] mb-4"></i>
+                        <blockquote class="text-base md:text-lg text-[#1a1a1a]/80 font-light leading-relaxed flex-grow">
+                            “O que acontece em Vegas, fica em Vegas.”
+                        </blockquote>
+                        <p class="text-xs md:text-sm text-[#1a1a1a]/50 italic mt-3">Sobre a festa, ela não quis contar mais.</p>
+                        <figcaption class="mt-6 pt-5 border-t border-[#1a1a1a]/10 flex items-center gap-3">
+                            <span class="w-9 h-9 rounded-full flex items-center justify-center text-[#FFF7EB] font-medium text-sm shrink-0" style="background-color: #932621;">V</span>
+                            <span class="font-medium text-[#1a1a1a]">Vanessa</span>
+                        </figcaption>
+                    </figure>
             </div>
         </div>
     </section>
