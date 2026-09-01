@@ -386,13 +386,6 @@
     }
 
     /* Dobra da festa: luzes coloridas, globos espelhados e foto desfocada ao fundo */
-    #auvp-lp-wrapper .disco-luzes {
-        background:
-            radial-gradient(circle at 15% 0%, rgba(219, 121, 68, 0.40), transparent 45%),
-            radial-gradient(circle at 85% 5%, rgba(147, 38, 33, 0.45), transparent 45%),
-            radial-gradient(circle at 50% 110%, rgba(11, 42, 71, 0.65), transparent 60%);
-    }
-
     /* Fade entre as três imagens: cada uma aparece por ~5s do ciclo de 15s */
     #auvp-lp-wrapper .disco-slide {
         opacity: 0;
@@ -893,15 +886,8 @@
 
     <!-- Dobra da Festa - Disco Fever -->
     <section id="festa" class="relative overflow-hidden bg-[#1a1a1a] py-16 md:pt-40 md:pb-28 lg:pt-44">
-        <!-- Fundo: luzes da discoteca sobre o mesmo tom do restante da página -->
-        <div class="absolute inset-0 z-0">
-            <div class="absolute inset-0 disco-luzes"></div>
-            <div class="absolute inset-0 bg-gradient-to-b from-[#1a1a1a] via-transparent to-[#1a1a1a]"></div>
-        </div>
-
-        <!-- Globo espelhado pendurado -->
-        <div class="absolute top-0 left-[6%] z-[1] hidden md:flex flex-col items-center pointer-events-none select-none">
-            <div class="w-px h-10 lg:h-14 bg-gradient-to-b from-transparent to-[#FFF7EB]/40"></div>
+        <!-- Globo espelhado flutuando -->
+        <div class="absolute top-12 left-[6%] z-[1] hidden md:block pointer-events-none select-none">
             <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/globo.webp" alt="" aria-hidden="true" class="disco-globo w-20 lg:w-28">
         </div>
 
@@ -925,18 +911,18 @@
                     </p>
 
                     <span class="block text-[10px] md:text-xs font-semibold tracking-[0.25em] uppercase text-[#FFF7EB]/50 mb-4">O que está incluso</span>
-                    <div class="flex flex-wrap gap-3">
-                        <div class="flex items-center gap-3 bg-[#FFF7EB]/5 border border-[#FFF7EB]/15 rounded-full px-5 py-3 backdrop-blur-sm">
-                            <i class="ph ph-martini text-2xl text-[#DB7944]"></i>
-                            <span class="text-[#FFF7EB] font-medium text-sm md:text-base whitespace-nowrap">Open bar</span>
+                    <div class="flex flex-nowrap items-center gap-2 md:gap-3">
+                        <div class="flex items-center gap-1 md:gap-2 bg-[#FFF7EB]/5 border border-[#FFF7EB]/15 rounded-full px-2.5 py-1.5 md:px-4 md:py-2">
+                            <i class="ph ph-martini text-sm md:text-lg text-[#DB7944]"></i>
+                            <span class="text-[#FFF7EB] font-medium text-[10px] md:text-sm whitespace-nowrap">Open bar</span>
                         </div>
-                        <div class="flex items-center gap-3 bg-[#FFF7EB]/5 border border-[#FFF7EB]/15 rounded-full px-5 py-3 backdrop-blur-sm">
-                            <i class="ph ph-fork-knife text-2xl text-[#DB7944]"></i>
-                            <span class="text-[#FFF7EB] font-medium text-sm md:text-base whitespace-nowrap">Open food</span>
+                        <div class="flex items-center gap-1 md:gap-2 bg-[#FFF7EB]/5 border border-[#FFF7EB]/15 rounded-full px-2.5 py-1.5 md:px-4 md:py-2">
+                            <i class="ph ph-fork-knife text-sm md:text-lg text-[#DB7944]"></i>
+                            <span class="text-[#FFF7EB] font-medium text-[10px] md:text-sm whitespace-nowrap">Open food</span>
                         </div>
-                        <div class="flex items-center gap-3 bg-[#FFF7EB]/5 border border-[#FFF7EB]/15 rounded-full px-5 py-3 backdrop-blur-sm">
-                            <i class="ph ph-t-shirt text-2xl text-[#DB7944]"></i>
-                            <span class="text-[#FFF7EB] font-medium text-sm md:text-base whitespace-nowrap">Dress code temático</span>
+                        <div class="flex items-center gap-1 md:gap-2 bg-[#FFF7EB]/5 border border-[#FFF7EB]/15 rounded-full px-2.5 py-1.5 md:px-4 md:py-2">
+                            <i class="ph ph-t-shirt text-sm md:text-lg text-[#DB7944]"></i>
+                            <span class="text-[#FFF7EB] font-medium text-[10px] md:text-sm whitespace-nowrap">Dress code temático</span>
                         </div>
                     </div>
                 </div>
@@ -984,52 +970,56 @@
     <!-- Dobra de Depoimentos -->
     <section class="py-12 md:py-20 bg-[#FAEEE0]">
         <div class="max-w-7xl mx-auto px-5 md:px-8">
-            <div class="max-w-3xl mb-10 md:mb-14">
+            <div class="max-w-3xl mb-8 md:mb-12">
                 <h2 class="vintage-title text-3xl md:text-5xl text-[#1a1a1a] leading-tight">
                     Quem foi nas últimas edições, não guardou segredo. Aqui está a prova.
                 </h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-                    <figure class="bg-[#FFF7EB] rounded-2xl border border-[#1a1a1a]/5 shadow-sm p-6 md:p-8 flex flex-col">
-                        <i class="ph ph-quotes text-3xl text-[#DB7944] mb-4"></i>
-                        <blockquote class="text-base md:text-lg text-[#1a1a1a]/80 font-light leading-relaxed flex-grow">
+            <!-- Lado a lado no desktop; vira slide arrastável nas telas menores.
+                 As fotos são de bancos de imagem, para trocar pelas reais quando houver. -->
+            <div class="flex gap-4 md:gap-6 overflow-x-auto snap-x snap-mandatory pb-2 -mx-5 px-5 md:-mx-8 md:px-8 lg:mx-0 lg:px-0 lg:grid lg:grid-cols-4 lg:overflow-visible">
+                    <figure class="snap-start shrink-0 w-[80%] sm:w-[46%] lg:w-auto bg-[#FFF7EB] rounded-2xl border border-[#1a1a1a]/5 shadow-sm p-5 md:p-6 flex flex-col">
+                        <i class="ph ph-quotes text-2xl text-[#DB7944] mb-3"></i>
+                        <blockquote class="text-sm md:text-base text-[#1a1a1a]/80 font-light leading-relaxed flex-grow">
                             “De repente, passou a valer tudo, tanto que já comprei na mesma semana o ingresso do ano seguinte, na confiança.”
                         </blockquote>
-                        <figcaption class="mt-6 pt-5 border-t border-[#1a1a1a]/10 flex items-center gap-3">
-                            <span class="w-9 h-9 rounded-full flex items-center justify-center text-[#FFF7EB] font-medium text-sm shrink-0" style="background-color: #932621;">P</span>
-                            <span class="font-medium text-[#1a1a1a]">Pietro</span>
+                        <figcaption class="mt-5 pt-4 border-t border-[#1a1a1a]/10 flex items-center gap-3">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="" aria-hidden="true" class="w-10 h-10 rounded-full object-cover shrink-0">
+                            <span class="font-medium text-[#1a1a1a] text-sm md:text-base">Pietro</span>
                         </figcaption>
                     </figure>
-                    <figure class="bg-[#FFF7EB] rounded-2xl border border-[#1a1a1a]/5 shadow-sm p-6 md:p-8 flex flex-col">
-                        <i class="ph ph-quotes text-3xl text-[#DB7944] mb-4"></i>
-                        <blockquote class="text-base md:text-lg text-[#1a1a1a]/80 font-light leading-relaxed flex-grow">
+                    <figure class="snap-start shrink-0 w-[80%] sm:w-[46%] lg:w-auto bg-[#FFF7EB] rounded-2xl border border-[#1a1a1a]/5 shadow-sm p-5 md:p-6 flex flex-col">
+                        <i class="ph ph-quotes text-2xl text-[#DB7944] mb-3"></i>
+                        <blockquote class="text-sm md:text-base text-[#1a1a1a]/80 font-light leading-relaxed flex-grow">
                             “Na primeira vez, estava apreensivo também, mas o pessoal é todo muito receptivo. No segundo ano, já era sucesso demais.”
                         </blockquote>
-                        <figcaption class="mt-6 pt-5 border-t border-[#1a1a1a]/10 flex items-center gap-3">
-                            <span class="w-9 h-9 rounded-full flex items-center justify-center text-[#FFF7EB] font-medium text-sm shrink-0" style="background-color: #0B2A47;">H</span>
-                            <span class="font-medium text-[#1a1a1a]">Henrique</span>
+                        <figcaption class="mt-5 pt-4 border-t border-[#1a1a1a]/10 flex items-center gap-3">
+                            <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="" aria-hidden="true" class="w-10 h-10 rounded-full object-cover shrink-0">
+                            <span class="font-medium text-[#1a1a1a] text-sm md:text-base">Henrique</span>
                         </figcaption>
                     </figure>
-                    <figure class="bg-[#FFF7EB] rounded-2xl border border-[#1a1a1a]/5 shadow-sm p-6 md:p-8 flex flex-col">
-                        <i class="ph ph-quotes text-3xl text-[#DB7944] mb-4"></i>
-                        <blockquote class="text-base md:text-lg text-[#1a1a1a]/80 font-light leading-relaxed flex-grow">
+                    <figure class="snap-start shrink-0 w-[80%] sm:w-[46%] lg:w-auto bg-[#FFF7EB] rounded-2xl border border-[#1a1a1a]/5 shadow-sm p-5 md:p-6 flex flex-col">
+                        <i class="ph ph-quotes text-2xl text-[#DB7944] mb-3"></i>
+                        <blockquote class="text-sm md:text-base text-[#1a1a1a]/80 font-light leading-relaxed flex-grow">
                             “Quem ainda está na dúvida: só vai. É memória, amizade e história pra vida.”
                         </blockquote>
-                        <figcaption class="mt-6 pt-5 border-t border-[#1a1a1a]/10 flex items-center gap-3">
-                            <span class="w-9 h-9 rounded-full flex items-center justify-center text-[#FFF7EB] font-medium text-sm shrink-0" style="background-color: #0B2A47;">T</span>
-                            <span class="font-medium text-[#1a1a1a]">Thiago</span>
+                        <figcaption class="mt-5 pt-4 border-t border-[#1a1a1a]/10 flex items-center gap-3">
+                            <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="" aria-hidden="true" class="w-10 h-10 rounded-full object-cover shrink-0">
+                            <span class="font-medium text-[#1a1a1a] text-sm md:text-base">Thiago</span>
                         </figcaption>
                     </figure>
-                    <figure class="bg-[#FFF7EB] rounded-2xl border border-[#1a1a1a]/5 shadow-sm p-6 md:p-8 flex flex-col">
-                        <i class="ph ph-quotes text-3xl text-[#DB7944] mb-4"></i>
-                        <blockquote class="text-base md:text-lg text-[#1a1a1a]/80 font-light leading-relaxed flex-grow">
-                            “O que acontece em Vegas, fica em Vegas.”
-                        </blockquote>
-                        <p class="text-xs md:text-sm text-[#1a1a1a]/50 italic mt-3">Sobre a festa, ela não quis contar mais.</p>
-                        <figcaption class="mt-6 pt-5 border-t border-[#1a1a1a]/10 flex items-center gap-3">
-                            <span class="w-9 h-9 rounded-full flex items-center justify-center text-[#FFF7EB] font-medium text-sm shrink-0" style="background-color: #932621;">V</span>
-                            <span class="font-medium text-[#1a1a1a]">Vanessa</span>
+                    <figure class="snap-start shrink-0 w-[80%] sm:w-[46%] lg:w-auto bg-[#FFF7EB] rounded-2xl border border-[#1a1a1a]/5 shadow-sm p-5 md:p-6 flex flex-col">
+                        <i class="ph ph-quotes text-2xl text-[#DB7944] mb-3"></i>
+                        <div class="flex-grow">
+                            <blockquote class="text-sm md:text-base text-[#1a1a1a]/80 font-light leading-relaxed">
+                                “O que acontece em Vegas, fica em Vegas.”
+                            </blockquote>
+                            <p class="text-xs text-[#1a1a1a]/50 italic mt-2">Sobre a festa, ela não quis contar mais.</p>
+                        </div>
+                        <figcaption class="mt-5 pt-4 border-t border-[#1a1a1a]/10 flex items-center gap-3">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="" aria-hidden="true" class="w-10 h-10 rounded-full object-cover shrink-0">
+                            <span class="font-medium text-[#1a1a1a] text-sm md:text-base">Vanessa</span>
                         </figcaption>
                     </figure>
             </div>
@@ -1055,9 +1045,11 @@
                         <h3 class="text-2xl md:text-4xl text-[#FFF7EB] font-medium mb-4 leading-snug">
                             Vai ficar de fora do evento mais aguardado do ano?
                         </h3>
-                        <p class="text-sm md:text-lg text-[#FFF7EB]/80 leading-relaxed font-light">
-                            Os ingressos são limitados por conta de restrições de espaço físico, tanto nas palestras quanto na festa.<br class="hidden lg:block"> 
-                            <span class="text-[#FFF7EB] font-medium">Não deixe para comprar depois, pois pode ser tarde demais. Não haverá segunda chamada.</span>
+                        <p class="text-sm md:text-lg text-[#FFF7EB]/80 leading-relaxed font-light mb-4">
+                            As vagas são limitadas por restrição de espaço físico — tanto nas palestras quanto na festa. Isso não é copy de vendas: é o motivo real pelo qual, ano após ano, tem gente que decide tarde demais e simplesmente não consegue mais entrar.
+                        </p>
+                        <p class="text-sm md:text-lg text-[#FFF7EB] font-medium leading-relaxed">
+                            Não existe segunda chamada.
                         </p>
                     </div>
 
@@ -1087,7 +1079,46 @@
                     </div>
                 </div>
 
-                <!-- Ingresso 2 - Só Festa (Azul) -->
+                <!-- Ingresso 2 - Só Palestras (Laranja) -->
+                <div class="bg-[#a6460f] border border-transparent rounded-2xl flex flex-col md:flex-row relative shadow-[0_15px_40px_-15px_rgba(166,70,15,0.4)] overflow-hidden">
+
+                    <div class="p-8 md:p-14 flex-1 flex flex-col justify-center relative">
+                        <h3 class="text-2xl md:text-4xl text-[#FFF7EB] font-medium mb-4 leading-snug">
+                            Só as palestras já são o suficiente?
+                        </h3>
+                        <p class="text-sm md:text-lg text-[#FFF7EB]/80 leading-relaxed font-light">
+                            Adquira o ingresso dos dois dias de conteúdo, sem a festa.
+                        </p>
+                    </div>
+
+                    <!-- Linha Tracejada e Recortes -->
+                    <div class="relative w-full h-px md:w-px md:h-auto flex-none flex items-center justify-center">
+                        <div class="absolute inset-x-6 top-0 md:inset-y-6 md:left-0 border-t-2 md:border-t-0 md:border-l-2 border-dashed border-[#FFF7EB]/30"></div>
+                        <div class="absolute -left-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-[#FFF7EB] md:hidden z-10"></div>
+                        <div class="absolute -right-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-[#FFF7EB] md:hidden z-10"></div>
+                        <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-[#FFF7EB] hidden md:block z-10"></div>
+                        <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-[#FFF7EB] hidden md:block z-10"></div>
+                    </div>
+
+                    <div class="p-8 md:p-14 w-full md:w-[35%] flex flex-col justify-center items-center text-center relative bg-[#a6460f]">
+                        <h4 class="vintage-title text-3xl md:text-5xl text-[#FFF7EB] mb-2">Só palestras</h4>
+                        <span class="inline-flex items-center gap-1.5 text-[10px] md:text-xs font-medium tracking-widest uppercase bg-[#FFF7EB]/15 text-[#FFF7EB]/80 px-3 py-1 rounded-full mb-3">
+                            <i class="ph ph-lock-simple text-sm"></i>1º Lote encerrado
+                        </span>
+                        <div class="mb-4 md:mb-6">
+                            <p class="text-[10px] md:text-xs font-medium tracking-widest uppercase text-[#FFF7EB] mb-1.5">2º Lote · valor atual</p>
+                            <p class="text-2xl md:text-4xl font-bold text-[#FFF7EB] tracking-tight leading-none">R$ 1.197,00</p>
+                            <p class="text-[11px] md:text-xs text-[#FFF7EB]/60 leading-snug mt-2">O valor sobe a cada lote. Garanta o seu agora.</p>
+                        </div>
+
+                        <!-- ATENÇÃO: confirmar a URL de checkout deste ingresso; o slug abaixo segue o padrão dos outros dois -->
+                        <a href="https://privateday.auvpag.com.br/pay/private-day-2026-palestras?utm_source=lp&utm_campaign=private-day&utm_medium=lp&utm_term=%7B%7Bdate%7D%7D&utm_content=normal" target="_blank" class="elementor-btn-protect inline-flex items-center justify-center px-6 py-3.5 font-medium rounded-none transition-all duration-300 ease-in-out cursor-pointer bg-[#FFF7EB] text-[#a6460f] border border-[#FFF7EB] hover:bg-transparent hover:text-[#FFF7EB] w-full tracking-wide text-base text-center">
+                            Garantir meu ingresso
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Ingresso 3 - Só Festa (Azul) -->
                 <div class="bg-[#0B2A47] border border-transparent rounded-2xl flex flex-col md:flex-row relative shadow-[0_15px_40px_-15px_rgba(11,42,71,0.4)] overflow-hidden">
                     
                     <div class="p-8 md:p-14 flex-1 flex flex-col justify-center relative">
@@ -1125,6 +1156,39 @@
                         </a>
                     </div>
                 </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Dobra do Giro da Bolsa -->
+    <section class="py-12 md:py-20 bg-[#1a1a1a]">
+        <div class="max-w-7xl mx-auto px-5 md:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+
+                <div class="text-left">
+                    <h2 class="vintage-title text-3xl md:text-5xl text-[#FFF7EB] leading-tight mb-6">
+                        Então, vamos lá?
+                    </h2>
+                    <p class="text-base md:text-lg text-[#FFF7EB]/80 font-light leading-relaxed mb-4">
+                        Você vai assistir, ao vivo e sem cortes, à gravação do Giro da Bolsa: o programa semanal que alcança milhares de pessoas no canal do Investidor Sardinha.
+                    </p>
+                    <p class="text-base md:text-lg text-[#FFF7EB] font-medium leading-relaxed">
+                        Aperte o play e sinta a emoção da última gravação com platéia.
+                    </p>
+                </div>
+
+                <!-- ATENÇÃO: trocar por um <iframe> do YouTube assim que houver o link da gravação.
+                     Enquanto isso, o bloco abre o canal em vez de mostrar um player quebrado. -->
+                <a href="https://www.youtube.com/@investidorsardinha" target="_blank" class="group block relative aspect-video w-full rounded-2xl overflow-hidden border border-[#FFF7EB]/15 shadow-lg bg-black">
+                    <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/baguncinha%201.webp" alt="Gravação do Giro da Bolsa com plateia" class="w-full h-full object-cover opacity-60 transition-opacity duration-300 group-hover:opacity-80">
+                    <span class="absolute inset-0 flex flex-col items-center justify-center gap-3">
+                        <span class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#932621] text-[#FFF7EB] flex items-center justify-center shadow-2xl transition-transform duration-300 group-hover:scale-110">
+                            <i class="ph ph-play text-3xl md:text-4xl"></i>
+                        </span>
+                        <span class="text-[#FFF7EB] font-medium text-sm md:text-base drop-shadow-lg">Assistir à última gravação</span>
+                    </span>
+                </a>
 
             </div>
         </div>
@@ -1713,7 +1777,9 @@
             /* Cliques nos botões de compra (checkout Guru) */
             document.querySelectorAll('a[href*="auvpag.com.br/pay/"]').forEach(function (link) {
                 link.addEventListener('click', function () {
-                    var ingresso = link.href.indexOf('evento-completo') > -1 ? 'evento_completo' : 'so_festa';
+                    var ingresso = link.href.indexOf('evento-completo') > -1 ? 'evento_completo'
+                        : link.href.indexOf('palestras') > -1 ? 'so_palestras'
+                        : 'so_festa';
                     tag('ingresso_escolhido', ingresso);
                     event('checkout_' + ingresso);
                     /* Prioriza a gravação: sessão com intenção de compra é a mais relevante */
