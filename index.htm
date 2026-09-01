@@ -384,6 +384,19 @@
     html {
         scroll-behavior: smooth;
     }
+
+    /* Compensa a navbar fixa quando o menu leva a uma seção */
+    #auvp-lp-wrapper section[id],
+    #auvp-lp-wrapper #festa {
+        scroll-margin-top: 80px;
+    }
+
+    @media (min-width: 768px) {
+        #auvp-lp-wrapper section[id],
+        #auvp-lp-wrapper #festa {
+            scroll-margin-top: 110px;
+        }
+    }
 </style>
 
 <!-- WRAPPER PRINCIPAL PARA O ELEMENTOR -->
@@ -400,11 +413,34 @@
                 </a>
             </div>
             
-            <div class="hidden md:flex items-center">
+            <div class="hidden md:flex items-center gap-4 lg:gap-6">
                 <div class="flex items-center space-x-3 lg:space-x-4">
-                    <a href="#ingressos" class="nav-link font-medium transition-colors text-[#FFF7EB] hover:text-[#DB7944] relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[1px] after:bg-[#DB7944] after:transition-all after:duration-300 hover:after:w-full lowercase">garanta seu ingresso</a>
-                    <span id="nav-separator" class="text-[#FFF7EB]/50 font-light font-sans transition-colors duration-300">|</span>
-                    <a href="#faq" class="nav-link font-medium transition-colors text-[#FFF7EB] hover:text-[#DB7944] relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[1px] after:bg-[#DB7944] after:transition-all after:duration-300 hover:after:w-full lowercase">dúvidas frequentes</a>
+                    <a href="#experiencia" class="nav-link font-medium transition-colors text-[#FFF7EB] hover:text-[#DB7944] relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[1px] after:bg-[#DB7944] after:transition-all after:duration-300 hover:after:w-full lowercase">sobre</a>
+                    <span class="nav-separator text-[#FFF7EB]/50 font-light font-sans transition-colors duration-300">|</span>
+                    <a href="#palestrantes" class="nav-link font-medium transition-colors text-[#FFF7EB] hover:text-[#DB7944] relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[1px] after:bg-[#DB7944] after:transition-all after:duration-300 hover:after:w-full lowercase">palestrantes</a>
+                    <span class="nav-separator text-[#FFF7EB]/50 font-light font-sans transition-colors duration-300">|</span>
+                    <a href="#festa" class="nav-link font-medium transition-colors text-[#FFF7EB] hover:text-[#DB7944] relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[1px] after:bg-[#DB7944] after:transition-all after:duration-300 hover:after:w-full lowercase">festa</a>
+                    <span class="nav-separator text-[#FFF7EB]/50 font-light font-sans transition-colors duration-300">|</span>
+                    <a href="#ingressos" class="nav-link font-medium transition-colors text-[#FFF7EB] hover:text-[#DB7944] relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[1px] after:bg-[#DB7944] after:transition-all after:duration-300 hover:after:w-full lowercase">ingressos</a>
+                </div>
+
+                <!-- CTA do header: abre as duas opções de ingresso e vai direto para o checkout -->
+                <div class="relative">
+                    <button id="ticket-menu-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="ticket-menu" class="elementor-btn-protect inline-flex items-center gap-2 px-5 py-2.5 font-medium rounded-none transition-all duration-300 ease-in-out cursor-pointer text-[#FFF7EB] bg-gradient-to-r from-[#0B2A47] to-[#932621] hover:-translate-y-0.5 hover:shadow-lg tracking-wide text-sm whitespace-nowrap">
+                        Garantir meu ingresso
+                        <i class="ph ph-caret-down text-base transition-transform duration-300"></i>
+                    </button>
+
+                    <div id="ticket-menu" class="hidden absolute right-0 top-full mt-3 w-72 bg-[#FFF7EB] rounded-lg shadow-2xl border border-[#1a1a1a]/10 overflow-hidden">
+                        <a href="https://privateday.auvpag.com.br/pay/private-day-2026-evento-completo?utm_source=lp&utm_campaign=private-day&utm_medium=lp&utm_term=%7B%7Bdate%7D%7D&utm_content=header" target="_blank" class="block px-5 py-4 transition-colors hover:bg-[#1a1a1a]/5 border-b border-[#1a1a1a]/10">
+                            <span class="block font-medium text-[#1a1a1a]">Evento todo</span>
+                            <span class="block text-xs text-[#1a1a1a]/60 mt-0.5">Dois dias de conteúdo + festa · R$ 1.897,00</span>
+                        </a>
+                        <a href="https://privateday.auvpag.com.br/pay/private-day-2026-festa?utm_source=lp&utm_campaign=private-day&utm_medium=lp&utm_term=%7B%7Bdate%7D%7D&utm_content=header" target="_blank" class="block px-5 py-4 transition-colors hover:bg-[#1a1a1a]/5">
+                            <span class="block font-medium text-[#1a1a1a]">Só festa</span>
+                            <span class="block text-xs text-[#1a1a1a]/60 mt-0.5">Apenas a noite de festa · R$ 997,00</span>
+                        </a>
+                    </div>
                 </div>
             </div>
 
@@ -414,8 +450,19 @@
         </div>
 
         <div id="mobile-menu" class="hidden md:hidden bg-[#FFF7EB] shadow-2xl absolute top-full left-0 w-full flex flex-col border-t border-[#DB7944]/20 z-10 transition-all duration-300 origin-top">
-            <a href="#ingressos" class="px-5 py-4 text-[#1a1a1a] font-medium border-b border-[#1a1a1a]/10 hover:bg-[#1a1a1a]/5 hover:text-[#DB7944] lowercase">garanta seu ingresso</a>
-            <a href="#faq" class="px-5 py-4 text-[#1a1a1a] font-medium hover:bg-[#1a1a1a]/5 hover:text-[#DB7944] lowercase">dúvidas frequentes</a>
+            <a href="#experiencia" class="px-5 py-4 text-[#1a1a1a] font-medium border-b border-[#1a1a1a]/10 hover:bg-[#1a1a1a]/5 hover:text-[#DB7944] lowercase">sobre</a>
+            <a href="#palestrantes" class="px-5 py-4 text-[#1a1a1a] font-medium border-b border-[#1a1a1a]/10 hover:bg-[#1a1a1a]/5 hover:text-[#DB7944] lowercase">palestrantes</a>
+            <a href="#festa" class="px-5 py-4 text-[#1a1a1a] font-medium border-b border-[#1a1a1a]/10 hover:bg-[#1a1a1a]/5 hover:text-[#DB7944] lowercase">festa</a>
+            <a href="#ingressos" class="px-5 py-4 text-[#1a1a1a] font-medium border-b border-[#1a1a1a]/10 hover:bg-[#1a1a1a]/5 hover:text-[#DB7944] lowercase">ingressos</a>
+            <span class="px-5 pt-4 pb-2 text-[10px] font-semibold tracking-[0.2em] uppercase text-[#1a1a1a]/50 border-t border-[#1a1a1a]/10">Garantir meu ingresso</span>
+            <a href="https://privateday.auvpag.com.br/pay/private-day-2026-evento-completo?utm_source=lp&utm_campaign=private-day&utm_medium=lp&utm_term=%7B%7Bdate%7D%7D&utm_content=header" target="_blank" class="flex items-baseline justify-between gap-3 px-5 py-3 hover:bg-[#1a1a1a]/5">
+                <span class="text-[#1a1a1a] font-medium">Evento todo</span>
+                <span class="text-xs text-[#1a1a1a]/60">R$ 1.897,00</span>
+            </a>
+            <a href="https://privateday.auvpag.com.br/pay/private-day-2026-festa?utm_source=lp&utm_campaign=private-day&utm_medium=lp&utm_term=%7B%7Bdate%7D%7D&utm_content=header" target="_blank" class="flex items-baseline justify-between gap-3 px-5 py-3 hover:bg-[#1a1a1a]/5 pb-4">
+                <span class="text-[#1a1a1a] font-medium">Só festa</span>
+                <span class="text-xs text-[#1a1a1a]/60">R$ 997,00</span>
+            </a>
         </div>
     </nav>
 
@@ -438,7 +485,7 @@
                 </h1>
                 
                 <p class="text-base md:text-xl text-[#FFF7EB]/90 mb-6 font-light max-w-2xl leading-relaxed drop-shadow-sm">
-                    Participe do evento mais aguardado da comunidade AUVP. Serão dois dias de conteúdo com grandes nomes do mercado e uma noite de muita festa pra quem quer entender e discutir como o jogo funciona.
+                    Participe do evento mais aguardado da comunidade AUVP. Serão dois dias de conteúdo e uma noite de muita festa para quem quer conhecer e discutir com quem sabe como o jogo funciona.
                 </p>
 
                 <p class="text-base md:text-xl text-[#FFF7EB] font-bold mb-10 drop-shadow-lg flex items-center gap-3">
@@ -450,6 +497,8 @@
                         Quero garantir meu ingresso
                     </a>
                 </div>
+
+                <p class="text-sm md:text-base text-[#FFF7EB]/50 mt-3 font-light">Vagas limitadas*</p>
             </div>
         </div>
     </section>
@@ -477,7 +526,7 @@
                 </div>
 
                 <!-- Card Pista -->
-                <div class="bg-[#0B2A47] rounded-2xl shadow-lg p-8 md:p-14 flex flex-col justify-center min-h-[300px] md:min-h-[400px]">
+                <div id="festa" class="bg-[#0B2A47] rounded-2xl shadow-lg p-8 md:p-14 flex flex-col justify-center min-h-[300px] md:min-h-[400px]">
                     <h3 class="vintage-title text-3xl md:text-5xl text-[#FFF7EB] mb-4 md:mb-6">Na pista</h3>
                     <p class="text-sm md:text-lg text-[#FFF7EB] mb-4 md:mb-6 leading-relaxed font-light">
                         Open bar, gastronomia de alto padrão, música boa e o ambiente certo para curtir a noite com toda a comunidade da AUVP.
@@ -1155,7 +1204,7 @@
         const navLinks = document.querySelectorAll('.nav-link');
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-        const navSeparator = document.getElementById('nav-separator');
+        const navSeparators = document.querySelectorAll('.nav-separator');
 
         if(!nav || !mobileMenuBtn) return;
 
@@ -1185,12 +1234,43 @@
             });
         });
 
+        // Menu de ingressos do header: leva direto ao checkout de cada opção
+        const ticketMenuBtn = document.getElementById('ticket-menu-btn');
+        const ticketMenu = document.getElementById('ticket-menu');
+
+        if (ticketMenuBtn && ticketMenu) {
+            const ticketCaret = ticketMenuBtn.querySelector('i');
+
+            const setTicketMenu = (aberto) => {
+                ticketMenu.classList.toggle('hidden', !aberto);
+                ticketMenuBtn.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+                if (ticketCaret) ticketCaret.classList.toggle('rotate-180', aberto);
+            };
+
+            ticketMenuBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                setTicketMenu(ticketMenu.classList.contains('hidden'));
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!ticketMenu.contains(e.target) && !ticketMenuBtn.contains(e.target)) setTicketMenu(false);
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') setTicketMenu(false);
+            });
+
+            ticketMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => setTicketMenu(false));
+            });
+        }
+
         function updateNavbar() {
             if (isMobileMenuOpen) return;
 
             if (window.scrollY > 50) {
                 nav.className = "fixed w-full z-50 transition-all duration-300 bg-[#FFF7EB]/95 backdrop-blur-md shadow-sm py-2 md:py-4 border-b border-[#1a1a1a]/5";
-                if(navSeparator) navSeparator.className = "text-[#1a1a1a]/30 font-light font-sans transition-colors duration-300";
+                navSeparators.forEach(sep => { sep.className = "nav-separator text-[#1a1a1a]/30 font-light font-sans transition-colors duration-300"; });
                 
                 navLinks.forEach(link => {
                     link.classList.remove('text-[#FFF7EB]');
@@ -1200,7 +1280,7 @@
                 mobileMenuBtn.className = "ph ph-list text-3xl text-[#1a1a1a] cursor-pointer p-2 hover:text-[#DB7944]";
             } else {
                 nav.className = "fixed w-full z-50 transition-all duration-300 bg-transparent py-4 md:py-5 border-b border-transparent";
-                if(navSeparator) navSeparator.className = "text-[#FFF7EB]/50 font-light font-sans transition-colors duration-300";
+                navSeparators.forEach(sep => { sep.className = "nav-separator text-[#FFF7EB]/50 font-light font-sans transition-colors duration-300"; });
 
                 navLinks.forEach(link => {
                     link.classList.remove('text-[#1a1a1a]/80');
