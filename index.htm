@@ -250,13 +250,15 @@
     /* SLIDES DE PALESTRANTES                                                     */
     /* -------------------------------------------------------------------------- */
     
-    #auvp-lp-wrapper .speaker-slide {
+    #auvp-lp-wrapper .speaker-slide,
+    #auvp-lp-wrapper .speaker-text {
         opacity: 0;
         visibility: hidden;
         transition: opacity 0.7s ease;
     }
 
-    #auvp-lp-wrapper .speaker-slide.is-active {
+    #auvp-lp-wrapper .speaker-slide.is-active,
+    #auvp-lp-wrapper .speaker-text.is-active {
         opacity: 1;
         visibility: visible;
     }
@@ -276,7 +278,8 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-        #auvp-lp-wrapper .speaker-slide { transition: none; }
+        #auvp-lp-wrapper .speaker-slide,
+        #auvp-lp-wrapper .speaker-text { transition: none; }
     }
 
     html {
@@ -475,286 +478,195 @@
 
     <!-- Terceira Dobra - Palestrantes (slides) -->
     <section id="palestrantes" class="relative overflow-hidden bg-[#1a1a1a]">
-        <div id="speakers-slider" class="relative">
+        <div id="speakers-slider" class="relative h-[560px] md:h-[560px] lg:h-[600px]">
 
-            <div class="relative h-[520px] md:h-[560px]">
-            <article class="speaker-slide is-active absolute inset-0" data-slide="0">
-                <div class="absolute inset-0 z-0">
-                    <img src="https://raw.githubusercontent.com/eriadesign/privateday/main/palestras%202.webp" alt="Palestrantes AUVP Private Day" class="w-full h-full object-cover mobile-bg-50 md:object-center">
-                    <div class="absolute inset-0 bg-gradient-to-r from-[#1a1a1a] via-[#1a1a1a]/85 to-[#1a1a1a]/35"></div>
+            <!-- Fotos -->
+            <div class="absolute inset-0 z-0">
+                <div class="speaker-slide is-active absolute inset-0" data-slide="0">
+                    <img src="https://raw.githubusercontent.com/eriadesign/privateday/main/palestras%202.webp" alt="Palestrantes AUVP Private Day" class="w-full h-full object-cover object-center">
+                    <div class="absolute inset-0 bg-gradient-to-b from-[#1a1a1a]/85 via-[#1a1a1a]/70 to-[#1a1a1a]/90 lg:bg-gradient-to-r lg:from-[#1a1a1a]/10 lg:via-[#1a1a1a]/55 lg:to-[#1a1a1a]"></div>
                 </div>
-                <div class="relative z-10 h-full max-w-7xl mx-auto px-5 md:px-8 flex items-center">
-                    <div class="max-w-[540px] text-left">
-                        <h2 class="vintage-title text-4xl md:text-5xl lg:text-6xl text-[#FFF7EB] leading-tight mb-6 drop-shadow-xl">
-                            Quem sobe no palco<br/>em 2026?
-                        </h2>
-                        <p class="text-base md:text-xl text-[#FFF7EB] font-light leading-relaxed drop-shadow-lg">
-                            Serão dois dias de conteúdo com Raul Sena e grandes nomes do mercado, discutindo o cenário macroeconômico e tudo o que está acontecendo de mais relevante no mundo.
-                        </p>
-                    </div>
+                <div class="speaker-slide absolute inset-0" data-slide="1">
+                    <img src="https://yt3.googleusercontent.com/q6bgR6BvYXgq3u9GF_MP_YrVW4myeX_ETDwgM68vUA4XkahJUCoxnFy-MnELZPd5n875FDi5Fw=s900-c-k-c0x00ffffff-no-rj" alt="Raul Sena" class="w-full h-full object-cover object-[35%_15%] lg:object-[30%_15%]">
+                    <div class="absolute inset-0 bg-gradient-to-b from-[#1a1a1a]/85 via-[#1a1a1a]/70 to-[#1a1a1a]/90 lg:bg-gradient-to-r lg:from-[#1a1a1a]/10 lg:via-[#1a1a1a]/55 lg:to-[#1a1a1a]"></div>
                 </div>
-            </article>
-            <article class="speaker-slide absolute inset-0" data-slide="1" data-speaker="raul" aria-hidden="true">
-                <div class="absolute inset-0 z-0">
-                    <img src="https://yt3.googleusercontent.com/q6bgR6BvYXgq3u9GF_MP_YrVW4myeX_ETDwgM68vUA4XkahJUCoxnFy-MnELZPd5n875FDi5Fw=s900-c-k-c0x00ffffff-no-rj" alt="" aria-hidden="true" class="w-full h-full object-cover object-top opacity-20">
-                    <div class="absolute inset-0 bg-gradient-to-r from-[#1a1a1a] via-[#1a1a1a]/90 to-[#1a1a1a]/55"></div>
+                <div class="speaker-slide absolute inset-0" data-slide="2">
+                    <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/arthur%20bender%20zoom.jpg" alt="Arthur Bender" class="w-full h-full object-cover object-[35%_15%] lg:object-[30%_15%]">
+                    <div class="absolute inset-0 bg-gradient-to-b from-[#1a1a1a]/85 via-[#1a1a1a]/70 to-[#1a1a1a]/90 lg:bg-gradient-to-r lg:from-[#1a1a1a]/10 lg:via-[#1a1a1a]/55 lg:to-[#1a1a1a]"></div>
                 </div>
-                <div class="relative z-10 h-full max-w-7xl mx-auto px-5 md:px-8 flex items-center">
-                    <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_300px] gap-8 lg:gap-16 items-center w-full">
-                        <div class="max-w-[560px] text-left">
-                            <span class="inline-block text-[10px] md:text-xs font-semibold tracking-[0.25em] uppercase text-[#DB7944] mb-4">No palco</span>
-                            <h3 class="vintage-title text-3xl md:text-5xl text-[#FFF7EB] leading-tight mb-2">Raul Sena</h3>
-                            <p class="text-sm md:text-base text-[#DB7944] font-medium mb-5">CEO da AUVP Capital</p>
-                        <div class="border-l-2 border-[#DB7944]/60 pl-3 mb-5">
-                            <span class="block text-[10px] uppercase tracking-[0.2em] text-[#FFF7EB]/50 mb-1">Palestra</span>
-                            <span class="block text-sm md:text-base text-[#FFF7EB] font-medium leading-snug">Em breve</span>
-                        </div>
-                            <p class="text-sm md:text-lg text-[#FFF7EB]/75 font-light leading-relaxed">Criador do canal Investidor Sardinha, fundador e CEO da AUVP Capital, a consultoria top 1 do ranking do BTG Pactual.</p>
-                        </div>
-                        <div class="hidden lg:block">
-                            <img src="https://yt3.googleusercontent.com/q6bgR6BvYXgq3u9GF_MP_YrVW4myeX_ETDwgM68vUA4XkahJUCoxnFy-MnELZPd5n875FDi5Fw=s900-c-k-c0x00ffffff-no-rj" alt="Raul Sena" class="w-full aspect-[3/4] object-cover object-top rounded-2xl border border-[#FFF7EB]/15 shadow-2xl">
-                        </div>
-                    </div>
+                <div class="speaker-slide absolute inset-0" data-slide="3">
+                    <img src="https://static.wixstatic.com/media/52e287_aacb889c62624a468960d25332bd0853~mv2.jpg/v1/fill/w_2000,h_2000,al_c,q_90/palestrante-cdpv-carlos-busch_edited.jpg" alt="Carlos Busch" class="w-full h-full object-cover object-[35%_15%] lg:object-[30%_15%]">
+                    <div class="absolute inset-0 bg-gradient-to-b from-[#1a1a1a]/85 via-[#1a1a1a]/70 to-[#1a1a1a]/90 lg:bg-gradient-to-r lg:from-[#1a1a1a]/10 lg:via-[#1a1a1a]/55 lg:to-[#1a1a1a]"></div>
                 </div>
-            </article>
-            <article class="speaker-slide absolute inset-0" data-slide="2" data-speaker="arthur" aria-hidden="true">
-                <div class="absolute inset-0 z-0">
-                    <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/arthur%20bender%20zoom.jpg" alt="" aria-hidden="true" class="w-full h-full object-cover object-top opacity-20">
-                    <div class="absolute inset-0 bg-gradient-to-r from-[#1a1a1a] via-[#1a1a1a]/90 to-[#1a1a1a]/55"></div>
+                <div class="speaker-slide absolute inset-0" data-slide="4">
+                    <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/20260320_Edson_Castro_0062.jpg" alt="Edson Castro" class="w-full h-full object-cover object-[35%_15%] lg:object-[30%_15%]">
+                    <div class="absolute inset-0 bg-gradient-to-b from-[#1a1a1a]/85 via-[#1a1a1a]/70 to-[#1a1a1a]/90 lg:bg-gradient-to-r lg:from-[#1a1a1a]/10 lg:via-[#1a1a1a]/55 lg:to-[#1a1a1a]"></div>
                 </div>
-                <div class="relative z-10 h-full max-w-7xl mx-auto px-5 md:px-8 flex items-center">
-                    <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_300px] gap-8 lg:gap-16 items-center w-full">
-                        <div class="max-w-[560px] text-left">
-                            <span class="inline-block text-[10px] md:text-xs font-semibold tracking-[0.25em] uppercase text-[#DB7944] mb-4">No palco</span>
-                            <h3 class="vintage-title text-3xl md:text-5xl text-[#FFF7EB] leading-tight mb-2">Arthur Bender</h3>
-                            <p class="text-sm md:text-base text-[#DB7944] font-medium mb-5">Criador do conceito de Personal Branding</p>
-                        <div class="border-l-2 border-[#DB7944]/60 pl-3 mb-5">
-                            <span class="block text-[10px] uppercase tracking-[0.2em] text-[#FFF7EB]/50 mb-1">Palestra</span>
-                            <span class="block text-sm md:text-base text-[#FFF7EB] font-medium leading-snug">Personal Branding e Carreira: construindo sua marca pessoal</span>
-                        </div>
-                            <p class="text-sm md:text-lg text-[#FFF7EB]/75 font-light leading-relaxed">Consultor de posicionamento de marcas e empresas, autor de 3 best-sellers.</p>
-                        </div>
-                        <div class="hidden lg:block">
-                            <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/arthur%20bender%20zoom.jpg" alt="Arthur Bender" class="w-full aspect-[3/4] object-cover object-top rounded-2xl border border-[#FFF7EB]/15 shadow-2xl">
-                        </div>
-                    </div>
+                <div class="speaker-slide absolute inset-0" data-slide="5">
+                    <img src="https://yt3.googleusercontent.com/vOuXjS4rhs6jyvGw8ly7kZ_s1SnH-w4L6B8VbTmiKICnLVZs-P1gbF2Ct4pMXCY4zni0Ctrpiw=s900-c-k-c0x00ffffff-no-rj" alt="Lara Brenner" class="w-full h-full object-cover object-[35%_15%] lg:object-[30%_15%]">
+                    <div class="absolute inset-0 bg-gradient-to-b from-[#1a1a1a]/85 via-[#1a1a1a]/70 to-[#1a1a1a]/90 lg:bg-gradient-to-r lg:from-[#1a1a1a]/10 lg:via-[#1a1a1a]/55 lg:to-[#1a1a1a]"></div>
                 </div>
-            </article>
-            <article class="speaker-slide absolute inset-0" data-slide="3" data-speaker="carlos" aria-hidden="true">
-                <div class="absolute inset-0 z-0">
-                    <img src="https://static.wixstatic.com/media/52e287_aacb889c62624a468960d25332bd0853~mv2.jpg/v1/fill/w_2000,h_2000,al_c,q_90/palestrante-cdpv-carlos-busch_edited.jpg" alt="" aria-hidden="true" class="w-full h-full object-cover object-top opacity-20">
-                    <div class="absolute inset-0 bg-gradient-to-r from-[#1a1a1a] via-[#1a1a1a]/90 to-[#1a1a1a]/55"></div>
+                <div class="speaker-slide absolute inset-0" data-slide="6">
+                    <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/anderson%20soares%20retrato.jpg" alt="Anderson Soares" class="w-full h-full object-cover object-[35%_15%] lg:object-[30%_15%]">
+                    <div class="absolute inset-0 bg-gradient-to-b from-[#1a1a1a]/85 via-[#1a1a1a]/70 to-[#1a1a1a]/90 lg:bg-gradient-to-r lg:from-[#1a1a1a]/10 lg:via-[#1a1a1a]/55 lg:to-[#1a1a1a]"></div>
                 </div>
-                <div class="relative z-10 h-full max-w-7xl mx-auto px-5 md:px-8 flex items-center">
-                    <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_300px] gap-8 lg:gap-16 items-center w-full">
-                        <div class="max-w-[560px] text-left">
-                            <span class="inline-block text-[10px] md:text-xs font-semibold tracking-[0.25em] uppercase text-[#DB7944] mb-4">No palco</span>
-                            <h3 class="vintage-title text-3xl md:text-5xl text-[#FFF7EB] leading-tight mb-2">Carlos Busch</h3>
-                            <p class="text-sm md:text-base text-[#DB7944] font-medium mb-5">Fundador da BCORP</p>
-                        <div class="border-l-2 border-[#DB7944]/60 pl-3 mb-5">
-                            <span class="block text-[10px] uppercase tracking-[0.2em] text-[#FFF7EB]/50 mb-1">Palestra</span>
-                            <span class="block text-sm md:text-base text-[#FFF7EB] font-medium leading-snug">Diferenciação e coerência em um mercado que nunca para</span>
-                        </div>
-                            <p class="text-sm md:text-lg text-[#FFF7EB]/75 font-light leading-relaxed">Referência em vendas e diferenciação na América Latina, com mais de 10 especializações em universidades de ponta ao redor do mundo.</p>
-                        </div>
-                        <div class="hidden lg:block">
-                            <img src="https://static.wixstatic.com/media/52e287_aacb889c62624a468960d25332bd0853~mv2.jpg/v1/fill/w_2000,h_2000,al_c,q_90/palestrante-cdpv-carlos-busch_edited.jpg" alt="Carlos Busch" class="w-full aspect-[3/4] object-cover object-top rounded-2xl border border-[#FFF7EB]/15 shadow-2xl">
-                        </div>
-                    </div>
+                <div class="speaker-slide absolute inset-0" data-slide="7">
+                    <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/WhatsApp%20Image%202026-07-21%20at%2017.54.08.jpeg" alt="Alexandre Assis" class="w-full h-full object-cover object-[35%_15%] lg:object-[30%_15%]">
+                    <div class="absolute inset-0 bg-gradient-to-b from-[#1a1a1a]/85 via-[#1a1a1a]/70 to-[#1a1a1a]/90 lg:bg-gradient-to-r lg:from-[#1a1a1a]/10 lg:via-[#1a1a1a]/55 lg:to-[#1a1a1a]"></div>
                 </div>
-            </article>
-            <article class="speaker-slide absolute inset-0" data-slide="4" data-speaker="edson" aria-hidden="true">
-                <div class="absolute inset-0 z-0">
-                    <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/20260320_Edson_Castro_0062.jpg" alt="" aria-hidden="true" class="w-full h-full object-cover object-top opacity-20">
-                    <div class="absolute inset-0 bg-gradient-to-r from-[#1a1a1a] via-[#1a1a1a]/90 to-[#1a1a1a]/55"></div>
+                <div class="speaker-slide absolute inset-0" data-slide="8">
+                    <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/arlindo%20galvao%20retrato.jpg" alt="Arlindo Galvão" class="w-full h-full object-cover object-[35%_15%] lg:object-[30%_15%]">
+                    <div class="absolute inset-0 bg-gradient-to-b from-[#1a1a1a]/85 via-[#1a1a1a]/70 to-[#1a1a1a]/90 lg:bg-gradient-to-r lg:from-[#1a1a1a]/10 lg:via-[#1a1a1a]/55 lg:to-[#1a1a1a]"></div>
                 </div>
-                <div class="relative z-10 h-full max-w-7xl mx-auto px-5 md:px-8 flex items-center">
-                    <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_300px] gap-8 lg:gap-16 items-center w-full">
-                        <div class="max-w-[560px] text-left">
-                            <span class="inline-block text-[10px] md:text-xs font-semibold tracking-[0.25em] uppercase text-[#DB7944] mb-4">No palco</span>
-                            <h3 class="vintage-title text-3xl md:text-5xl text-[#FFF7EB] leading-tight mb-2">Edson Castro</h3>
-                            <p class="text-sm md:text-base text-[#DB7944] font-medium mb-5">Jornalista e TEDx Speaker</p>
-                        <div class="border-l-2 border-[#DB7944]/60 pl-3 mb-5">
-                            <span class="block text-[10px] uppercase tracking-[0.2em] text-[#FFF7EB]/50 mb-1">Palestra</span>
-                            <span class="block text-sm md:text-base text-[#FFF7EB] font-medium leading-snug">Gerações: as regras do jogo estão mudando?</span>
+            </div>
+
+            <!-- Texto e navegação, à direita da foto -->
+            <div class="relative z-10 h-full max-w-7xl mx-auto px-5 md:px-8 flex items-center lg:justify-end">
+                <div class="w-full lg:w-[48%] pb-16 lg:pb-0">
+
+                    <div class="relative h-[260px] md:h-[280px]">
+                    <div class="speaker-text is-active absolute inset-x-0 top-0" data-slide="0">
+                            <h2 class="vintage-title text-3xl md:text-4xl lg:text-5xl text-[#FFF7EB] leading-tight mb-4">
+                                Quem sobe no palco em 2026?
+                            </h2>
+                            <p class="text-sm md:text-lg text-[#FFF7EB]/80 font-light leading-relaxed">
+                                Serão dois dias de conteúdo com Raul Sena e grandes nomes do mercado, discutindo o cenário macroeconômico e tudo o que está acontecendo de mais relevante no mundo.
+                            </p>
                         </div>
-                            <p class="text-sm md:text-lg text-[#FFF7EB]/75 font-light leading-relaxed">Criador do Manual do Homem Moderno e host do podcast Edson Castro Show, onde discute carreira, dinheiro, psicologia e relacionamentos.</p>
+                    <div class="speaker-text absolute inset-x-0 top-0" data-slide="1" data-speaker="raul" aria-hidden="true">
+                            <span class="block text-[10px] md:text-xs font-semibold tracking-[0.25em] uppercase text-[#DB7944] mb-3">No palco</span>
+                            <h3 class="vintage-title text-3xl md:text-4xl lg:text-5xl text-[#FFF7EB] leading-tight mb-2">Raul Sena</h3>
+                            <p class="text-xs md:text-sm text-[#DB7944] font-medium mb-4">CEO da AUVP Capital</p>
+                            <p class="text-sm md:text-base text-[#FFF7EB] font-medium leading-snug mb-3">“Em breve”</p>
+                            <p class="text-sm md:text-base text-[#FFF7EB]/70 font-light leading-relaxed">Criador do canal Investidor Sardinha, fundador e CEO da AUVP Capital, a consultoria top 1 do ranking do BTG Pactual.</p>
                         </div>
-                        <div class="hidden lg:block">
-                            <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/20260320_Edson_Castro_0062.jpg" alt="Edson Castro" class="w-full aspect-[3/4] object-cover object-top rounded-2xl border border-[#FFF7EB]/15 shadow-2xl">
+                    <div class="speaker-text absolute inset-x-0 top-0" data-slide="2" data-speaker="arthur" aria-hidden="true">
+                            <span class="block text-[10px] md:text-xs font-semibold tracking-[0.25em] uppercase text-[#DB7944] mb-3">No palco</span>
+                            <h3 class="vintage-title text-3xl md:text-4xl lg:text-5xl text-[#FFF7EB] leading-tight mb-2">Arthur Bender</h3>
+                            <p class="text-xs md:text-sm text-[#DB7944] font-medium mb-4">Criador do conceito de Personal Branding</p>
+                            <p class="text-sm md:text-base text-[#FFF7EB] font-medium leading-snug mb-3">“Personal Branding e Carreira: construindo sua marca pessoal”</p>
+                            <p class="text-sm md:text-base text-[#FFF7EB]/70 font-light leading-relaxed">Consultor de posicionamento de marcas e empresas, autor de 3 best-sellers.</p>
                         </div>
-                    </div>
-                </div>
-            </article>
-            <article class="speaker-slide absolute inset-0" data-slide="5" data-speaker="lara" aria-hidden="true">
-                <div class="absolute inset-0 z-0">
-                    <img src="https://yt3.googleusercontent.com/vOuXjS4rhs6jyvGw8ly7kZ_s1SnH-w4L6B8VbTmiKICnLVZs-P1gbF2Ct4pMXCY4zni0Ctrpiw=s900-c-k-c0x00ffffff-no-rj" alt="" aria-hidden="true" class="w-full h-full object-cover object-top opacity-20">
-                    <div class="absolute inset-0 bg-gradient-to-r from-[#1a1a1a] via-[#1a1a1a]/90 to-[#1a1a1a]/55"></div>
-                </div>
-                <div class="relative z-10 h-full max-w-7xl mx-auto px-5 md:px-8 flex items-center">
-                    <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_300px] gap-8 lg:gap-16 items-center w-full">
-                        <div class="max-w-[560px] text-left">
-                            <span class="inline-block text-[10px] md:text-xs font-semibold tracking-[0.25em] uppercase text-[#DB7944] mb-4">No palco</span>
-                            <h3 class="vintage-title text-3xl md:text-5xl text-[#FFF7EB] leading-tight mb-2">Lara Brenner</h3>
-                            <p class="text-sm md:text-base text-[#DB7944] font-medium mb-5">Mentora em Comunicação</p>
-                        <div class="border-l-2 border-[#DB7944]/60 pl-3 mb-5">
-                            <span class="block text-[10px] uppercase tracking-[0.2em] text-[#FFF7EB]/50 mb-1">Palestra</span>
-                            <span class="block text-sm md:text-base text-[#FFF7EB] font-medium leading-snug">Autoeducação em tempos de distração</span>
+                    <div class="speaker-text absolute inset-x-0 top-0" data-slide="3" data-speaker="carlos" aria-hidden="true">
+                            <span class="block text-[10px] md:text-xs font-semibold tracking-[0.25em] uppercase text-[#DB7944] mb-3">No palco</span>
+                            <h3 class="vintage-title text-3xl md:text-4xl lg:text-5xl text-[#FFF7EB] leading-tight mb-2">Carlos Busch</h3>
+                            <p class="text-xs md:text-sm text-[#DB7944] font-medium mb-4">Fundador da BCORP</p>
+                            <p class="text-sm md:text-base text-[#FFF7EB] font-medium leading-snug mb-3">“Diferenciação e coerência em um mercado que nunca para”</p>
+                            <p class="text-sm md:text-base text-[#FFF7EB]/70 font-light leading-relaxed">Referência em vendas e diferenciação na América Latina, com mais de 10 especializações em universidades de ponta ao redor do mundo.</p>
                         </div>
-                            <p class="text-sm md:text-lg text-[#FFF7EB]/75 font-light leading-relaxed">Advogada, fundadora do Expressando Direito e do Texto Irresistível, além da mentoria Comunicação Irresistível.</p>
+                    <div class="speaker-text absolute inset-x-0 top-0" data-slide="4" data-speaker="edson" aria-hidden="true">
+                            <span class="block text-[10px] md:text-xs font-semibold tracking-[0.25em] uppercase text-[#DB7944] mb-3">No palco</span>
+                            <h3 class="vintage-title text-3xl md:text-4xl lg:text-5xl text-[#FFF7EB] leading-tight mb-2">Edson Castro</h3>
+                            <p class="text-xs md:text-sm text-[#DB7944] font-medium mb-4">Jornalista e TEDx Speaker</p>
+                            <p class="text-sm md:text-base text-[#FFF7EB] font-medium leading-snug mb-3">“Gerações: as regras do jogo estão mudando?”</p>
+                            <p class="text-sm md:text-base text-[#FFF7EB]/70 font-light leading-relaxed">Criador do Manual do Homem Moderno e host do podcast Edson Castro Show, onde discute carreira, dinheiro, psicologia e relacionamentos.</p>
                         </div>
-                        <div class="hidden lg:block">
-                            <img src="https://yt3.googleusercontent.com/vOuXjS4rhs6jyvGw8ly7kZ_s1SnH-w4L6B8VbTmiKICnLVZs-P1gbF2Ct4pMXCY4zni0Ctrpiw=s900-c-k-c0x00ffffff-no-rj" alt="Lara Brenner" class="w-full aspect-[3/4] object-cover object-top rounded-2xl border border-[#FFF7EB]/15 shadow-2xl">
+                    <div class="speaker-text absolute inset-x-0 top-0" data-slide="5" data-speaker="lara" aria-hidden="true">
+                            <span class="block text-[10px] md:text-xs font-semibold tracking-[0.25em] uppercase text-[#DB7944] mb-3">No palco</span>
+                            <h3 class="vintage-title text-3xl md:text-4xl lg:text-5xl text-[#FFF7EB] leading-tight mb-2">Lara Brenner</h3>
+                            <p class="text-xs md:text-sm text-[#DB7944] font-medium mb-4">Mentora em Comunicação</p>
+                            <p class="text-sm md:text-base text-[#FFF7EB] font-medium leading-snug mb-3">“Autoeducação em tempos de distração”</p>
+                            <p class="text-sm md:text-base text-[#FFF7EB]/70 font-light leading-relaxed">Advogada, fundadora do Expressando Direito e do Texto Irresistível, além da mentoria Comunicação Irresistível.</p>
+                        </div>
+                    <div class="speaker-text absolute inset-x-0 top-0" data-slide="6" data-speaker="anderson" aria-hidden="true">
+                            <span class="block text-[10px] md:text-xs font-semibold tracking-[0.25em] uppercase text-[#DB7944] mb-3">No palco</span>
+                            <h3 class="vintage-title text-3xl md:text-4xl lg:text-5xl text-[#FFF7EB] leading-tight mb-2">Anderson Soares</h3>
+                            <p class="text-xs md:text-sm text-[#DB7944] font-medium mb-4">Representante brasileiro no GPAI</p>
+                            <p class="text-sm md:text-base text-[#FFF7EB] font-medium leading-snug mb-3">“Painel: Inteligência Artificial e a nova realidade”</p>
+                            <p class="text-sm md:text-base text-[#FFF7EB]/70 font-light leading-relaxed">Coordenador científico do Centro de Excelência em Inteligência Artificial (CEIA) e do Bacharelado em IA da UFG.</p>
+                        </div>
+                    <div class="speaker-text absolute inset-x-0 top-0" data-slide="7" data-speaker="alexandre" aria-hidden="true">
+                            <span class="block text-[10px] md:text-xs font-semibold tracking-[0.25em] uppercase text-[#DB7944] mb-3">No palco</span>
+                            <h3 class="vintage-title text-3xl md:text-4xl lg:text-5xl text-[#FFF7EB] leading-tight mb-2">Alexandre Assis</h3>
+                            <p class="text-xs md:text-sm text-[#DB7944] font-medium mb-4">CEO da Assis Gestão</p>
+                            <p class="text-sm md:text-base text-[#FFF7EB]/70 font-light leading-relaxed">Mentor e consultor de compliance, governança e gestão, além de sócio fundador do Fundo de Investimento Ouro 103 (FIDC).</p>
+                        </div>
+                    <div class="speaker-text absolute inset-x-0 top-0" data-slide="8" data-speaker="arlindo" aria-hidden="true">
+                            <span class="block text-[10px] md:text-xs font-semibold tracking-[0.25em] uppercase text-[#DB7944] mb-3">No palco</span>
+                            <h3 class="vintage-title text-3xl md:text-4xl lg:text-5xl text-[#FFF7EB] leading-tight mb-2">Arlindo Galvão</h3>
+                            <p class="text-xs md:text-sm text-[#DB7944] font-medium mb-4">Head de Internacionalização do CEIA</p>
+                            <p class="text-sm md:text-base text-[#FFF7EB] font-medium leading-snug mb-3">“Painel: Inteligência Artificial e a nova realidade”</p>
+                            <p class="text-sm md:text-base text-[#FFF7EB]/70 font-light leading-relaxed">Doutor em Ciências da Computação pela UFG, professor e CEO do AKCIT.</p>
                         </div>
                     </div>
-                </div>
-            </article>
-            <article class="speaker-slide absolute inset-0" data-slide="6" data-speaker="anderson" aria-hidden="true">
-                <div class="absolute inset-0 z-0">
-                    <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/anderson%20soares%20retrato.jpg" alt="" aria-hidden="true" class="w-full h-full object-cover object-top opacity-20">
-                    <div class="absolute inset-0 bg-gradient-to-r from-[#1a1a1a] via-[#1a1a1a]/90 to-[#1a1a1a]/55"></div>
-                </div>
-                <div class="relative z-10 h-full max-w-7xl mx-auto px-5 md:px-8 flex items-center">
-                    <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_300px] gap-8 lg:gap-16 items-center w-full">
-                        <div class="max-w-[560px] text-left">
-                            <span class="inline-block text-[10px] md:text-xs font-semibold tracking-[0.25em] uppercase text-[#DB7944] mb-4">No palco</span>
-                            <h3 class="vintage-title text-3xl md:text-5xl text-[#FFF7EB] leading-tight mb-2">Anderson Soares</h3>
-                            <p class="text-sm md:text-base text-[#DB7944] font-medium mb-5">Representante brasileiro no GPAI</p>
-                        <div class="border-l-2 border-[#DB7944]/60 pl-3 mb-5">
-                            <span class="block text-[10px] uppercase tracking-[0.2em] text-[#FFF7EB]/50 mb-1">Palestra</span>
-                            <span class="block text-sm md:text-base text-[#FFF7EB] font-medium leading-snug">Painel: Inteligência Artificial e a nova realidade</span>
-                        </div>
-                            <p class="text-sm md:text-lg text-[#FFF7EB]/75 font-light leading-relaxed">Coordenador científico do Centro de Excelência em Inteligência Artificial (CEIA) e do Bacharelado em IA da UFG.</p>
-                        </div>
-                        <div class="hidden lg:block">
-                            <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/anderson%20soares%20retrato.jpg" alt="Anderson Soares" class="w-full aspect-[3/4] object-cover object-top rounded-2xl border border-[#FFF7EB]/15 shadow-2xl">
-                        </div>
+
+                    <div class="flex items-start gap-2.5 md:gap-4 overflow-x-auto pt-1">
+                        <button type="button" class="speaker-thumb is-active flex flex-col items-center gap-1 shrink-0" data-target="0" aria-label="Voltar para a abertura">
+                            <span class="thumb-ring block w-9 h-9 md:w-10 md:h-10 rounded-full overflow-hidden border-2 border-[#DB7944] transition-all duration-300">
+                                <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/globo.webp" alt="" aria-hidden="true" class="w-full h-full object-cover">
+                            </span>
+                            <span class="thumb-nome text-[9px] md:text-[10px] text-[#FFF7EB] whitespace-nowrap transition-colors">Início</span>
+                        </button>
+                        <button type="button" class="speaker-thumb flex flex-col items-center gap-1 shrink-0" data-target="1" data-speaker="raul" aria-label="Ver Raul Sena">
+                            <span class="thumb-ring block w-9 h-9 md:w-10 md:h-10 rounded-full overflow-hidden border-2 border-transparent transition-all duration-300">
+                                <img src="https://yt3.googleusercontent.com/q6bgR6BvYXgq3u9GF_MP_YrVW4myeX_ETDwgM68vUA4XkahJUCoxnFy-MnELZPd5n875FDi5Fw=s900-c-k-c0x00ffffff-no-rj" alt="" aria-hidden="true" class="w-full h-full object-cover">
+                            </span>
+                            <span class="thumb-nome text-[9px] md:text-[10px] text-[#FFF7EB]/50 whitespace-nowrap transition-colors">Raul</span>
+                        </button>
+                        <button type="button" class="speaker-thumb flex flex-col items-center gap-1 shrink-0" data-target="2" data-speaker="arthur" aria-label="Ver Arthur Bender">
+                            <span class="thumb-ring block w-9 h-9 md:w-10 md:h-10 rounded-full overflow-hidden border-2 border-transparent transition-all duration-300">
+                                <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/arthur%20bender%20zoom.jpg" alt="" aria-hidden="true" class="w-full h-full object-cover">
+                            </span>
+                            <span class="thumb-nome text-[9px] md:text-[10px] text-[#FFF7EB]/50 whitespace-nowrap transition-colors">Arthur</span>
+                        </button>
+                        <button type="button" class="speaker-thumb flex flex-col items-center gap-1 shrink-0" data-target="3" data-speaker="carlos" aria-label="Ver Carlos Busch">
+                            <span class="thumb-ring block w-9 h-9 md:w-10 md:h-10 rounded-full overflow-hidden border-2 border-transparent transition-all duration-300">
+                                <img src="https://static.wixstatic.com/media/52e287_aacb889c62624a468960d25332bd0853~mv2.jpg/v1/fill/w_2000,h_2000,al_c,q_90/palestrante-cdpv-carlos-busch_edited.jpg" alt="" aria-hidden="true" class="w-full h-full object-cover">
+                            </span>
+                            <span class="thumb-nome text-[9px] md:text-[10px] text-[#FFF7EB]/50 whitespace-nowrap transition-colors">Carlos</span>
+                        </button>
+                        <button type="button" class="speaker-thumb flex flex-col items-center gap-1 shrink-0" data-target="4" data-speaker="edson" aria-label="Ver Edson Castro">
+                            <span class="thumb-ring block w-9 h-9 md:w-10 md:h-10 rounded-full overflow-hidden border-2 border-transparent transition-all duration-300">
+                                <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/edson%20castro%20zoom.jpg" alt="" aria-hidden="true" class="w-full h-full object-cover">
+                            </span>
+                            <span class="thumb-nome text-[9px] md:text-[10px] text-[#FFF7EB]/50 whitespace-nowrap transition-colors">Edson</span>
+                        </button>
+                        <button type="button" class="speaker-thumb flex flex-col items-center gap-1 shrink-0" data-target="5" data-speaker="lara" aria-label="Ver Lara Brenner">
+                            <span class="thumb-ring block w-9 h-9 md:w-10 md:h-10 rounded-full overflow-hidden border-2 border-transparent transition-all duration-300">
+                                <img src="https://yt3.googleusercontent.com/vOuXjS4rhs6jyvGw8ly7kZ_s1SnH-w4L6B8VbTmiKICnLVZs-P1gbF2Ct4pMXCY4zni0Ctrpiw=s900-c-k-c0x00ffffff-no-rj" alt="" aria-hidden="true" class="w-full h-full object-cover">
+                            </span>
+                            <span class="thumb-nome text-[9px] md:text-[10px] text-[#FFF7EB]/50 whitespace-nowrap transition-colors">Lara</span>
+                        </button>
+                        <button type="button" class="speaker-thumb flex flex-col items-center gap-1 shrink-0" data-target="6" data-speaker="anderson" aria-label="Ver Anderson Soares">
+                            <span class="thumb-ring block w-9 h-9 md:w-10 md:h-10 rounded-full overflow-hidden border-2 border-transparent transition-all duration-300">
+                                <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/anderson%20soares%20zoom.jpg" alt="" aria-hidden="true" class="w-full h-full object-cover">
+                            </span>
+                            <span class="thumb-nome text-[9px] md:text-[10px] text-[#FFF7EB]/50 whitespace-nowrap transition-colors">Anderson</span>
+                        </button>
+                        <button type="button" class="speaker-thumb flex flex-col items-center gap-1 shrink-0" data-target="7" data-speaker="alexandre" aria-label="Ver Alexandre Assis">
+                            <span class="thumb-ring block w-9 h-9 md:w-10 md:h-10 rounded-full overflow-hidden border-2 border-transparent transition-all duration-300">
+                                <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/alexandre%20assis%20zoom.jpg" alt="" aria-hidden="true" class="w-full h-full object-cover">
+                            </span>
+                            <span class="thumb-nome text-[9px] md:text-[10px] text-[#FFF7EB]/50 whitespace-nowrap transition-colors">Alexandre</span>
+                        </button>
+                        <button type="button" class="speaker-thumb flex flex-col items-center gap-1 shrink-0" data-target="8" data-speaker="arlindo" aria-label="Ver Arlindo Galvão">
+                            <span class="thumb-ring block w-9 h-9 md:w-10 md:h-10 rounded-full overflow-hidden border-2 border-transparent transition-all duration-300">
+                                <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/WhatsApp%20Image%202026-07-16%20at%2016.08.25.jpeg" alt="" aria-hidden="true" class="w-full h-full object-cover">
+                            </span>
+                            <span class="thumb-nome text-[9px] md:text-[10px] text-[#FFF7EB]/50 whitespace-nowrap transition-colors">Arlindo</span>
+                        </button>
                     </div>
                 </div>
-            </article>
-            <article class="speaker-slide absolute inset-0" data-slide="7" data-speaker="alexandre" aria-hidden="true">
-                <div class="absolute inset-0 z-0">
-                    <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/WhatsApp%20Image%202026-07-21%20at%2017.54.08.jpeg" alt="" aria-hidden="true" class="w-full h-full object-cover object-top opacity-20">
-                    <div class="absolute inset-0 bg-gradient-to-r from-[#1a1a1a] via-[#1a1a1a]/90 to-[#1a1a1a]/55"></div>
-                </div>
-                <div class="relative z-10 h-full max-w-7xl mx-auto px-5 md:px-8 flex items-center">
-                    <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_300px] gap-8 lg:gap-16 items-center w-full">
-                        <div class="max-w-[560px] text-left">
-                            <span class="inline-block text-[10px] md:text-xs font-semibold tracking-[0.25em] uppercase text-[#DB7944] mb-4">No palco</span>
-                            <h3 class="vintage-title text-3xl md:text-5xl text-[#FFF7EB] leading-tight mb-2">Alexandre Assis</h3>
-                            <p class="text-sm md:text-base text-[#DB7944] font-medium mb-5">CEO da Assis Gestão</p>
-                            <p class="text-sm md:text-lg text-[#FFF7EB]/75 font-light leading-relaxed">Mentor e consultor de compliance, governança e gestão, além de sócio fundador do Fundo de Investimento Ouro 103 (FIDC).</p>
-                        </div>
-                        <div class="hidden lg:block">
-                            <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/WhatsApp%20Image%202026-07-21%20at%2017.54.08.jpeg" alt="Alexandre Assis" class="w-full aspect-[3/4] object-cover object-top rounded-2xl border border-[#FFF7EB]/15 shadow-2xl">
-                        </div>
-                    </div>
-                </div>
-            </article>
-            <article class="speaker-slide absolute inset-0" data-slide="8" data-speaker="arlindo" aria-hidden="true">
-                <div class="absolute inset-0 z-0">
-                    <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/arlindo%20galvao%20retrato.jpg" alt="" aria-hidden="true" class="w-full h-full object-cover object-top opacity-20">
-                    <div class="absolute inset-0 bg-gradient-to-r from-[#1a1a1a] via-[#1a1a1a]/90 to-[#1a1a1a]/55"></div>
-                </div>
-                <div class="relative z-10 h-full max-w-7xl mx-auto px-5 md:px-8 flex items-center">
-                    <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_300px] gap-8 lg:gap-16 items-center w-full">
-                        <div class="max-w-[560px] text-left">
-                            <span class="inline-block text-[10px] md:text-xs font-semibold tracking-[0.25em] uppercase text-[#DB7944] mb-4">No palco</span>
-                            <h3 class="vintage-title text-3xl md:text-5xl text-[#FFF7EB] leading-tight mb-2">Arlindo Galvão</h3>
-                            <p class="text-sm md:text-base text-[#DB7944] font-medium mb-5">Head de Internacionalização do CEIA</p>
-                        <div class="border-l-2 border-[#DB7944]/60 pl-3 mb-5">
-                            <span class="block text-[10px] uppercase tracking-[0.2em] text-[#FFF7EB]/50 mb-1">Palestra</span>
-                            <span class="block text-sm md:text-base text-[#FFF7EB] font-medium leading-snug">Painel: Inteligência Artificial e a nova realidade</span>
-                        </div>
-                            <p class="text-sm md:text-lg text-[#FFF7EB]/75 font-light leading-relaxed">Doutor em Ciências da Computação pela UFG, professor e CEO do AKCIT.</p>
-                        </div>
-                        <div class="hidden lg:block">
-                            <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/arlindo%20galvao%20retrato.jpg" alt="Arlindo Galvão" class="w-full aspect-[3/4] object-cover object-top rounded-2xl border border-[#FFF7EB]/15 shadow-2xl">
-                        </div>
-                    </div>
-                </div>
-            </article>
+            </div>
+
+            <!-- Controles discretos sobre a foto -->
+            <div class="absolute bottom-5 left-4 md:left-6 z-20 flex items-center gap-2 md:gap-3">
+                <button id="speakers-prev" type="button" aria-label="Palestrante anterior" class="w-8 h-8 md:w-9 md:h-9 rounded-full bg-[#1a1a1a]/40 border border-[#FFF7EB]/20 text-[#FFF7EB]/70 flex items-center justify-center hover:bg-[#1a1a1a]/70 hover:text-[#FFF7EB] transition-colors cursor-pointer backdrop-blur-sm">
+                    <i class="ph ph-caret-left text-base"></i>
+                </button>
+                <button id="speakers-toggle" type="button" aria-label="Pausar apresentação" class="w-8 h-8 md:w-9 md:h-9 rounded-full bg-[#1a1a1a]/40 border border-[#FFF7EB]/20 text-[#FFF7EB]/70 flex items-center justify-center hover:bg-[#1a1a1a]/70 hover:text-[#FFF7EB] transition-colors cursor-pointer backdrop-blur-sm">
+                    <i class="ph ph-pause text-base"></i>
+                </button>
+                <button id="speakers-next" type="button" aria-label="Próximo palestrante" class="w-8 h-8 md:w-9 md:h-9 rounded-full bg-[#1a1a1a]/40 border border-[#FFF7EB]/20 text-[#FFF7EB]/70 flex items-center justify-center hover:bg-[#1a1a1a]/70 hover:text-[#FFF7EB] transition-colors cursor-pointer backdrop-blur-sm">
+                    <i class="ph ph-caret-right text-base"></i>
+                </button>
+                <span class="text-xs text-[#FFF7EB]/40 font-medium tabular-nums ml-1">
+                    <span id="speakers-counter" class="text-[#FFF7EB]/90">01</span> / 09
+                </span>
             </div>
 
             <div class="absolute bottom-0 inset-x-0 h-[3px] bg-[#FFF7EB]/10 z-20">
                 <div id="speakers-progress" class="h-full w-0 bg-[#DB7944]"></div>
-            </div>
-        </div>
-
-        <!-- Miniaturas e controles -->
-        <div class="relative z-10 w-full bg-black/30 backdrop-blur-md border-t border-[#FFF7EB]/20">
-            <div class="max-w-7xl mx-auto px-5 md:px-8 py-4 md:py-6 flex items-center gap-4 md:gap-6">
-                <div class="flex items-center gap-2 md:gap-3 shrink-0">
-                    <button id="speakers-prev" type="button" aria-label="Palestrante anterior" class="w-9 h-9 md:w-10 md:h-10 rounded-full border border-[#FFF7EB]/30 text-[#FFF7EB] flex items-center justify-center hover:border-[#DB7944] hover:text-[#DB7944] transition-colors cursor-pointer shrink-0 hidden sm:flex">
-                        <i class="ph ph-caret-left text-lg"></i>
-                    </button>
-                    <button id="speakers-toggle" type="button" aria-label="Pausar apresentação" class="w-9 h-9 md:w-10 md:h-10 rounded-full border border-[#FFF7EB]/30 text-[#FFF7EB] flex items-center justify-center hover:border-[#DB7944] hover:text-[#DB7944] transition-colors cursor-pointer shrink-0">
-                        <i class="ph ph-pause text-lg"></i>
-                    </button>
-                    <button id="speakers-next" type="button" aria-label="Próximo palestrante" class="w-9 h-9 md:w-10 md:h-10 rounded-full border border-[#FFF7EB]/30 text-[#FFF7EB] flex items-center justify-center hover:border-[#DB7944] hover:text-[#DB7944] transition-colors cursor-pointer shrink-0 hidden sm:flex">
-                        <i class="ph ph-caret-right text-lg"></i>
-                    </button>
-                    <span class="text-xs md:text-sm text-[#FFF7EB]/40 font-medium tabular-nums">
-                        <span id="speakers-counter" class="text-[#FFF7EB]">01</span> / 09
-                    </span>
-                </div>
-
-                <div class="flex items-start gap-3 md:gap-5 overflow-x-auto">
-                    <button type="button" class="speaker-thumb is-active flex flex-col items-center gap-1.5 shrink-0" data-target="0" aria-label="Voltar para a abertura">
-                        <span class="thumb-ring block w-11 h-11 md:w-14 md:h-14 rounded-full overflow-hidden border-2 border-[#DB7944] transition-all duration-300">
-                            <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/globo.webp" alt="" aria-hidden="true" class="w-full h-full object-cover">
-                        </span>
-                        <span class="thumb-nome text-[10px] md:text-xs text-[#FFF7EB] whitespace-nowrap transition-colors">Início</span>
-                    </button>
-                    <button type="button" class="speaker-thumb flex flex-col items-center gap-1.5 shrink-0" data-target="1" data-speaker="raul" aria-label="Ver Raul Sena">
-                        <span class="thumb-ring block w-11 h-11 md:w-14 md:h-14 rounded-full overflow-hidden border-2 border-transparent transition-all duration-300">
-                            <img src="https://yt3.googleusercontent.com/q6bgR6BvYXgq3u9GF_MP_YrVW4myeX_ETDwgM68vUA4XkahJUCoxnFy-MnELZPd5n875FDi5Fw=s900-c-k-c0x00ffffff-no-rj" alt="" aria-hidden="true" class="w-full h-full object-cover">
-                        </span>
-                        <span class="thumb-nome text-[10px] md:text-xs text-[#FFF7EB]/50 whitespace-nowrap transition-colors">Raul Sena</span>
-                    </button>
-                    <button type="button" class="speaker-thumb flex flex-col items-center gap-1.5 shrink-0" data-target="2" data-speaker="arthur" aria-label="Ver Arthur Bender">
-                        <span class="thumb-ring block w-11 h-11 md:w-14 md:h-14 rounded-full overflow-hidden border-2 border-transparent transition-all duration-300">
-                            <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/arthur%20bender%20zoom.jpg" alt="" aria-hidden="true" class="w-full h-full object-cover">
-                        </span>
-                        <span class="thumb-nome text-[10px] md:text-xs text-[#FFF7EB]/50 whitespace-nowrap transition-colors">Arthur Bender</span>
-                    </button>
-                    <button type="button" class="speaker-thumb flex flex-col items-center gap-1.5 shrink-0" data-target="3" data-speaker="carlos" aria-label="Ver Carlos Busch">
-                        <span class="thumb-ring block w-11 h-11 md:w-14 md:h-14 rounded-full overflow-hidden border-2 border-transparent transition-all duration-300">
-                            <img src="https://static.wixstatic.com/media/52e287_aacb889c62624a468960d25332bd0853~mv2.jpg/v1/fill/w_2000,h_2000,al_c,q_90/palestrante-cdpv-carlos-busch_edited.jpg" alt="" aria-hidden="true" class="w-full h-full object-cover">
-                        </span>
-                        <span class="thumb-nome text-[10px] md:text-xs text-[#FFF7EB]/50 whitespace-nowrap transition-colors">Carlos Busch</span>
-                    </button>
-                    <button type="button" class="speaker-thumb flex flex-col items-center gap-1.5 shrink-0" data-target="4" data-speaker="edson" aria-label="Ver Edson Castro">
-                        <span class="thumb-ring block w-11 h-11 md:w-14 md:h-14 rounded-full overflow-hidden border-2 border-transparent transition-all duration-300">
-                            <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/edson%20castro%20zoom.jpg" alt="" aria-hidden="true" class="w-full h-full object-cover">
-                        </span>
-                        <span class="thumb-nome text-[10px] md:text-xs text-[#FFF7EB]/50 whitespace-nowrap transition-colors">Edson Castro</span>
-                    </button>
-                    <button type="button" class="speaker-thumb flex flex-col items-center gap-1.5 shrink-0" data-target="5" data-speaker="lara" aria-label="Ver Lara Brenner">
-                        <span class="thumb-ring block w-11 h-11 md:w-14 md:h-14 rounded-full overflow-hidden border-2 border-transparent transition-all duration-300">
-                            <img src="https://yt3.googleusercontent.com/vOuXjS4rhs6jyvGw8ly7kZ_s1SnH-w4L6B8VbTmiKICnLVZs-P1gbF2Ct4pMXCY4zni0Ctrpiw=s900-c-k-c0x00ffffff-no-rj" alt="" aria-hidden="true" class="w-full h-full object-cover">
-                        </span>
-                        <span class="thumb-nome text-[10px] md:text-xs text-[#FFF7EB]/50 whitespace-nowrap transition-colors">Lara Brenner</span>
-                    </button>
-                    <button type="button" class="speaker-thumb flex flex-col items-center gap-1.5 shrink-0" data-target="6" data-speaker="anderson" aria-label="Ver Anderson Soares">
-                        <span class="thumb-ring block w-11 h-11 md:w-14 md:h-14 rounded-full overflow-hidden border-2 border-transparent transition-all duration-300">
-                            <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/anderson%20soares%20zoom.jpg" alt="" aria-hidden="true" class="w-full h-full object-cover">
-                        </span>
-                        <span class="thumb-nome text-[10px] md:text-xs text-[#FFF7EB]/50 whitespace-nowrap transition-colors">Anderson Soares</span>
-                    </button>
-                    <button type="button" class="speaker-thumb flex flex-col items-center gap-1.5 shrink-0" data-target="7" data-speaker="alexandre" aria-label="Ver Alexandre Assis">
-                        <span class="thumb-ring block w-11 h-11 md:w-14 md:h-14 rounded-full overflow-hidden border-2 border-transparent transition-all duration-300">
-                            <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/alexandre%20assis%20zoom.jpg" alt="" aria-hidden="true" class="w-full h-full object-cover">
-                        </span>
-                        <span class="thumb-nome text-[10px] md:text-xs text-[#FFF7EB]/50 whitespace-nowrap transition-colors">Alexandre Assis</span>
-                    </button>
-                    <button type="button" class="speaker-thumb flex flex-col items-center gap-1.5 shrink-0" data-target="8" data-speaker="arlindo" aria-label="Ver Arlindo Galvão">
-                        <span class="thumb-ring block w-11 h-11 md:w-14 md:h-14 rounded-full overflow-hidden border-2 border-transparent transition-all duration-300">
-                            <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/WhatsApp%20Image%202026-07-16%20at%2016.08.25.jpeg" alt="" aria-hidden="true" class="w-full h-full object-cover">
-                        </span>
-                        <span class="thumb-nome text-[10px] md:text-xs text-[#FFF7EB]/50 whitespace-nowrap transition-colors">Arlindo Galvão</span>
-                    </button>
-                </div>
             </div>
         </div>
     </section>
@@ -1339,11 +1251,12 @@
 
         if (slider) {
             const slides = Array.prototype.slice.call(slider.querySelectorAll('.speaker-slide'));
+            const textos = Array.prototype.slice.call(slider.querySelectorAll('.speaker-text'));
             const thumbs = Array.prototype.slice.call(document.querySelectorAll('.speaker-thumb'));
             const barra = document.getElementById('speakers-progress');
             const contador = document.getElementById('speakers-counter');
             const btnToggle = document.getElementById('speakers-toggle');
-            const DURACAO = 7000;
+            const DURACAO = 12000;
 
             let atual = 0;
             let pausado = false;
@@ -1356,7 +1269,11 @@
 
                 slides.forEach(function (slide, i) {
                     slide.classList.toggle('is-active', i === atual);
-                    slide.setAttribute('aria-hidden', i === atual ? 'false' : 'true');
+                });
+
+                textos.forEach(function (texto, i) {
+                    texto.classList.toggle('is-active', i === atual);
+                    texto.setAttribute('aria-hidden', i === atual ? 'false' : 'true');
                 });
 
                 thumbs.forEach(function (thumb) {
