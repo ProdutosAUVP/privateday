@@ -263,8 +263,44 @@
         visibility: visible;
     }
 
-    #auvp-lp-wrapper .speaker-thumb {
+    /* O tema do Elementor pinta qualquer <button>: aqui o botão é só a área de
+       clique, e o visual fica por conta dos <span> internos. */
+    #auvp-lp-wrapper .speaker-thumb,
+    #auvp-lp-wrapper .slider-btn,
+    #auvp-lp-wrapper .speaker-thumb:hover,
+    #auvp-lp-wrapper .slider-btn:hover,
+    #auvp-lp-wrapper .speaker-thumb:focus,
+    #auvp-lp-wrapper .slider-btn:focus {
+        appearance: none !important;
+        -webkit-appearance: none !important;
+        background: none !important;
+        background-color: transparent !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        outline: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        width: auto !important;
+        height: auto !important;
+        min-width: 0 !important;
+        min-height: 0 !important;
+        color: inherit !important;
+        font: inherit !important;
+        text-transform: none !important;
+        letter-spacing: normal !important;
+        line-height: 1.2 !important;
+        text-align: center;
         cursor: pointer;
+        display: block;
+    }
+
+    #auvp-lp-wrapper .speaker-thumb img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        border-radius: 0 !important;
+        display: block;
     }
 
     #auvp-lp-wrapper .speaker-thumb img {
@@ -290,6 +326,15 @@
     #auvp-lp-wrapper .disco-slide {
         opacity: 0;
         animation: discoTroca 15s linear infinite;
+        /* o tema pode dar borda e respiro às imagens: aqui ela preenche o card inteiro */
+        display: block;
+        width: 100% !important;
+        height: 100% !important;
+        max-width: none !important;
+        object-fit: cover !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        padding: 0 !important;
     }
 
     #auvp-lp-wrapper .disco-slide:nth-of-type(2) { animation-delay: -10s; }
@@ -478,189 +523,207 @@
 
     <!-- Terceira Dobra - Palestrantes (slides) -->
     <section id="palestrantes" class="relative overflow-hidden bg-[#1a1a1a]">
-        <div id="speakers-slider" class="relative h-[560px] md:h-[560px] lg:h-[600px]">
+        <div id="speakers-slider" class="relative h-[600px] md:h-[560px] lg:h-[600px]">
 
-            <!-- Fotos -->
+            <!-- Fotos: ocupam a coluna da esquerda e se fundem com o fundo -->
             <div class="absolute inset-0 z-0">
-                <div class="speaker-slide is-active absolute inset-0" data-slide="0">
-                    <img src="https://raw.githubusercontent.com/eriadesign/privateday/main/palestras%202.webp" alt="Palestrantes AUVP Private Day" class="w-full h-full object-cover object-center">
-                    <div class="absolute inset-0 bg-gradient-to-b from-[#1a1a1a]/85 via-[#1a1a1a]/70 to-[#1a1a1a]/90 lg:bg-gradient-to-r lg:from-[#1a1a1a]/10 lg:via-[#1a1a1a]/55 lg:to-[#1a1a1a]"></div>
+                <div class="speaker-slide is-active absolute inset-0 flex" data-slide="0">
+                    <div class="relative h-full w-full lg:w-[54%] shrink-0">
+                        <img src="https://raw.githubusercontent.com/eriadesign/privateday/main/palestras%202.webp" alt="Palestrantes AUVP Private Day" class="absolute inset-0 w-full h-full object-cover object-center">
+                        <div class="absolute inset-0 bg-[#1a1a1a]/70 lg:bg-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-[#1a1a1a]/15 lg:to-[#1a1a1a]"></div>
+                    </div>
                 </div>
-                <div class="speaker-slide absolute inset-0" data-slide="1">
-                    <img src="https://yt3.googleusercontent.com/q6bgR6BvYXgq3u9GF_MP_YrVW4myeX_ETDwgM68vUA4XkahJUCoxnFy-MnELZPd5n875FDi5Fw=s900-c-k-c0x00ffffff-no-rj" alt="Raul Sena" class="w-full h-full object-cover object-[35%_15%] lg:object-[30%_15%]">
-                    <div class="absolute inset-0 bg-gradient-to-b from-[#1a1a1a]/85 via-[#1a1a1a]/70 to-[#1a1a1a]/90 lg:bg-gradient-to-r lg:from-[#1a1a1a]/10 lg:via-[#1a1a1a]/55 lg:to-[#1a1a1a]"></div>
+                <div class="speaker-slide absolute inset-0 flex" data-slide="1">
+                    <div class="relative h-full w-full lg:w-[54%] shrink-0">
+                        <img src="https://yt3.googleusercontent.com/q6bgR6BvYXgq3u9GF_MP_YrVW4myeX_ETDwgM68vUA4XkahJUCoxnFy-MnELZPd5n875FDi5Fw=s900-c-k-c0x00ffffff-no-rj" alt="Raul Sena" class="absolute inset-0 w-full h-full object-cover object-[center_20%]">
+                        <div class="absolute inset-0 bg-[#1a1a1a]/70 lg:bg-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-[#1a1a1a]/15 lg:to-[#1a1a1a]"></div>
+                    </div>
                 </div>
-                <div class="speaker-slide absolute inset-0" data-slide="2">
-                    <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/arthur%20bender%20zoom.jpg" alt="Arthur Bender" class="w-full h-full object-cover object-[35%_15%] lg:object-[30%_15%]">
-                    <div class="absolute inset-0 bg-gradient-to-b from-[#1a1a1a]/85 via-[#1a1a1a]/70 to-[#1a1a1a]/90 lg:bg-gradient-to-r lg:from-[#1a1a1a]/10 lg:via-[#1a1a1a]/55 lg:to-[#1a1a1a]"></div>
+                <div class="speaker-slide absolute inset-0 flex" data-slide="2">
+                    <div class="relative h-full w-full lg:w-[54%] shrink-0">
+                        <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/arthur%20bender%20zoom.jpg" alt="Arthur Bender" class="absolute inset-0 w-full h-full object-cover object-[center_20%]">
+                        <div class="absolute inset-0 bg-[#1a1a1a]/70 lg:bg-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-[#1a1a1a]/15 lg:to-[#1a1a1a]"></div>
+                    </div>
                 </div>
-                <div class="speaker-slide absolute inset-0" data-slide="3">
-                    <img src="https://static.wixstatic.com/media/52e287_aacb889c62624a468960d25332bd0853~mv2.jpg/v1/fill/w_2000,h_2000,al_c,q_90/palestrante-cdpv-carlos-busch_edited.jpg" alt="Carlos Busch" class="w-full h-full object-cover object-[35%_15%] lg:object-[30%_15%]">
-                    <div class="absolute inset-0 bg-gradient-to-b from-[#1a1a1a]/85 via-[#1a1a1a]/70 to-[#1a1a1a]/90 lg:bg-gradient-to-r lg:from-[#1a1a1a]/10 lg:via-[#1a1a1a]/55 lg:to-[#1a1a1a]"></div>
+                <div class="speaker-slide absolute inset-0 flex" data-slide="3">
+                    <div class="relative h-full w-full lg:w-[54%] shrink-0">
+                        <img src="https://static.wixstatic.com/media/52e287_aacb889c62624a468960d25332bd0853~mv2.jpg/v1/fill/w_2000,h_2000,al_c,q_90/palestrante-cdpv-carlos-busch_edited.jpg" alt="Carlos Busch" class="absolute inset-0 w-full h-full object-cover object-[center_20%]">
+                        <div class="absolute inset-0 bg-[#1a1a1a]/70 lg:bg-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-[#1a1a1a]/15 lg:to-[#1a1a1a]"></div>
+                    </div>
                 </div>
-                <div class="speaker-slide absolute inset-0" data-slide="4">
-                    <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/20260320_Edson_Castro_0062.jpg" alt="Edson Castro" class="w-full h-full object-cover object-[35%_15%] lg:object-[30%_15%]">
-                    <div class="absolute inset-0 bg-gradient-to-b from-[#1a1a1a]/85 via-[#1a1a1a]/70 to-[#1a1a1a]/90 lg:bg-gradient-to-r lg:from-[#1a1a1a]/10 lg:via-[#1a1a1a]/55 lg:to-[#1a1a1a]"></div>
+                <div class="speaker-slide absolute inset-0 flex" data-slide="4">
+                    <div class="relative h-full w-full lg:w-[54%] shrink-0">
+                        <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/edson%20castro%20zoom.jpg" alt="Edson Castro" class="absolute inset-0 w-full h-full object-cover object-[center_20%]">
+                        <div class="absolute inset-0 bg-[#1a1a1a]/70 lg:bg-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-[#1a1a1a]/15 lg:to-[#1a1a1a]"></div>
+                    </div>
                 </div>
-                <div class="speaker-slide absolute inset-0" data-slide="5">
-                    <img src="https://yt3.googleusercontent.com/vOuXjS4rhs6jyvGw8ly7kZ_s1SnH-w4L6B8VbTmiKICnLVZs-P1gbF2Ct4pMXCY4zni0Ctrpiw=s900-c-k-c0x00ffffff-no-rj" alt="Lara Brenner" class="w-full h-full object-cover object-[35%_15%] lg:object-[30%_15%]">
-                    <div class="absolute inset-0 bg-gradient-to-b from-[#1a1a1a]/85 via-[#1a1a1a]/70 to-[#1a1a1a]/90 lg:bg-gradient-to-r lg:from-[#1a1a1a]/10 lg:via-[#1a1a1a]/55 lg:to-[#1a1a1a]"></div>
+                <div class="speaker-slide absolute inset-0 flex" data-slide="5">
+                    <div class="relative h-full w-full lg:w-[54%] shrink-0">
+                        <img src="https://yt3.googleusercontent.com/vOuXjS4rhs6jyvGw8ly7kZ_s1SnH-w4L6B8VbTmiKICnLVZs-P1gbF2Ct4pMXCY4zni0Ctrpiw=s900-c-k-c0x00ffffff-no-rj" alt="Lara Brenner" class="absolute inset-0 w-full h-full object-cover object-[center_20%]">
+                        <div class="absolute inset-0 bg-[#1a1a1a]/70 lg:bg-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-[#1a1a1a]/15 lg:to-[#1a1a1a]"></div>
+                    </div>
                 </div>
-                <div class="speaker-slide absolute inset-0" data-slide="6">
-                    <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/anderson%20soares%20retrato.jpg" alt="Anderson Soares" class="w-full h-full object-cover object-[35%_15%] lg:object-[30%_15%]">
-                    <div class="absolute inset-0 bg-gradient-to-b from-[#1a1a1a]/85 via-[#1a1a1a]/70 to-[#1a1a1a]/90 lg:bg-gradient-to-r lg:from-[#1a1a1a]/10 lg:via-[#1a1a1a]/55 lg:to-[#1a1a1a]"></div>
+                <div class="speaker-slide absolute inset-0 flex" data-slide="6">
+                    <div class="relative h-full w-full lg:w-[54%] shrink-0">
+                        <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/anderson%20soares%20zoom.jpg" alt="Anderson Soares" class="absolute inset-0 w-full h-full object-cover object-[center_20%]">
+                        <div class="absolute inset-0 bg-[#1a1a1a]/70 lg:bg-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-[#1a1a1a]/15 lg:to-[#1a1a1a]"></div>
+                    </div>
                 </div>
-                <div class="speaker-slide absolute inset-0" data-slide="7">
-                    <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/WhatsApp%20Image%202026-07-21%20at%2017.54.08.jpeg" alt="Alexandre Assis" class="w-full h-full object-cover object-[35%_15%] lg:object-[30%_15%]">
-                    <div class="absolute inset-0 bg-gradient-to-b from-[#1a1a1a]/85 via-[#1a1a1a]/70 to-[#1a1a1a]/90 lg:bg-gradient-to-r lg:from-[#1a1a1a]/10 lg:via-[#1a1a1a]/55 lg:to-[#1a1a1a]"></div>
+                <div class="speaker-slide absolute inset-0 flex" data-slide="7">
+                    <div class="relative h-full w-full lg:w-[54%] shrink-0">
+                        <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/alexandre%20assis%20zoom.jpg" alt="Alexandre Assis" class="absolute inset-0 w-full h-full object-cover object-[center_20%]">
+                        <div class="absolute inset-0 bg-[#1a1a1a]/70 lg:bg-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-[#1a1a1a]/15 lg:to-[#1a1a1a]"></div>
+                    </div>
                 </div>
-                <div class="speaker-slide absolute inset-0" data-slide="8">
-                    <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/arlindo%20galvao%20retrato.jpg" alt="Arlindo Galvão" class="w-full h-full object-cover object-[35%_15%] lg:object-[30%_15%]">
-                    <div class="absolute inset-0 bg-gradient-to-b from-[#1a1a1a]/85 via-[#1a1a1a]/70 to-[#1a1a1a]/90 lg:bg-gradient-to-r lg:from-[#1a1a1a]/10 lg:via-[#1a1a1a]/55 lg:to-[#1a1a1a]"></div>
+                <div class="speaker-slide absolute inset-0 flex" data-slide="8">
+                    <div class="relative h-full w-full lg:w-[54%] shrink-0">
+                        <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/arlindo%20galvao%20retrato.jpg" alt="Arlindo Galvão" class="absolute inset-0 w-full h-full object-cover object-[center_20%]">
+                        <div class="absolute inset-0 bg-[#1a1a1a]/70 lg:bg-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-[#1a1a1a]/15 lg:to-[#1a1a1a]"></div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Texto e navegação, à direita da foto -->
+            <!-- Texto e miniaturas, na coluna da direita -->
             <div class="relative z-10 h-full max-w-7xl mx-auto px-5 md:px-8 flex items-center lg:justify-end">
-                <div class="w-full lg:w-[48%] pb-16 lg:pb-0">
+                <div class="w-full lg:w-[42%] pb-14 lg:pb-8">
 
-                    <div class="relative h-[260px] md:h-[280px]">
+                    <div class="relative h-[250px] md:h-[260px]">
                     <div class="speaker-text is-active absolute inset-x-0 top-0" data-slide="0">
                             <h2 class="vintage-title text-3xl md:text-4xl lg:text-5xl text-[#FFF7EB] leading-tight mb-4">
                                 Quem sobe no palco em 2026?
                             </h2>
-                            <p class="text-sm md:text-lg text-[#FFF7EB]/80 font-light leading-relaxed">
+                            <p class="text-sm md:text-base text-[#FFF7EB]/80 font-light leading-relaxed">
                                 Serão dois dias de conteúdo com Raul Sena e grandes nomes do mercado, discutindo o cenário macroeconômico e tudo o que está acontecendo de mais relevante no mundo.
                             </p>
                         </div>
                     <div class="speaker-text absolute inset-x-0 top-0" data-slide="1" data-speaker="raul" aria-hidden="true">
                             <span class="block text-[10px] md:text-xs font-semibold tracking-[0.25em] uppercase text-[#DB7944] mb-3">No palco</span>
-                            <h3 class="vintage-title text-3xl md:text-4xl lg:text-5xl text-[#FFF7EB] leading-tight mb-2">Raul Sena</h3>
+                            <h3 class="vintage-title text-3xl md:text-4xl lg:text-5xl text-[#FFF7EB] leading-tight mb-1">Raul Sena</h3>
                             <p class="text-xs md:text-sm text-[#DB7944] font-medium mb-4">CEO da AUVP Capital</p>
                             <p class="text-sm md:text-base text-[#FFF7EB] font-medium leading-snug mb-3">“Em breve”</p>
                             <p class="text-sm md:text-base text-[#FFF7EB]/70 font-light leading-relaxed">Criador do canal Investidor Sardinha, fundador e CEO da AUVP Capital, a consultoria top 1 do ranking do BTG Pactual.</p>
                         </div>
                     <div class="speaker-text absolute inset-x-0 top-0" data-slide="2" data-speaker="arthur" aria-hidden="true">
                             <span class="block text-[10px] md:text-xs font-semibold tracking-[0.25em] uppercase text-[#DB7944] mb-3">No palco</span>
-                            <h3 class="vintage-title text-3xl md:text-4xl lg:text-5xl text-[#FFF7EB] leading-tight mb-2">Arthur Bender</h3>
+                            <h3 class="vintage-title text-3xl md:text-4xl lg:text-5xl text-[#FFF7EB] leading-tight mb-1">Arthur Bender</h3>
                             <p class="text-xs md:text-sm text-[#DB7944] font-medium mb-4">Criador do conceito de Personal Branding</p>
                             <p class="text-sm md:text-base text-[#FFF7EB] font-medium leading-snug mb-3">“Personal Branding e Carreira: construindo sua marca pessoal”</p>
                             <p class="text-sm md:text-base text-[#FFF7EB]/70 font-light leading-relaxed">Consultor de posicionamento de marcas e empresas, autor de 3 best-sellers.</p>
                         </div>
                     <div class="speaker-text absolute inset-x-0 top-0" data-slide="3" data-speaker="carlos" aria-hidden="true">
                             <span class="block text-[10px] md:text-xs font-semibold tracking-[0.25em] uppercase text-[#DB7944] mb-3">No palco</span>
-                            <h3 class="vintage-title text-3xl md:text-4xl lg:text-5xl text-[#FFF7EB] leading-tight mb-2">Carlos Busch</h3>
+                            <h3 class="vintage-title text-3xl md:text-4xl lg:text-5xl text-[#FFF7EB] leading-tight mb-1">Carlos Busch</h3>
                             <p class="text-xs md:text-sm text-[#DB7944] font-medium mb-4">Fundador da BCORP</p>
                             <p class="text-sm md:text-base text-[#FFF7EB] font-medium leading-snug mb-3">“Diferenciação e coerência em um mercado que nunca para”</p>
                             <p class="text-sm md:text-base text-[#FFF7EB]/70 font-light leading-relaxed">Referência em vendas e diferenciação na América Latina, com mais de 10 especializações em universidades de ponta ao redor do mundo.</p>
                         </div>
                     <div class="speaker-text absolute inset-x-0 top-0" data-slide="4" data-speaker="edson" aria-hidden="true">
                             <span class="block text-[10px] md:text-xs font-semibold tracking-[0.25em] uppercase text-[#DB7944] mb-3">No palco</span>
-                            <h3 class="vintage-title text-3xl md:text-4xl lg:text-5xl text-[#FFF7EB] leading-tight mb-2">Edson Castro</h3>
+                            <h3 class="vintage-title text-3xl md:text-4xl lg:text-5xl text-[#FFF7EB] leading-tight mb-1">Edson Castro</h3>
                             <p class="text-xs md:text-sm text-[#DB7944] font-medium mb-4">Jornalista e TEDx Speaker</p>
                             <p class="text-sm md:text-base text-[#FFF7EB] font-medium leading-snug mb-3">“Gerações: as regras do jogo estão mudando?”</p>
                             <p class="text-sm md:text-base text-[#FFF7EB]/70 font-light leading-relaxed">Criador do Manual do Homem Moderno e host do podcast Edson Castro Show, onde discute carreira, dinheiro, psicologia e relacionamentos.</p>
                         </div>
                     <div class="speaker-text absolute inset-x-0 top-0" data-slide="5" data-speaker="lara" aria-hidden="true">
                             <span class="block text-[10px] md:text-xs font-semibold tracking-[0.25em] uppercase text-[#DB7944] mb-3">No palco</span>
-                            <h3 class="vintage-title text-3xl md:text-4xl lg:text-5xl text-[#FFF7EB] leading-tight mb-2">Lara Brenner</h3>
+                            <h3 class="vintage-title text-3xl md:text-4xl lg:text-5xl text-[#FFF7EB] leading-tight mb-1">Lara Brenner</h3>
                             <p class="text-xs md:text-sm text-[#DB7944] font-medium mb-4">Mentora em Comunicação</p>
                             <p class="text-sm md:text-base text-[#FFF7EB] font-medium leading-snug mb-3">“Autoeducação em tempos de distração”</p>
                             <p class="text-sm md:text-base text-[#FFF7EB]/70 font-light leading-relaxed">Advogada, fundadora do Expressando Direito e do Texto Irresistível, além da mentoria Comunicação Irresistível.</p>
                         </div>
                     <div class="speaker-text absolute inset-x-0 top-0" data-slide="6" data-speaker="anderson" aria-hidden="true">
                             <span class="block text-[10px] md:text-xs font-semibold tracking-[0.25em] uppercase text-[#DB7944] mb-3">No palco</span>
-                            <h3 class="vintage-title text-3xl md:text-4xl lg:text-5xl text-[#FFF7EB] leading-tight mb-2">Anderson Soares</h3>
+                            <h3 class="vintage-title text-3xl md:text-4xl lg:text-5xl text-[#FFF7EB] leading-tight mb-1">Anderson Soares</h3>
                             <p class="text-xs md:text-sm text-[#DB7944] font-medium mb-4">Representante brasileiro no GPAI</p>
                             <p class="text-sm md:text-base text-[#FFF7EB] font-medium leading-snug mb-3">“Painel: Inteligência Artificial e a nova realidade”</p>
                             <p class="text-sm md:text-base text-[#FFF7EB]/70 font-light leading-relaxed">Coordenador científico do Centro de Excelência em Inteligência Artificial (CEIA) e do Bacharelado em IA da UFG.</p>
                         </div>
                     <div class="speaker-text absolute inset-x-0 top-0" data-slide="7" data-speaker="alexandre" aria-hidden="true">
                             <span class="block text-[10px] md:text-xs font-semibold tracking-[0.25em] uppercase text-[#DB7944] mb-3">No palco</span>
-                            <h3 class="vintage-title text-3xl md:text-4xl lg:text-5xl text-[#FFF7EB] leading-tight mb-2">Alexandre Assis</h3>
+                            <h3 class="vintage-title text-3xl md:text-4xl lg:text-5xl text-[#FFF7EB] leading-tight mb-1">Alexandre Assis</h3>
                             <p class="text-xs md:text-sm text-[#DB7944] font-medium mb-4">CEO da Assis Gestão</p>
                             <p class="text-sm md:text-base text-[#FFF7EB]/70 font-light leading-relaxed">Mentor e consultor de compliance, governança e gestão, além de sócio fundador do Fundo de Investimento Ouro 103 (FIDC).</p>
                         </div>
                     <div class="speaker-text absolute inset-x-0 top-0" data-slide="8" data-speaker="arlindo" aria-hidden="true">
                             <span class="block text-[10px] md:text-xs font-semibold tracking-[0.25em] uppercase text-[#DB7944] mb-3">No palco</span>
-                            <h3 class="vintage-title text-3xl md:text-4xl lg:text-5xl text-[#FFF7EB] leading-tight mb-2">Arlindo Galvão</h3>
+                            <h3 class="vintage-title text-3xl md:text-4xl lg:text-5xl text-[#FFF7EB] leading-tight mb-1">Arlindo Galvão</h3>
                             <p class="text-xs md:text-sm text-[#DB7944] font-medium mb-4">Head de Internacionalização do CEIA</p>
                             <p class="text-sm md:text-base text-[#FFF7EB] font-medium leading-snug mb-3">“Painel: Inteligência Artificial e a nova realidade”</p>
                             <p class="text-sm md:text-base text-[#FFF7EB]/70 font-light leading-relaxed">Doutor em Ciências da Computação pela UFG, professor e CEO do AKCIT.</p>
                         </div>
                     </div>
 
-                    <div class="flex items-start gap-2.5 md:gap-4 overflow-x-auto pt-1">
-                        <button type="button" class="speaker-thumb is-active flex flex-col items-center gap-1 shrink-0" data-target="0" aria-label="Voltar para a abertura">
-                            <span class="thumb-ring block w-9 h-9 md:w-10 md:h-10 rounded-full overflow-hidden border-2 border-[#DB7944] transition-all duration-300">
-                                <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/globo.webp" alt="" aria-hidden="true" class="w-full h-full object-cover">
+                    <div class="flex flex-wrap items-start gap-x-3 gap-y-3 md:gap-x-4">
+                        <div role="button" tabindex="0" class="speaker-thumb is-active" data-target="0" aria-label="Voltar para a abertura">
+                            <span class="thumb-ring block w-9 h-9 md:w-10 md:h-10 rounded-full overflow-hidden border-2 border-[#DB7944] mx-auto transition-all duration-300">
+                                <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/globo.webp" alt="" aria-hidden="true">
                             </span>
-                            <span class="thumb-nome text-[9px] md:text-[10px] text-[#FFF7EB] whitespace-nowrap transition-colors">Início</span>
-                        </button>
-                        <button type="button" class="speaker-thumb flex flex-col items-center gap-1 shrink-0" data-target="1" data-speaker="raul" aria-label="Ver Raul Sena">
-                            <span class="thumb-ring block w-9 h-9 md:w-10 md:h-10 rounded-full overflow-hidden border-2 border-transparent transition-all duration-300">
-                                <img src="https://yt3.googleusercontent.com/q6bgR6BvYXgq3u9GF_MP_YrVW4myeX_ETDwgM68vUA4XkahJUCoxnFy-MnELZPd5n875FDi5Fw=s900-c-k-c0x00ffffff-no-rj" alt="" aria-hidden="true" class="w-full h-full object-cover">
+                            <span class="thumb-nome block mt-1 text-[9px] md:text-[10px] text-[#FFF7EB] transition-colors">Início</span>
+                        </div>
+                        <div role="button" tabindex="0" class="speaker-thumb" data-target="1" data-speaker="raul" aria-label="Ver Raul Sena">
+                            <span class="thumb-ring block w-9 h-9 md:w-10 md:h-10 rounded-full overflow-hidden border-2 border-transparent mx-auto transition-all duration-300">
+                                <img src="https://yt3.googleusercontent.com/q6bgR6BvYXgq3u9GF_MP_YrVW4myeX_ETDwgM68vUA4XkahJUCoxnFy-MnELZPd5n875FDi5Fw=s900-c-k-c0x00ffffff-no-rj" alt="" aria-hidden="true">
                             </span>
-                            <span class="thumb-nome text-[9px] md:text-[10px] text-[#FFF7EB]/50 whitespace-nowrap transition-colors">Raul</span>
-                        </button>
-                        <button type="button" class="speaker-thumb flex flex-col items-center gap-1 shrink-0" data-target="2" data-speaker="arthur" aria-label="Ver Arthur Bender">
-                            <span class="thumb-ring block w-9 h-9 md:w-10 md:h-10 rounded-full overflow-hidden border-2 border-transparent transition-all duration-300">
-                                <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/arthur%20bender%20zoom.jpg" alt="" aria-hidden="true" class="w-full h-full object-cover">
+                            <span class="thumb-nome block mt-1 text-[9px] md:text-[10px] text-[#FFF7EB]/50 transition-colors">Raul</span>
+                        </div>
+                        <div role="button" tabindex="0" class="speaker-thumb" data-target="2" data-speaker="arthur" aria-label="Ver Arthur Bender">
+                            <span class="thumb-ring block w-9 h-9 md:w-10 md:h-10 rounded-full overflow-hidden border-2 border-transparent mx-auto transition-all duration-300">
+                                <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/arthur%20bender%20zoom.jpg" alt="" aria-hidden="true">
                             </span>
-                            <span class="thumb-nome text-[9px] md:text-[10px] text-[#FFF7EB]/50 whitespace-nowrap transition-colors">Arthur</span>
-                        </button>
-                        <button type="button" class="speaker-thumb flex flex-col items-center gap-1 shrink-0" data-target="3" data-speaker="carlos" aria-label="Ver Carlos Busch">
-                            <span class="thumb-ring block w-9 h-9 md:w-10 md:h-10 rounded-full overflow-hidden border-2 border-transparent transition-all duration-300">
-                                <img src="https://static.wixstatic.com/media/52e287_aacb889c62624a468960d25332bd0853~mv2.jpg/v1/fill/w_2000,h_2000,al_c,q_90/palestrante-cdpv-carlos-busch_edited.jpg" alt="" aria-hidden="true" class="w-full h-full object-cover">
+                            <span class="thumb-nome block mt-1 text-[9px] md:text-[10px] text-[#FFF7EB]/50 transition-colors">Arthur</span>
+                        </div>
+                        <div role="button" tabindex="0" class="speaker-thumb" data-target="3" data-speaker="carlos" aria-label="Ver Carlos Busch">
+                            <span class="thumb-ring block w-9 h-9 md:w-10 md:h-10 rounded-full overflow-hidden border-2 border-transparent mx-auto transition-all duration-300">
+                                <img src="https://static.wixstatic.com/media/52e287_aacb889c62624a468960d25332bd0853~mv2.jpg/v1/fill/w_2000,h_2000,al_c,q_90/palestrante-cdpv-carlos-busch_edited.jpg" alt="" aria-hidden="true">
                             </span>
-                            <span class="thumb-nome text-[9px] md:text-[10px] text-[#FFF7EB]/50 whitespace-nowrap transition-colors">Carlos</span>
-                        </button>
-                        <button type="button" class="speaker-thumb flex flex-col items-center gap-1 shrink-0" data-target="4" data-speaker="edson" aria-label="Ver Edson Castro">
-                            <span class="thumb-ring block w-9 h-9 md:w-10 md:h-10 rounded-full overflow-hidden border-2 border-transparent transition-all duration-300">
-                                <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/edson%20castro%20zoom.jpg" alt="" aria-hidden="true" class="w-full h-full object-cover">
+                            <span class="thumb-nome block mt-1 text-[9px] md:text-[10px] text-[#FFF7EB]/50 transition-colors">Carlos</span>
+                        </div>
+                        <div role="button" tabindex="0" class="speaker-thumb" data-target="4" data-speaker="edson" aria-label="Ver Edson Castro">
+                            <span class="thumb-ring block w-9 h-9 md:w-10 md:h-10 rounded-full overflow-hidden border-2 border-transparent mx-auto transition-all duration-300">
+                                <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/edson%20castro%20zoom.jpg" alt="" aria-hidden="true">
                             </span>
-                            <span class="thumb-nome text-[9px] md:text-[10px] text-[#FFF7EB]/50 whitespace-nowrap transition-colors">Edson</span>
-                        </button>
-                        <button type="button" class="speaker-thumb flex flex-col items-center gap-1 shrink-0" data-target="5" data-speaker="lara" aria-label="Ver Lara Brenner">
-                            <span class="thumb-ring block w-9 h-9 md:w-10 md:h-10 rounded-full overflow-hidden border-2 border-transparent transition-all duration-300">
-                                <img src="https://yt3.googleusercontent.com/vOuXjS4rhs6jyvGw8ly7kZ_s1SnH-w4L6B8VbTmiKICnLVZs-P1gbF2Ct4pMXCY4zni0Ctrpiw=s900-c-k-c0x00ffffff-no-rj" alt="" aria-hidden="true" class="w-full h-full object-cover">
+                            <span class="thumb-nome block mt-1 text-[9px] md:text-[10px] text-[#FFF7EB]/50 transition-colors">Edson</span>
+                        </div>
+                        <div role="button" tabindex="0" class="speaker-thumb" data-target="5" data-speaker="lara" aria-label="Ver Lara Brenner">
+                            <span class="thumb-ring block w-9 h-9 md:w-10 md:h-10 rounded-full overflow-hidden border-2 border-transparent mx-auto transition-all duration-300">
+                                <img src="https://yt3.googleusercontent.com/vOuXjS4rhs6jyvGw8ly7kZ_s1SnH-w4L6B8VbTmiKICnLVZs-P1gbF2Ct4pMXCY4zni0Ctrpiw=s900-c-k-c0x00ffffff-no-rj" alt="" aria-hidden="true">
                             </span>
-                            <span class="thumb-nome text-[9px] md:text-[10px] text-[#FFF7EB]/50 whitespace-nowrap transition-colors">Lara</span>
-                        </button>
-                        <button type="button" class="speaker-thumb flex flex-col items-center gap-1 shrink-0" data-target="6" data-speaker="anderson" aria-label="Ver Anderson Soares">
-                            <span class="thumb-ring block w-9 h-9 md:w-10 md:h-10 rounded-full overflow-hidden border-2 border-transparent transition-all duration-300">
-                                <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/anderson%20soares%20zoom.jpg" alt="" aria-hidden="true" class="w-full h-full object-cover">
+                            <span class="thumb-nome block mt-1 text-[9px] md:text-[10px] text-[#FFF7EB]/50 transition-colors">Lara</span>
+                        </div>
+                        <div role="button" tabindex="0" class="speaker-thumb" data-target="6" data-speaker="anderson" aria-label="Ver Anderson Soares">
+                            <span class="thumb-ring block w-9 h-9 md:w-10 md:h-10 rounded-full overflow-hidden border-2 border-transparent mx-auto transition-all duration-300">
+                                <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/anderson%20soares%20zoom.jpg" alt="" aria-hidden="true">
                             </span>
-                            <span class="thumb-nome text-[9px] md:text-[10px] text-[#FFF7EB]/50 whitespace-nowrap transition-colors">Anderson</span>
-                        </button>
-                        <button type="button" class="speaker-thumb flex flex-col items-center gap-1 shrink-0" data-target="7" data-speaker="alexandre" aria-label="Ver Alexandre Assis">
-                            <span class="thumb-ring block w-9 h-9 md:w-10 md:h-10 rounded-full overflow-hidden border-2 border-transparent transition-all duration-300">
-                                <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/alexandre%20assis%20zoom.jpg" alt="" aria-hidden="true" class="w-full h-full object-cover">
+                            <span class="thumb-nome block mt-1 text-[9px] md:text-[10px] text-[#FFF7EB]/50 transition-colors">Anderson</span>
+                        </div>
+                        <div role="button" tabindex="0" class="speaker-thumb" data-target="7" data-speaker="alexandre" aria-label="Ver Alexandre Assis">
+                            <span class="thumb-ring block w-9 h-9 md:w-10 md:h-10 rounded-full overflow-hidden border-2 border-transparent mx-auto transition-all duration-300">
+                                <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/alexandre%20assis%20zoom.jpg" alt="" aria-hidden="true">
                             </span>
-                            <span class="thumb-nome text-[9px] md:text-[10px] text-[#FFF7EB]/50 whitespace-nowrap transition-colors">Alexandre</span>
-                        </button>
-                        <button type="button" class="speaker-thumb flex flex-col items-center gap-1 shrink-0" data-target="8" data-speaker="arlindo" aria-label="Ver Arlindo Galvão">
-                            <span class="thumb-ring block w-9 h-9 md:w-10 md:h-10 rounded-full overflow-hidden border-2 border-transparent transition-all duration-300">
-                                <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/WhatsApp%20Image%202026-07-16%20at%2016.08.25.jpeg" alt="" aria-hidden="true" class="w-full h-full object-cover">
+                            <span class="thumb-nome block mt-1 text-[9px] md:text-[10px] text-[#FFF7EB]/50 transition-colors">Alexandre</span>
+                        </div>
+                        <div role="button" tabindex="0" class="speaker-thumb" data-target="8" data-speaker="arlindo" aria-label="Ver Arlindo Galvão">
+                            <span class="thumb-ring block w-9 h-9 md:w-10 md:h-10 rounded-full overflow-hidden border-2 border-transparent mx-auto transition-all duration-300">
+                                <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/arlindo%20galvao%20retrato.jpg" alt="" aria-hidden="true">
                             </span>
-                            <span class="thumb-nome text-[9px] md:text-[10px] text-[#FFF7EB]/50 whitespace-nowrap transition-colors">Arlindo</span>
-                        </button>
+                            <span class="thumb-nome block mt-1 text-[9px] md:text-[10px] text-[#FFF7EB]/50 transition-colors">Arlindo</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Controles discretos sobre a foto -->
-            <div class="absolute bottom-5 left-4 md:left-6 z-20 flex items-center gap-2 md:gap-3">
-                <button id="speakers-prev" type="button" aria-label="Palestrante anterior" class="w-8 h-8 md:w-9 md:h-9 rounded-full bg-[#1a1a1a]/40 border border-[#FFF7EB]/20 text-[#FFF7EB]/70 flex items-center justify-center hover:bg-[#1a1a1a]/70 hover:text-[#FFF7EB] transition-colors cursor-pointer backdrop-blur-sm">
-                    <i class="ph ph-caret-left text-base"></i>
-                </button>
-                <button id="speakers-toggle" type="button" aria-label="Pausar apresentação" class="w-8 h-8 md:w-9 md:h-9 rounded-full bg-[#1a1a1a]/40 border border-[#FFF7EB]/20 text-[#FFF7EB]/70 flex items-center justify-center hover:bg-[#1a1a1a]/70 hover:text-[#FFF7EB] transition-colors cursor-pointer backdrop-blur-sm">
-                    <i class="ph ph-pause text-base"></i>
-                </button>
-                <button id="speakers-next" type="button" aria-label="Próximo palestrante" class="w-8 h-8 md:w-9 md:h-9 rounded-full bg-[#1a1a1a]/40 border border-[#FFF7EB]/20 text-[#FFF7EB]/70 flex items-center justify-center hover:bg-[#1a1a1a]/70 hover:text-[#FFF7EB] transition-colors cursor-pointer backdrop-blur-sm">
-                    <i class="ph ph-caret-right text-base"></i>
-                </button>
-                <span class="text-xs text-[#FFF7EB]/40 font-medium tabular-nums ml-1">
+            <div class="absolute bottom-5 left-5 md:left-8 z-20 flex items-center gap-2">
+                <div id="speakers-prev" role="button" tabindex="0" class="slider-btn" aria-label="Palestrante anterior">
+                    <span class="w-9 h-9 rounded-full bg-[#1a1a1a]/50 border border-[#FFF7EB]/25 text-[#FFF7EB]/80 flex items-center justify-center backdrop-blur-sm transition-colors hover:bg-[#1a1a1a]/80 hover:text-[#FFF7EB]"><i class="ph ph-caret-left text-base"></i></span>
+                </div>
+                <div id="speakers-toggle" role="button" tabindex="0" class="slider-btn" aria-label="Pausar apresentação">
+                    <span class="w-9 h-9 rounded-full bg-[#1a1a1a]/50 border border-[#FFF7EB]/25 text-[#FFF7EB]/80 flex items-center justify-center backdrop-blur-sm transition-colors hover:bg-[#1a1a1a]/80 hover:text-[#FFF7EB]"><i class="ph ph-pause text-base"></i></span>
+                </div>
+                <div id="speakers-next" role="button" tabindex="0" class="slider-btn" aria-label="Próximo palestrante">
+                    <span class="w-9 h-9 rounded-full bg-[#1a1a1a]/50 border border-[#FFF7EB]/25 text-[#FFF7EB]/80 flex items-center justify-center backdrop-blur-sm transition-colors hover:bg-[#1a1a1a]/80 hover:text-[#FFF7EB]"><i class="ph ph-caret-right text-base"></i></span>
+                </div>
+                <span class="ml-1 text-xs text-[#FFF7EB]/40 font-medium tabular-nums">
                     <span id="speakers-counter" class="text-[#FFF7EB]/90">01</span> / 09
                 </span>
             </div>
@@ -673,12 +736,9 @@
 
     <!-- Dobra da Festa - Disco Fever -->
     <section id="festa" class="relative overflow-hidden bg-[#FFF7EB] py-16 md:pt-40 md:pb-28 lg:pt-44">
-        <!-- Globo espelhado flutuando -->
-        <div class="absolute top-12 left-[6%] z-[1] hidden md:block pointer-events-none select-none">
-            <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/globo.webp" alt="" aria-hidden="true" class="disco-globo w-20 lg:w-28">
-        </div>
-
         <div class="max-w-7xl mx-auto px-5 md:px-8 relative z-10">
+            <!-- Globo espelhado flutuando junto do texto -->
+            <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/globo.webp" alt="" aria-hidden="true" class="disco-globo hidden md:block absolute -top-24 lg:-top-28 left-5 md:left-8 w-20 lg:w-24 z-[1] pointer-events-none select-none">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
                 <div class="text-left">
@@ -690,26 +750,23 @@
                         Festa com o tema<br class="hidden md:block"> Disco Fever
                     </h2>
 
-                    <p class="text-base md:text-lg text-[#1a1a1a]/80 font-light leading-relaxed mb-4">
-                        Saímos dos tons pastéis do mediterrâneo direto para uma pista com globo de espelhos, trilha sonora dos anos 80 e aquele clima de noite que só acontece uma vez na vida.
-                    </p>
-                    <p class="text-base md:text-lg text-[#1a1a1a] font-medium leading-relaxed mb-8">
-                        A festa do Private Day é o encerramento do evento com a boa e velha “baguncinha” da comunidade.
+                    <p class="text-base md:text-lg text-[#1a1a1a]/80 font-light leading-relaxed mb-8">
+                        Globo de espelhos, música dos anos 80 e um clima de noite que só acontece uma vez na vida. <span class="text-[#1a1a1a] font-medium">A festa do Private Day é o encerramento do evento com a nossa tradicional “baguncinha”.</span>
                     </p>
 
                     <span class="block text-[10px] md:text-xs font-semibold tracking-[0.25em] uppercase text-[#1a1a1a]/50 mb-4">O que está incluso</span>
                     <div class="flex flex-nowrap items-center gap-2 md:gap-3">
-                        <div class="flex items-center gap-1 md:gap-2 bg-[#1a1a1a]/5 border border-[#1a1a1a]/10 rounded-full px-2.5 py-1.5 md:px-4 md:py-2">
-                            <i class="ph ph-martini text-sm md:text-lg text-[#DB7944]"></i>
-                            <span class="text-[#1a1a1a] font-medium text-[10px] md:text-sm whitespace-nowrap">Open bar</span>
+                        <div class="flex items-center gap-1 md:gap-2 bg-[#932621] rounded-full px-2.5 py-1.5 md:px-4 md:py-2">
+                            <i class="ph ph-martini text-sm md:text-lg text-[#FFF7EB]/70"></i>
+                            <span class="text-[#FFF7EB] font-medium text-[10px] md:text-sm whitespace-nowrap">Open bar</span>
                         </div>
-                        <div class="flex items-center gap-1 md:gap-2 bg-[#1a1a1a]/5 border border-[#1a1a1a]/10 rounded-full px-2.5 py-1.5 md:px-4 md:py-2">
-                            <i class="ph ph-fork-knife text-sm md:text-lg text-[#DB7944]"></i>
-                            <span class="text-[#1a1a1a] font-medium text-[10px] md:text-sm whitespace-nowrap">Open food</span>
+                        <div class="flex items-center gap-1 md:gap-2 bg-[#0B2A47] rounded-full px-2.5 py-1.5 md:px-4 md:py-2">
+                            <i class="ph ph-fork-knife text-sm md:text-lg text-[#FFF7EB]/70"></i>
+                            <span class="text-[#FFF7EB] font-medium text-[10px] md:text-sm whitespace-nowrap">Open food</span>
                         </div>
-                        <div class="flex items-center gap-1 md:gap-2 bg-[#1a1a1a]/5 border border-[#1a1a1a]/10 rounded-full px-2.5 py-1.5 md:px-4 md:py-2">
-                            <i class="ph ph-t-shirt text-sm md:text-lg text-[#DB7944]"></i>
-                            <span class="text-[#1a1a1a] font-medium text-[10px] md:text-sm whitespace-nowrap">Dress code temático</span>
+                        <div class="flex items-center gap-1 md:gap-2 bg-[#a6460f] rounded-full px-2.5 py-1.5 md:px-4 md:py-2">
+                            <i class="ph ph-t-shirt text-sm md:text-lg text-[#FFF7EB]/70"></i>
+                            <span class="text-[#FFF7EB] font-medium text-[10px] md:text-sm whitespace-nowrap">Dress code temático</span>
                         </div>
                     </div>
                 </div>
@@ -735,7 +792,7 @@
 
                 <div class="text-left">
                     <h2 class="vintage-title text-3xl md:text-5xl text-[#1a1a1a] leading-tight mb-4">
-                        Palavra tem seu valor.<br class="hidden md:block"> Imagem, o resto.
+                        Um gostinho do que você vai viver
                     </h2>
                     <p class="text-base md:text-lg text-[#1a1a1a]/80 font-light leading-relaxed">
                         Antes de decidir, vale ver com os próprios olhos. Essa é a edição de 2025 — e 2026 promete ser ainda maior.
@@ -769,8 +826,7 @@
                         <blockquote class="text-sm md:text-base text-[#1a1a1a]/80 font-light leading-relaxed flex-grow">
                             “De repente, passou a valer tudo, tanto que já comprei na mesma semana o ingresso do ano seguinte, na confiança.”
                         </blockquote>
-                        <figcaption class="mt-5 pt-4 border-t border-[#1a1a1a]/10 flex items-center gap-3">
-                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="" aria-hidden="true" class="w-10 h-10 rounded-full object-cover shrink-0">
+                        <figcaption class="mt-5 pt-4 border-t border-[#1a1a1a]/10">
                             <span class="font-medium text-[#1a1a1a] text-sm md:text-base">Pietro</span>
                         </figcaption>
                     </figure>
@@ -779,8 +835,7 @@
                         <blockquote class="text-sm md:text-base text-[#1a1a1a]/80 font-light leading-relaxed flex-grow">
                             “Na primeira vez, estava apreensivo também, mas o pessoal é todo muito receptivo. No segundo ano, já era sucesso demais.”
                         </blockquote>
-                        <figcaption class="mt-5 pt-4 border-t border-[#1a1a1a]/10 flex items-center gap-3">
-                            <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="" aria-hidden="true" class="w-10 h-10 rounded-full object-cover shrink-0">
+                        <figcaption class="mt-5 pt-4 border-t border-[#1a1a1a]/10">
                             <span class="font-medium text-[#1a1a1a] text-sm md:text-base">Henrique</span>
                         </figcaption>
                     </figure>
@@ -789,8 +844,7 @@
                         <blockquote class="text-sm md:text-base text-[#1a1a1a]/80 font-light leading-relaxed flex-grow">
                             “Quem ainda está na dúvida: só vai. É memória, amizade e história pra vida.”
                         </blockquote>
-                        <figcaption class="mt-5 pt-4 border-t border-[#1a1a1a]/10 flex items-center gap-3">
-                            <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="" aria-hidden="true" class="w-10 h-10 rounded-full object-cover shrink-0">
+                        <figcaption class="mt-5 pt-4 border-t border-[#1a1a1a]/10">
                             <span class="font-medium text-[#1a1a1a] text-sm md:text-base">Thiago</span>
                         </figcaption>
                     </figure>
@@ -802,8 +856,7 @@
                             </blockquote>
                             <p class="text-xs text-[#1a1a1a]/50 italic mt-2">Sobre a festa, ela não quis contar mais.</p>
                         </div>
-                        <figcaption class="mt-5 pt-4 border-t border-[#1a1a1a]/10 flex items-center gap-3">
-                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="" aria-hidden="true" class="w-10 h-10 rounded-full object-cover shrink-0">
+                        <figcaption class="mt-5 pt-4 border-t border-[#1a1a1a]/10">
                             <span class="font-medium text-[#1a1a1a] text-sm md:text-base">Vanessa</span>
                         </figcaption>
                     </figure>
@@ -1292,7 +1345,7 @@
                 pausado = valor;
                 if (!btnToggle) return;
                 btnToggle.setAttribute('aria-label', pausado ? 'Retomar apresentação' : 'Pausar apresentação');
-                btnToggle.querySelector('i').className = pausado ? 'ph ph-play text-lg' : 'ph ph-pause text-lg';
+                btnToggle.querySelector('i').className = pausado ? 'ph ph-play text-base' : 'ph ph-pause text-base';
             }
 
             function passo(agora) {
@@ -1307,16 +1360,22 @@
                 requestAnimationFrame(passo);
             }
 
+            function acionavelPeloTeclado(elemento, acao) {
+                elemento.addEventListener('click', acao);
+                elemento.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); acao(); }
+                });
+            }
+
             thumbs.forEach(function (thumb) {
-                thumb.addEventListener('click', function () { mostrar(Number(thumb.dataset.target)); });
+                acionavelPeloTeclado(thumb, function () { mostrar(Number(thumb.dataset.target)); });
             });
 
             const btnPrev = document.getElementById('speakers-prev');
             const btnNext = document.getElementById('speakers-next');
-            if (btnPrev) btnPrev.addEventListener('click', function () { mostrar(atual - 1); });
-            if (btnNext) btnNext.addEventListener('click', function () { mostrar(atual + 1); });
-
-            if (btnToggle) btnToggle.addEventListener('click', function () { definirPausa(!pausado); });
+            if (btnPrev) acionavelPeloTeclado(btnPrev, function () { mostrar(atual - 1); });
+            if (btnNext) acionavelPeloTeclado(btnNext, function () { mostrar(atual + 1); });
+            if (btnToggle) acionavelPeloTeclado(btnToggle, function () { definirPausa(!pausado); });
 
             /* Segura a troca enquanto o visitante está lendo o slide */
             slider.addEventListener('mouseenter', function () { sobreposto = true; });
