@@ -104,6 +104,10 @@
         color: #FFF7EB !important;
     }
 
+    /* Imagens que precisam preencher o bloco: sem isso o tema do Elementor
+       aplica height:auto e sobra faixa vazia embaixo da foto. */
+    #auvp-lp-wrapper .speaker-slide img,
+    #auvp-lp-wrapper .video-poster img,
     #auvp-lp-wrapper .absolute.inset-0 > img {
         width: 100% !important;
         height: 100% !important;
@@ -1018,7 +1022,7 @@
 
                 <!-- ATENÇÃO: trocar por um <iframe> do YouTube assim que houver o link da gravação.
                      Enquanto isso, o bloco abre o canal em vez de mostrar um player quebrado. -->
-                <a href="https://www.youtube.com/@investidorsardinha" target="_blank" class="group block relative aspect-video w-full rounded-2xl overflow-hidden border border-[#FFF7EB]/15 shadow-lg bg-black">
+                <a href="https://www.youtube.com/@investidorsardinha" target="_blank" class="video-poster group block relative aspect-video w-full rounded-2xl overflow-hidden border border-[#FFF7EB]/15 shadow-lg bg-black">
                     <img src="https://raw.githubusercontent.com/ProdutosAUVP/privateday/main/baguncinha%201.webp" alt="Gravação do Giro da Bolsa com plateia" class="w-full h-full object-cover opacity-60 transition-opacity duration-300 group-hover:opacity-80">
                     <span class="absolute inset-0 flex flex-col items-center justify-center gap-3">
                         <span class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#932621] text-[#FFF7EB] flex items-center justify-center shadow-2xl transition-transform duration-300 group-hover:scale-110">
